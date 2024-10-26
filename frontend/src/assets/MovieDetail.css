@@ -1,0 +1,69 @@
+.movie-detail {
+    display: flex;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 20px;
+  }
+  
+  .movie-poster {
+    flex: 1;
+    text-align: center;
+    margin-right: 20px;
+  }
+  
+  .poster-placeholder {
+    width: 200px;
+    height: 300px;
+    background-color: #333;
+    margin: 0 auto;
+  }
+  
+  .movie-title-year {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .movie-info {
+    flex: 2;
+  }
+  
+  .movie-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .hd-label {
+    background-color: #444;
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .imdb-rating, .movie-length {
+    font-size: 18px;
+  }
+  
+  .movie-buttons {
+    margin: 15px 0;
+  }
+  
+  .upload-button, .vidcloud-button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .movie-overview {
+    margin: 20px 0;
+    line-height: 1.6;
+  }
+  
+  .movie-details p {
+    margin: 5px 0;
+  }
+  
