@@ -3,7 +3,7 @@ package com.g2appdev.sinesugbowatch.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Search {
+public class SearchEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
