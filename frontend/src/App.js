@@ -9,22 +9,33 @@ import Movies from './components/Movies';
 import TVShows from './components/TVShows';
 import TopIMDB from './components/TopIMDB';
 import Recents from './components/Recents';
-import Login from './components/Login'; // New Login component
+import Login from './components/Login';
+
+// Import the new User management components
+import UserForm from './components/UserForm';
+import UserList from './components/UserList';
+import UserUpdateForm from './components/UserUpdateForm';
 
 function App() {
   return (
     <Router>
-      <Navbar /> {/* Navbar remains visible on all pages */}
+      <Navbar />
       <Routes>
-        <Route path="/" element={<PopularMovies />} /> {/* Home route */}
-        <Route path="/genre" element={<Genre />} /> {/* Genre route */}
-        <Route path="/watchlist" element={<Watchlist />} /> {/* Watchlist route */}
-        <Route path="/movie/:id" element={<MovieDetail />} /> {/* Movie detail route */}
-        <Route path="/movies" element={<Movies />} /> {/* Movies route */}
-        <Route path="/tv-shows" element={<TVShows />} /> {/* TV Shows route */}
-        <Route path="/top-imdb" element={<TopIMDB />} /> {/* Top IMDB route */}
-        <Route path="/recents" element={<Recents />} /> {/* Recents route */}
-        <Route path="/login" element={<Login />} /> {/* Login route */}
+        {/* Existing Routes */}
+        <Route path="/" element={<PopularMovies />} />
+        <Route path="/genre" element={<Genre />} />
+        <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/tv-shows" element={<TVShows />} />
+        <Route path="/top-imdb" element={<TopIMDB />} />
+        <Route path="/recents" element={<Recents />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* New User Management Routes */}
+        <Route path="/create-user" element={<UserForm />} />          {/* For creating a user */}
+        <Route path="/users" element={<UserList />} />               {/* For viewing the list of users */}
+        <Route path="/update-user/:id" element={<UserUpdateForm />} /> {/* For updating a user by ID */}
       </Routes>
     </Router>
   );
