@@ -12,19 +12,16 @@ public class SearchEntity {
     private String searchquery;
     private String searchdate;
     
-    @Column(name = "user_id")
-    private int user_id;
 
-    public Search() {
+    public SearchEntity() {
         super();
     }
 
-    public Search(int search_id, String searchquery, String searchdate, int user_id) {
+    public SearchEntity(int search_id, String searchquery, String searchdate, int user_id) {
         super();
         this.search_id = search_id;
         this.searchquery = searchquery;
         this.searchdate = searchdate;
-        this.user_id = user_id;
     }
 
     // Getters and Setters
@@ -52,11 +49,4 @@ public class SearchEntity {
         this.searchdate = searchdate;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
 }
