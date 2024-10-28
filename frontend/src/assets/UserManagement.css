@@ -1,0 +1,50 @@
+/* UserManagement.css */
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    padding: 20px;
+}
+
+.user-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.user-container form, .user-container .user-list {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 10px;
+}
+
+.user-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.user-container button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-container button:hover {
+    background-color: #555;
+}
+
+.user-container .user-list-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
