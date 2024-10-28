@@ -12,6 +12,9 @@ public class UserEntity {
     private String username;
     private String email;
     private String password;
+    
+    @OneToOne(mappedBy="user")
+    private PreferencesEntity preference;
 
     public UserEntity() {
         super();
