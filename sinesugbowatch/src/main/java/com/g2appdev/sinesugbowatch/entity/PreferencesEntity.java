@@ -11,7 +11,11 @@ public class PreferencesEntity {
 
     private String recommendations;
     private String preferredgenres;
-
+    
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+    
     public PreferencesEntity() {
         super();
     }
@@ -47,4 +51,13 @@ public class PreferencesEntity {
     public void setPreferredgenres(String preferredgenres) {
         this.preferredgenres = preferredgenres;
     }
+    
+    public UserEntity getUser() {
+        return user;
+    }
+    
+    public void setUser(UserEntity user) {
+    	this.user = user;
+    }
+    
 }
