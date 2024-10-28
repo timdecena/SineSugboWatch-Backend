@@ -9,16 +9,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.g2appdev.sinesugbowatch.entity.PreferencesEntity;
+import com.g2appdev.sinesugbowatch.entity.UserEntity;
 import com.g2appdev.sinesugbowatch.repository.PreferencesRepository;
+import com.g2appdev.sinesugbowatch.repository.UserRepository;
 
 @Service
 public class PreferencesService {
 
     @Autowired
     PreferencesRepository preferencesRepo;
+    
+    @Autowired
+    private UserRepository userRepo;
+
+   
 
     // Create of CRUD
     public PreferencesEntity postPreferencesRecord(PreferencesEntity preferences) {
+        UserEntity user = userRepo.findById(preferences.getUser().getUser_id())
+        		.orElseThrow(()-> new NoSuchElementException("User with ID"+ preferences.getUser().getUser_id()+" does not exist."));
+        preferences.setUser(user);
         return preferencesRepo.save(preferences);
     }
 
