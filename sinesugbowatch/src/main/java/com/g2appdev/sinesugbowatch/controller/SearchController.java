@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.g2appdev.sinesugbowatch.entity.Search;
+import com.g2appdev.sinesugbowatch.entity.SearchEntity;
 import com.g2appdev.sinesugbowatch.service.SearchService;
 
 @RestController
@@ -29,19 +29,19 @@ public class SearchController {
 
     // Create operation of CRUD
     @PostMapping("/postSearchRecord")
-    public Search postSearchRecord(@RequestBody Search search) {
+    public SearchEntity postSearchRecord(@RequestBody SearchEntity search) {
         return searchService.postSearchRecord(search);
     }
 
     // Read operation of CRUD
     @GetMapping("/getAllSearches")
-    public List<Search> getAllSearches() {
+    public List<SearchEntity> getAllSearches() {
         return searchService.getAllSearches();
     }
 
     // Update operation of CRUD
     @PutMapping("/putSearchDetails")
-    public Search putSearchDetails(@RequestParam int id, @RequestBody Search newSearchDetails) {
+    public SearchEntity putSearchDetails(@RequestParam int id, @RequestBody SearchEntity newSearchDetails) {
         return searchService.putSearchDetails(id, newSearchDetails);
     }
 
