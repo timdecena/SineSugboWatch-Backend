@@ -11,12 +11,7 @@ public class Transaction {
 
     private String paymentmethod;
     
-    @Column(name = "user_id")
-    private int user_id;
-
-    @Column(name = "movie_id")
-    private int movie_id;
-
+ 
     public Transaction() {
         super();
     }
@@ -25,8 +20,7 @@ public class Transaction {
         super();
         this.transaction_id = transaction_id;
         this.paymentmethod = paymentmethod;
-        this.user_id = user_id;
-        this.movie_id = movie_id;
+        
     }
 
     // Getters and Setters
@@ -46,19 +40,4 @@ public class Transaction {
         this.paymentmethod = paymentmethod;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public int getMovie_id() {
-        return movie_id;
-    }
-
-    public void setMovie_id(int movie_id) {
-        this.movie_id = movie_id;
-    }
 }
