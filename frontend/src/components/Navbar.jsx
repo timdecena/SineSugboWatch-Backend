@@ -35,7 +35,7 @@ const Navbar = () => {
             <div className="dropdown-menu">
               <Link to="/create-user">Create User</Link>
               <Link to="/users">View Users</Link>
-              <Link to="/update-user">Update User</Link>
+              {/* Ensure you pass a specific user ID when linking to update */}
             </div>
           )}
         </div>
