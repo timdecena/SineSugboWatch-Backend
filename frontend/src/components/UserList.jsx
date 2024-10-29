@@ -19,8 +19,10 @@ const UserList = () => {
 
   const handleDeleteUser = async (user_id) => {
     try {
+      // Fix the URL string by using backticks
       await axios.delete(`http://localhost:8080/api/user/deleteUserDetails/${user_id}`);
       setUsers(users.filter((user) => user.user_id !== user_id));
+      // Use backticks for alert string interpolation
       alert(`User with ID ${user_id} deleted successfully`);
     } catch (error) {
       console.error('Error deleting user:', error);
