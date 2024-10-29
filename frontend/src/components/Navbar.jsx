@@ -30,7 +30,7 @@ const Navbar = () => {
         </div>
         {/* User Dropdown Menu */}
         <div className="user-dropdown">
-          <button onClick={toggleDropdown} className="user-dropdown-button">Users ▼</button>
+          <button onClick={toggleDropdown} className="user-dropdown-button">Admin Controls ▼</button>
           {dropdownOpen && (
             <div className="dropdown-menu">
               <Link to="/create-user">Create User</Link>
