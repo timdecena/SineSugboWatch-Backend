@@ -35,9 +35,11 @@
   text-decoration: underline;
 }
 
+
 .search-bar {
   display: flex;
   align-items: center;
+  margin-left: auto; /* Moves the search bar to the right */
 }
 
 .search-bar input[type="text"] {
@@ -45,6 +47,7 @@
   border-radius: 5px;
   border: none;
   outline: none;
+  width: 200px; /* Make input field longer */
 }
 
 .search-bar button {
