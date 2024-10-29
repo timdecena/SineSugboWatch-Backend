@@ -1,5 +1,3 @@
-// src/components/UserList.jsx
-
 import React, { useEffect, useState } from 'react';
 import '../assets/UserManagement.css';
 import axios from 'axios';
@@ -19,13 +17,14 @@ const UserList = () => {
     fetchUsers();
   }, []);
 
-  const handleDeleteUser = async (id) => {
+  const handleDeleteUser = async (user_id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/user/deleteUserDetails/${id}`);
-      setUsers(users.filter((user) => user.id !== id));
-      alert(`User ${id} deleted successfully`);
+      await axios.delete(`http://localhost:8080/api/user/deleteUserDetails/${user_id}`);
+      setUsers(users.filter((user) => user.user_id !== user_id));
+      alert(`User with ID ${user_id} deleted successfully`);
     } catch (error) {
       console.error('Error deleting user:', error);
+      alert('Failed to delete user. Please try again.');
     }
   };
 
@@ -34,10 +33,11 @@ const UserList = () => {
       <h2>User List</h2>
       <div className="user-list">
         {users.map((user) => (
-          <div key={user.id} className="user-list-item">
+          <div key={user.user_id} className="user-list-item">
+            <p>User ID: {user.user_id}</p>  {/* Display User ID */}
             <p>Username: {user.username}</p>
             <p>Email: {user.email}</p>
-            <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+            <button onClick={() => handleDeleteUser(user.user_id)}>Delete</button>
           </div>
         ))}
       </div>
