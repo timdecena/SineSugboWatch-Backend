@@ -1,98 +1,64 @@
 /* PopularMovies.css */
 
-/* Hero Section */
+.home-container {
+  padding: 20px;
+}
+
 .hero-section {
-    
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    position: relative;
-  }
-  
-  .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
-  
-  .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  .explore-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #ff6347;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .explore-btn:hover {
-    background-color: #ff4500;
-  }
-  
-  /* Section Title */
-  .section-title {
-    font-size: 2rem;
-    margin: 30px 0 20px;
-    text-align: center;
-    color: #333;
-  }
-  
-  /* Movie Grid */
-  .movie-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
-    padding: 0 20px;
-  }
-  
-  .movie-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .movie-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .movie-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-  }
-  
-  .movie-title {
-    padding: 10px;
-    font-size: 1rem;
-    color: #333;
-  }
-  
+  position: relative;
+  background-image: url('../assets/images/the_creator_poster.jpg'); /* Adjust the path if needed */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  height: 400px; /* Set the height for the hero section */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Adjust text color if necessary */
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 1; /* Ensure text appears above the background */
+  padding: 20px; /* Optional padding */
+  background: rgba(0, 0, 0, 0.5); /* Optional dark overlay for better text visibility */
+  border-radius: 10px; /* Optional rounding of the overlay */
+}
+
+.section-title {
+  margin-top: 40px;
+  font-size: 2rem;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.movie-card {
+  text-align: center;
+}
+
+.movie-image {
+  width: 100%;
+  border-radius: 10px; /* Optional rounding of the movie images */
+}
+
+.movie-title {
+  margin-top: 10px;
+}
+
+.explore-btn {
+  padding: 10px 20px; /* Padding for the button */
+  font-size: 1.2rem; /* Increased font size */
+  background-color: #f4c10f; /* Button color */
+  color: black; /* Text color for the button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.explore-btn:hover {
+  background-color: #e3b70f; /* Darker shade on hover */
+}
