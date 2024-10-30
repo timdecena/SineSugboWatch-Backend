@@ -1,12 +1,23 @@
+// Navbar.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/Navbar.css';
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  // Get username and userType from localStorage
+  const username = localStorage.getItem('username');
+  const userType = localStorage.getItem('userType');
+
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    localStorage.removeItem('userType');
+    alert('Logged out successfully!');
+    // Optionally redirect to login or home
   };
 
   return (
@@ -35,10 +46,16 @@ const Navbar = () => {
             <div className="dropdown-menu">
               <Link to="/create-user">Create User</Link>
               <Link to="/users">View Users</Link>
-              {/* Ensure you pass a specific user ID when linking to update */}
             </div>
           )}
         </div>
+        {/* Display logged-in user information */}
+        {username && (
+          <div className="user-info">
+            <span>Logged in as: {username} ({userType})</span>
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        )}
       </div>
     </nav>
   );
