@@ -12,8 +12,12 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     
-    // Call the login API with the selected user type
-    fetch('http://localhost:8080/api/user/login', {
+    // Set the endpoint based on user type
+    const loginEndpoint = userType === 'admin' 
+      ? 'http://localhost:8080/api/admin/login' 
+      : 'http://localhost:8080/api/user/login';
+
+    fetch(loginEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -28,10 +32,14 @@ const Login = () => {
       })
       .then(data => {
         alert('Login successful!');
-        // Store user info in localStorage or context for navbar display
-        localStorage.setItem('username', username); // Store username
-        localStorage.setItem('userType', userType); // Store user type
-        navigate('/'); // Redirect to home or another route upon successful login
+        
+        // Store user info in localStorage for use in navbar or protected routes
+        localStorage.setItem('username', username);
+        localStorage.setItem('userType', userType);
+        localStorage.setItem('token', data.token); // Store JWT token
+
+        // Redirect based on user type
+        navigate(userType === 'admin' ? '/admin-dashboard' : '/');
       })
       .catch(error => {
         alert(error.message);
@@ -47,12 +55,14 @@ const Login = () => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <div className="user-type-selection">
           <label>
@@ -81,4 +91,3 @@ const Login = () => {
 };
 
 export default Login;
-//test push

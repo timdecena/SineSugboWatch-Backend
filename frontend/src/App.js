@@ -11,10 +11,15 @@ import TopIMDB from './components/TopIMDB';
 import Recents from './components/Recents';
 import Login from './components/Login';
 
-// Import the new User management components
+// Import User management components
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
 import UserUpdateForm from './components/UserUpdateForm';
+
+// Import Admin management components
+import AdminForm from './components/AdminForm';
+import Adminlist from './components/Adminlist';
+import AdminUpdateForm from './components/AdminUpdateForm';
 
 function App() {
   return (
@@ -32,10 +37,15 @@ function App() {
         <Route path="/recents" element={<Recents />} />
         <Route path="/login" element={<Login />} />
 
-        {/* New User Management Routes */}
-        <Route path="/create-user" element={<UserForm />} />          {/* For creating a user */}
-        <Route path="/users" element={<UserList />} />               {/* For viewing the list of users */}
-        <Route path="/update-user/:id" element={<UserUpdateForm />} /> {/* For updating a user by ID */}
+        {/* User Management Routes */}
+        <Route path="/create-user" element={<UserForm />} />
+        <Route path="/users" element={<UserList />} />
+        <Route path="/update-user/:id" element={<UserUpdateForm />} />
+
+        {/* Admin Management Routes */}
+        <Route path="/create-admin" element={<AdminForm />} />          {/* For creating an admin */}
+        <Route path="/admins" element={<Adminlist />} />                {/* For viewing the list of admins */}
+        <Route path="/update-admin/:id" element={<AdminUpdateForm />} /> {/* For updating an admin by ID */}
       </Routes>
     </Router>
   );
