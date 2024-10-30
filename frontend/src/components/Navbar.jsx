@@ -1,23 +1,21 @@
 // Navbar.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import '../assets/Navbar.css';
 
 const Navbar = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
+  const navigate = useNavigate();
 
   // Get username and userType from localStorage
   const username = localStorage.getItem('username');
   const userType = localStorage.getItem('userType');
 
+  // Logout function to clear user information
   const handleLogout = () => {
     localStorage.removeItem('username');
     localStorage.removeItem('userType');
     alert('Logged out successfully!');
-    // Optionally redirect to login or home
+    navigate('/login'); // Redirect to login page
   };
 
   return (
@@ -39,21 +37,15 @@ const Navbar = () => {
           <input type="text" placeholder="Search..." />
           <button>🔍</button>
         </div>
-        {/* User Dropdown Menu */}
-        <div className="user-dropdown">
-          <button onClick={toggleDropdown} className="user-dropdown-button">Admin Controls ▼</button>
-          {dropdownOpen && (
-            <div className="dropdown-menu">
-              <Link to="/create-user">Create User</Link>
-              <Link to="/users">View Users</Link>
-            </div>
-          )}
-        </div>
-        {/* Display logged-in user information */}
+        {/* Display logged-in user information and logout button */}
         {username && (
-          <div className="user-info">
-            <span>Logged in as: {username} ({userType})</span>
-            <button onClick={handleLogout}>Logout</button>
+          <div className="user-info" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+            <span style={{ marginRight: '10px', color: 'white' }}>
+              Logged in as: {username} ({userType})
+            </span>
+            <button onClick={handleLogout} style={{ backgroundColor: '#555', color: 'white', border: 'none', padding: '0.5rem', cursor: 'pointer' }}>
+              Logout
+            </button>
           </div>
         )}
       </div>
