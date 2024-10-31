@@ -69,4 +69,14 @@ public class PreferencesService {
         }
         return msg;
     }
+
+    public PreferencesEntity updatePreferences(int id, PreferencesEntity updatedPreference) throws NameNotFoundException {
+        PreferencesEntity preference = preferencesRepo.findById(id)
+            .orElseThrow(() -> new NameNotFoundException("Preference with ID " + id + " not found."));
+        
+        preference.setRecommendations(updatedPreference.getRecommendations());
+        preference.setPreferredgenres(updatedPreference.getPreferredgenres());
+    
+        return preferencesRepo.save(preference);
+    }
 }

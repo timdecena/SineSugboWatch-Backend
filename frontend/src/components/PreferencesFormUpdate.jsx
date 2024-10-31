@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const PreferencesFormCreate = () => {
-  const [preference, setPreference] = useState({ recommendations: '', preferredGenres: '' });
+const PreferencesFormUpdate = () => {
+  const { id } = useParams();
+  const [preference, setPreference] = useState({ recommendations: '', preferredgenres: '' });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchPreference = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/preferences/getPreferencesDetails/${id}`);
+        setPreference(response.data);
+      } catch (error) {
+        console.error('Error fetching preference:', error);
+      }
+    };
+
+    fetchPreference();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,18 +28,18 @@ const PreferencesFormCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/preferences/createPreferences', preference);
-      alert('Preference created successfully');
-      navigate('/pref'); // Redirect to the preferences list
+      await axios.put(`http://localhost:8080/api/preferences/updatePreferencesDetails/${id}`, preference);
+      alert('Preferences updated successfully');
+      navigate('/pref'); // Redirect to the preferences list after successful update
     } catch (error) {
-      console.error('Error creating preference:', error);
-      alert('Failed to create preference. Please check the console for details.');
+      console.error('Error updating preferences:', error);
+      alert('Failed to update preferences. Please check the console for details.');
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Create Preferences</h2>
+      <h2>Update Preferences</h2>
       <label>
         Recommendations:
         <input
@@ -41,16 +55,16 @@ const PreferencesFormCreate = () => {
         Preferred Genres:
         <input
           type="text"
-          name="preferredGenres"
-          value={preference.preferredGenres}
+          name="preferredgenres"
+          value={preference.preferredgenres}
           onChange={handleChange}
           required
         />
       </label>
       <br />
-      <button type="submit">Create</button>
+      <button type="submit">Update</button>
     </form>
   );
 };
 
-export default PreferencesFormCreate;
+export default PreferencesFormUpdate;

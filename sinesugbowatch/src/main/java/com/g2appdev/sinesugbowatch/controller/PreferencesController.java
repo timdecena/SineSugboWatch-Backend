@@ -3,6 +3,8 @@ package com.g2appdev.sinesugbowatch.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,5 +56,15 @@ public class PreferencesController {
     @DeleteMapping("/deletePreferencesDetails/{id}")
     public String deletePreferences(@PathVariable int id) {
         return preferencesService.deletePreferences(id);
+    }
+
+        @PutMapping("/updatePreferencesDetails/{id}")
+    public ResponseEntity<?> updatePreferences(@PathVariable int id, @RequestBody PreferencesEntity updatedPreference) {
+    try {
+        PreferencesEntity updated = preferencesService.updatePreferences(id, updatedPreference);
+        return ResponseEntity.ok(updated);
+         } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update preferences.");
+        }
     }
 }
