@@ -1,79 +1,69 @@
-// src/components/PreferencesFormUpdate.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const PreferencesFormUpdate = ({ preferenceId }) => {
-  const [recommendations, setRecommendations] = useState('');
-  const [preferredGenres, setPreferredGenres] = useState('');
-  const [loading, setLoading] = useState(true);
-  const userId = localStorage.getItem('user_id');
+const PreferencesFormUpdate = () => {
+  const { id } = useParams();
+  const [preference, setPreference] = useState({ recommendations: '', preferredgenres: '' });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPreference = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/preferences/${preferenceId}`);
-        const preference = response.data;
-
-        setRecommendations(preference.recommendations);
-        setPreferredGenres(preference.preferredgenres);
-        setLoading(false);
+        const response = await axios.get(`http://localhost:8080/api/preferences/getPreferencesDetails/${id}`);
+        setPreference(response.data);
       } catch (error) {
         console.error('Error fetching preference:', error);
-        alert('Error fetching preference details.');
-        setLoading(false); // Ensure loading stops on error
       }
     };
 
-    if (preferenceId) {
-      fetchPreference();
-    } else {
-      alert("Invalid preference ID provided.");
-      setLoading(false); // Stop loading if no valid ID
-    }
-  }, [preferenceId]);
+    fetchPreference();
+  }, [id]);
 
-  const handleUpdatePreference = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPreference((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      await axios.put(
-        `http://localhost:8080/api/preferences/putPreferencesDetails?id=${preferenceId}`,
-        {
-          recommendations,
-          preferredgenres: preferredGenres,
-          user: { user_id: userId },
-        }
-      );
-      alert("Preference updated successfully!");
+      await axios.put(`http://localhost:8080/api/preferences/updatePreferencesDetails/${id}`, preference);
+      alert('Preferences updated successfully');
+      navigate('/pref'); // Redirect to the preferences list after successful update
     } catch (error) {
-      console.error('Error updating preference:', error);
-      alert('Error updating preference.');
+      console.error('Error updating preferences:', error);
+      alert('Failed to update preferences. Please check the console for details.');
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <h2>Update Preferences</h2>
-      <form onSubmit={handleUpdatePreference}>
+      <label>
+        Recommendations:
         <input
           type="text"
-          placeholder="Recommendations"
-          value={recommendations}
-          onChange={(e) => setRecommendations(e.target.value)}
+          name="recommendations"
+          value={preference.recommendations}
+          onChange={handleChange}
+          required
         />
+      </label>
+      <br />
+      <label>
+        Preferred Genres:
         <input
           type="text"
-          placeholder="Preferred Genres"
-          value={preferredGenres}
-          onChange={(e) => setPreferredGenres(e.target.value)}
+          name="preferredgenres"
+          value={preference.preferredgenres}
+          onChange={handleChange}
+          required
         />
-        <button type="submit">Update Preferences</button>
-      </form>
-    </div>
+      </label>
+      <br />
+      <button type="submit">Update</button>
+    </form>
   );
 };
 

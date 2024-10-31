@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const PreferencesList = () => {
   const [preference, setPreference] = useState(null);
   const userId = localStorage.getItem('user_id');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPreferences = async () => {
@@ -31,12 +31,12 @@ const PreferencesList = () => {
     if (!preference) return;
 
     try {
-      console.log('Attempting to delete preference with ID:', preference.Preference_id || preference.preference_id);
-      const preferenceId = preference.Preference_id || preference.preference_id;
+      console.log('Attempting to delete preference with ID:', preference.preference_id);
+      const preferenceId = preference.preference_id;
 
       await axios.delete(`http://localhost:8080/api/preferences/deletePreferencesDetails/${preferenceId}`);
       console.log(`Deleted preference with ID: ${preferenceId}`);
-      
+
       setPreference(null);
       alert('Preference deleted successfully');
     } catch (error) {
@@ -47,7 +47,7 @@ const PreferencesList = () => {
 
   const handleUpdatePreference = () => {
     if (preference) {
-      const preferenceId = preference.Preference_id || preference.preference_id;
+      const preferenceId = preference.preference_id;
       // Navigate to the update form with the preference ID
       navigate(`/update-pref/${preferenceId}`);
     }
@@ -58,10 +58,13 @@ const PreferencesList = () => {
       <h2>Your Preference</h2>
       {preference ? (
         <div>
-          <p>ID: {preference.Preference_id || preference.preference_id}</p>
-          <p>{preference.recommendations} - {preference.preferredgenres}</p>
+          <p>ID: {preference.preference_id}</p>
+          <p>
+            Recommendations: {preference.recommendations} <br />
+            Preferred Genres: {preference.preferredGenres} {/* Corrected field name */}
+          </p>
           <button onClick={handleDeletePreference}>Delete</button>
-          <button onClick={handleUpdatePreference}>Update</button> {/* Update button added here */}
+          <button onClick={handleUpdatePreference}>Update</button>
         </div>
       ) : (
         <p>No preference found.</p>
