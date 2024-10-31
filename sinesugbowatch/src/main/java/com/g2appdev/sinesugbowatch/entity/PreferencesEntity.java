@@ -7,33 +7,33 @@ public class PreferencesEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int preference_id;
+    private int preferenceId;  // Changed to camelCase for consistency
 
     private String recommendations;
-    private String preferredgenres;
-    
+    private String preferredGenres;  // Changed to camelCase for consistency
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
-    
+
     public PreferencesEntity() {
         super();
     }
 
-    public PreferencesEntity(int preference_id, String recommendations, String preferredgenres) {
+    public PreferencesEntity(int preferenceId, String recommendations, String preferredGenres) {
         super();
-        this.preference_id = preference_id;
+        this.preferenceId = preferenceId;  // Updated to match field name
         this.recommendations = recommendations;
-        this.preferredgenres = preferredgenres;
+        this.preferredGenres = preferredGenres;  // Updated to match field name
     }
 
     // Getters and Setters
-    public int getPreference_id() {
-        return preference_id;
+    public int getPreferenceId() {  // Updated method name
+        return preferenceId;
     }
 
-    public void setPreference_id(int preference_id) {
-        this.preference_id = preference_id;
+    public void setPreferenceId(int preferenceId) {  // Updated method name
+        this.preferenceId = preferenceId;
     }
 
     public String getRecommendations() {
@@ -44,20 +44,19 @@ public class PreferencesEntity {
         this.recommendations = recommendations;
     }
 
-    public String getPreferredgenres() {
-        return preferredgenres;
+    public String getPreferredGenres() {  // Updated method name
+        return preferredGenres;
     }
 
-    public void setPreferredgenres(String preferredgenres) {
-        this.preferredgenres = preferredgenres;
+    public void setPreferredGenres(String preferredGenres) {  // Updated method name
+        this.preferredGenres = preferredGenres;
     }
-    
+
     public UserEntity getUser() {
         return user;
     }
-    
+
     public void setUser(UserEntity user) {
-    	this.user = user;
+        this.user = user;
     }
-    
 }

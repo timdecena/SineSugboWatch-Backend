@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const PreferencesList = () => {
   const [preference, setPreference] = useState(null);
   const userId = localStorage.getItem('user_id');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const fetchPreferences = async () => {
@@ -43,6 +45,14 @@ const PreferencesList = () => {
     }
   };
 
+  const handleUpdatePreference = () => {
+    if (preference) {
+      const preferenceId = preference.Preference_id || preference.preference_id;
+      // Navigate to the update form with the preference ID
+      navigate(`/update-pref/${preferenceId}`);
+    }
+  };
+
   return (
     <div>
       <h2>Your Preference</h2>
@@ -51,6 +61,7 @@ const PreferencesList = () => {
           <p>ID: {preference.Preference_id || preference.preference_id}</p>
           <p>{preference.recommendations} - {preference.preferredgenres}</p>
           <button onClick={handleDeletePreference}>Delete</button>
+          <button onClick={handleUpdatePreference}>Update</button> {/* Update button added here */}
         </div>
       ) : (
         <p>No preference found.</p>

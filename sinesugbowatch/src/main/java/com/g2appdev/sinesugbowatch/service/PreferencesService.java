@@ -22,12 +22,10 @@ public class PreferencesService {
     @Autowired
     private UserRepository userRepo;
 
-   
-
     // Create of CRUD
     public PreferencesEntity postPreferencesRecord(PreferencesEntity preferences) {
         UserEntity user = userRepo.findById(preferences.getUser().getUser_id())
-        		.orElseThrow(()-> new NoSuchElementException("User with ID"+ preferences.getUser().getUser_id()+" does not exist."));
+                .orElseThrow(() -> new NoSuchElementException("User with ID " + preferences.getUser().getUser_id() + " does not exist."));
         preferences.setUser(user);
         return preferencesRepo.save(preferences);
     }
@@ -35,6 +33,13 @@ public class PreferencesService {
     // Read of CRUD
     public List<PreferencesEntity> getAllPreferences() {
         return preferencesRepo.findAll();
+    }
+
+    // Get preference by ID
+    public PreferencesEntity getPreferenceById(int id) {
+        return preferencesRepo.findById(id).orElseThrow(() -> 
+            new NoSuchElementException("Preference " + id + " not found")
+        );
     }
 
     // Update of CRUD
@@ -49,7 +54,7 @@ public class PreferencesService {
 
             // Update the fields with new values
             preferences.setRecommendations(newPreferencesDetails.getRecommendations());
-            preferences.setPreferredgenres(newPreferencesDetails.getPreferredgenres());
+            preferences.setPreferredGenres(newPreferencesDetails.getPreferredGenres()); // Updated to match field name
 
         } catch (NoSuchElementException nex) {
             throw new NameNotFoundException("Preferences " + id + " not found");

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.g2appdev.sinesugbowatch.entity.PreferencesEntity;
 import com.g2appdev.sinesugbowatch.service.PreferencesService;
 
-
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(method = RequestMethod.GET, path = "/api/preferences")
@@ -38,10 +37,16 @@ public class PreferencesController {
         return preferencesService.postPreferencesRecord(preferences);
     }
 
-    // Read operation of CRUD
+    // Read all preferences
     @GetMapping("/getAllPreferences")
     public List<PreferencesEntity> getAllPreferences() {
         return preferencesService.getAllPreferences();
+    }
+
+    // Read preference by ID
+    @GetMapping("/{id}")
+    public PreferencesEntity getPreferenceById(@PathVariable int id) {
+        return preferencesService.getPreferenceById(id);
     }
 
     // Update operation of CRUD
