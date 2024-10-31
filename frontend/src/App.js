@@ -20,6 +20,9 @@ import UserUpdateForm from './components/UserUpdateForm';
 import AdminForm from './components/AdminForm';
 import Adminlist from './components/Adminlist';
 import AdminUpdateForm from './components/AdminUpdateForm';
+import PreferencesForm from './components/PreferencesForm';
+import PreferencesList from './components/PreferencesList';
+import PreferencesUpdateForm from './components/PreferencesUpdateForm';
 
 function App() {
   return (
@@ -46,6 +49,10 @@ function App() {
         <Route path="/create-admin" element={<AdminForm />} />          {/* For creating an admin */}
         <Route path="/admins" element={<Adminlist />} />                {/* For viewing the list of admins */}
         <Route path="/update-admin/:id" element={<AdminUpdateForm />} /> {/* For updating an admin by ID */}
+
+        <Route path="/create-pref" element={<PreferencesForm />} />          {/* For creating an admin */}
+        <Route path="/pref" element={<PreferencesList />} />                {/* For viewing the list of admins */}
+        <Route path="/update-pref/:id" element={<PreferencesUpdateForm />} /> {/* For updating an admin by ID */}
       </Routes>
     </Router>
   );

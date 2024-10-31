@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     
-    // Set the endpoint based on user type
+    // Set the API endpoint based on user type
     const loginEndpoint = userType === 'admin' 
       ? 'http://localhost:8080/api/admin/login' 
       : 'http://localhost:8080/api/user/login';
@@ -33,13 +33,16 @@ const Login = () => {
       .then(data => {
         alert('Login successful!');
         
-        // Store user info in localStorage for use in navbar or protected routes
-        localStorage.setItem('username', username);
-        localStorage.setItem('userType', userType);
-        localStorage.setItem('token', data.token); // Store JWT token
+        // Store user info in localStorage
+        localStorage.setItem('username', username); // Store username
+        localStorage.setItem('userType', userType); // Store user type
 
-        // Redirect based on user type
-        navigate(userType === 'admin' ? '/admin-dashboard' : '/');
+        // Store user_id if returned in the response data
+        if (data.user_id) {
+          localStorage.setItem('user_id', data.user_id); // Store user_id
+        }
+
+        navigate(userType === 'admin' ? '/admin-dashboard' : '/'); // Redirect based on user type
       })
       .catch(error => {
         alert(error.message);
@@ -55,14 +58,12 @@ const Login = () => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
         <div className="user-type-selection">
           <label>
@@ -81,7 +82,7 @@ const Login = () => {
               checked={userType === 'admin'}
               onChange={(e) => setUserType(e.target.value)}
             />
-            Admin
+            Admin 
           </label>
         </div>
         <button type="submit">Login</button>
