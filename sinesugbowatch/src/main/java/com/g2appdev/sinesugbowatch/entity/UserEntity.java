@@ -1,6 +1,17 @@
 package com.g2appdev.sinesugbowatch.entity;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class UserEntity {
@@ -15,10 +26,16 @@ public class UserEntity {
     
     @OneToOne(mappedBy="user")
     private PreferencesEntity preference;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Transaction> transaction;
 
     public UserEntity() {
         super();
     }
+    
+    
 
     public UserEntity(int user_id, String username, String email, String password) {
         super();

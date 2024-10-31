@@ -1,6 +1,16 @@
 package com.g2appdev.sinesugbowatch.entity;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class MoviesEntity {
@@ -8,6 +18,10 @@ public class MoviesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int movie_id;
+    
+    @OneToMany(mappedBy = "movies", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Transaction> transaction;
 
     private String title;
     private String genre;

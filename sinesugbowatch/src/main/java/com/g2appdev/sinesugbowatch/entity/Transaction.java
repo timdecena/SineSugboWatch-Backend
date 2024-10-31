@@ -1,6 +1,11 @@
 package com.g2appdev.sinesugbowatch.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Transaction {
@@ -11,12 +16,19 @@ public class Transaction {
 
     private String paymentmethod;
     
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+    
+    @OneToOne
+    @JoinColumn(name = "movie_id")
+    private MoviesEntity movies;
  
     public Transaction() {
         super();
     }
 
-    public Transaction(int transaction_id, String paymentmethod, int user_id, int movie_id) {
+    public Transaction(int transaction_id, String paymentmethod) {
         super();
         this.transaction_id = transaction_id;
         this.paymentmethod = paymentmethod;
@@ -39,5 +51,22 @@ public class Transaction {
     public void setPaymentmethod(String paymentmethod) {
         this.paymentmethod = paymentmethod;
     }
+    
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public MoviesEntity getMovies() {
+        return movies;
+    }
+
+    public void setMovies(MoviesEntity movies) {
+        this.movies = movies;
+    }
+
 
 }
