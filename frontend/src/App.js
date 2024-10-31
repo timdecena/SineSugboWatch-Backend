@@ -22,6 +22,7 @@ import Adminlist from './components/Adminlist';
 import AdminUpdateForm from './components/AdminUpdateForm';
 import PreferencesForm from './components/PreferencesForm';
 import PreferencesList from './components/PreferencesList';
+import PreferencesFormUpdate from './components/PreferencesFormUpdate';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
 
         <Route path="/create-pref" element={<PreferencesForm />} />          {/* For creating an admin */}
         <Route path="/pref" element={<PreferencesList />} />                {/* For viewing the list of admins */}
+        <Route path="/update-pref/:id" element={<PreferencesFormUpdate />} />                {/* For viewing the list of admins */}
       </Routes>
     </Router>
   );
