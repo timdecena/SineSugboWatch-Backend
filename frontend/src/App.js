@@ -52,7 +52,6 @@ function App() {
 
         <Route path="/create-pref" element={<PreferencesForm />} />          {/* For creating an admin */}
         <Route path="/pref" element={<PreferencesList />} />                {/* For viewing the list of admins */}
-        <Route path="/update-pref/:id" element={<PreferencesUpdateForm />} /> {/* For updating an admin by ID */}
       </Routes>
     </Router>
   );
