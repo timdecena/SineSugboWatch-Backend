@@ -9,22 +9,22 @@ public class PreferencesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int preference_id;
 
+    private String recommendations;
+    private String preferredgenres;
+    
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
-
-    private String recommendations;
-    private String preferredGenres;
-
-    // Constructors
+    
     public PreferencesEntity() {
+        super();
     }
 
-    public PreferencesEntity(int preference_id, UserEntity user, String recommendations, String preferredGenres) {
+    public PreferencesEntity(int preference_id, String recommendations, String preferredgenres) {
+        super();
         this.preference_id = preference_id;
-        this.user = user;
         this.recommendations = recommendations;
-        this.preferredGenres = preferredGenres;
+        this.preferredgenres = preferredgenres;
     }
 
     // Getters and Setters
@@ -36,14 +36,6 @@ public class PreferencesEntity {
         this.preference_id = preference_id;
     }
 
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
     public String getRecommendations() {
         return recommendations;
     }
@@ -52,11 +44,20 @@ public class PreferencesEntity {
         this.recommendations = recommendations;
     }
 
-    public String getPreferredGenres() {
-        return preferredGenres;
+    public String getPreferredgenres() {
+        return preferredgenres;
     }
 
-    public void setPreferredGenres(String preferredGenres) {
-        this.preferredGenres = preferredGenres;
+    public void setPreferredgenres(String preferredgenres) {
+        this.preferredgenres = preferredgenres;
     }
+    
+    public UserEntity getUser() {
+        return user;
+    }
+    
+    public void setUser(UserEntity user) {
+    	this.user = user;
+    }
+    
 }
