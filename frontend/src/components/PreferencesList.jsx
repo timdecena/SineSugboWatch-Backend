@@ -30,7 +30,7 @@ const PreferencesList = () => {
 
     try {
       console.log('Attempting to delete preference with ID:', preference.Preference_id || preference.preference_id);
-      const preferenceId = preference.Preference_id || preference.preference_id; // Adjust field if necessary
+      const preferenceId = preference.Preference_id || preference.preference_id;
 
       await axios.delete(`http://localhost:8080/api/preferences/deletePreferencesDetails/${preferenceId}`);
       console.log(`Deleted preference with ID: ${preferenceId}`);
@@ -48,6 +48,7 @@ const PreferencesList = () => {
       <h2>Your Preference</h2>
       {preference ? (
         <div>
+          <p>ID: {preference.Preference_id || preference.preference_id}</p>
           <p>{preference.recommendations} - {preference.preferredgenres}</p>
           <button onClick={handleDeletePreference}>Delete</button>
         </div>
