@@ -22,7 +22,6 @@ import Adminlist from './components/Adminlist';
 import AdminUpdateForm from './components/AdminUpdateForm';
 import PreferencesForm from './components/PreferencesForm';
 import PreferencesList from './components/PreferencesList';
-import PreferencesUpdateForm from './components/PreferencesUpdateForm';
 
 function App() {
   return (
