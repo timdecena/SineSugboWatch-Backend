@@ -37,11 +37,12 @@ const UserUpdateForm = () => {
     setSuccess(false);
 
     try {
-      await axios.put(`http://localhost:8080/api/user/putUserDetails?id=${id}`, {
+      await axios.put(`http://localhost:8080/api/user/putUserDetails/${id}`, {
         username,
         email,
         password,
       });
+      
       setSuccess(true);
     } catch (err) {
       setError('Failed to update user.');

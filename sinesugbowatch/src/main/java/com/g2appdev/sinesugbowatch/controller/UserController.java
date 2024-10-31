@@ -45,11 +45,11 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    // Update operation of CRUD
-    @PutMapping("/putUserDetails")
-    public UserEntity putUserDetails(@PathVariable int id, @RequestBody UserEntity newUserDetails) throws NameNotFoundException {
-        return userService.putUserDetails(id, newUserDetails);
-    }
+    @PutMapping("/putUserDetails/{id}")
+public UserEntity putUserDetails(@PathVariable int id, @RequestBody UserEntity newUserDetails) throws NameNotFoundException {
+    return userService.putUserDetails(id, newUserDetails);
+}
+
 
     // Delete operation of CRUD
     @DeleteMapping("/deleteUserDetails/{id}")
