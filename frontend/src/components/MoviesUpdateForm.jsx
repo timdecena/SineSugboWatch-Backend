@@ -1,102 +1,84 @@
+// src/components/MovieUpdateForm.jsx
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import '../assets/MoviesUpdateForm.css';
 
-const MoviesUpdateForm = ({ movieId, onUpdateSuccess }) => {
-    const [movie, setMovie] = useState({
-        title: '',
-        genre: '',
-        description: '',
-        rating: ''
-    });
-    const [error, setError] = useState(null);
+const MovieUpdateForm = () => {
+  const { movie_id } = useParams();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [releaseDate, setReleaseDate] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
-    useEffect(() => {
-        const fetchMovieDetails = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8080/api/movies/getAllMovies`);
-                const foundMovie = response.data.find(m => m.id === movieId);
-                if (foundMovie) {
-                    setMovie(foundMovie);
-                }
-            } catch (error) {
-                console.error('Error fetching movie details:', error);
-                setError('Failed to fetch movie details. Please check the console for details.');
-            }
-        };
-
-        fetchMovieDetails();
-    }, [movieId]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setMovie(prevMovie => ({
-            ...prevMovie,
-            [name]: value
-        }));
+  useEffect(() => {
+    const fetchMovieData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`http://localhost:8080/api/movies/getAllMovies/${movie_id}`);
+        const data = await response.json();
+        setTitle(data.title);
+        setDescription(data.description);
+        setReleaseDate(data.releaseDate);
+      } catch (err) {
+        setError('Failed to fetch movie data.');
+      } finally {
+        setLoading(false);
+      }
     };
+    fetchMovieData();
+  }, [movie_id]);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.put(`http://localhost:8080/api/movies/putMovieDetails?id=${movieId}`, movie);
-            onUpdateSuccess(); // Call success callback to refresh the list or give feedback
-        } catch (error) {
-            console.error('Error updating movie:', error);
-            setError('Failed to update movie. Please check the console for details.');
-        }
-    };
+  const handleUpdateMovie = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch(`http://localhost:8080/api/movies/putMovieDetails/${movie_id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, description, releaseDate }),
+      });
+      setSuccess(true);
+    } catch (err) {
+      setError('Failed to update movie.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <div>
-            <h2>Update Movie Details</h2>
-            {error && <div>{error}</div>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Title:</label>
-                    <input
-                        type="text"
-                        name="title"
-                        value={movie.title}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Genre:</label>
-                    <input
-                        type="text"
-                        name="genre"
-                        value={movie.genre}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Description:</label>
-                    <textarea
-                        name="description"
-                        value={movie.description}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Rating:</label>
-                    <input
-                        type="number"
-                        name="rating"
-                        value={movie.rating}
-                        onChange={handleChange}
-                        required
-                        min="0"
-                        max="10"
-                        step="0.1"
-                    />
-                </div>
-                <button type="submit">Update Movie</button>
-            </form>
-        </div>
-    );
+  return (
+    <div className="update-form-container">
+      <h2>Update Movie</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p className="error-message">{error}</p>}
+      {success && <p className="success-message">Movie updated successfully!</p>}
+      <form onSubmit={handleUpdateMovie}>
+        <input
+          type="text"
+          placeholder="New Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <textarea
+          placeholder="New Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+        <input
+          type="date"
+          value={releaseDate}
+          onChange={(e) => setReleaseDate(e.target.value)}
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? 'Updating...' : 'Update Movie'}
+        </button>
+      </form>
+    </div>
+  );
 };
 
-export default MoviesUpdateForm;
+export default MovieUpdateForm;

@@ -30,6 +30,8 @@ import MoviesForm from './components/MoviesForm';
 import MoviesList from './components/MoviesList';
 import MoviesUpdateForm from './components/MoviesUpdateForm';
 
+
+
 function App() {
   return (
     <Router>
@@ -61,13 +63,12 @@ function App() {
         <Route path="/pref" element={<PreferencesList />} />
         <Route path="/update-pref/:id" element={<PreferencesFormUpdate />} />
 
-        {/* Movies Management */}
+        {/* Movie Management */}
         <Route path="/create-movie" element={<MoviesForm />} />
-        <Route path="/movies-list" element={<MoviesList />} />
+        <Route path="/movielist" element={<MoviesList />} />
         <Route path="/update-movie/:id" element={<MoviesUpdateForm />} />
 
-        {/* Optional 404 Route */}
-        <Route path="*" element={<div>404 Not Found</div>} />
+        
       </Routes>
     </Router>
   );

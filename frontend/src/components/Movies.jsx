@@ -1,31 +1,71 @@
-// Movies.js
-import React from 'react';
+// src/components/Movies.jsx
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/Movies.css';
 
 const Movies = () => {
-  const movies = [
-    { id: 1, title: 'Movie Title 1', year: '2023', length: '120 mins' },
-    { id: 2, title: 'Movie Title 2', year: '2022', length: '115 mins' },
-    { id: 3, title: 'Movie Title 3', year: '2021', length: '90 mins' },
-    { id: 4, title: 'Movie Title 4', year: '2023', length: '95 mins' },
-    { id: 5, title: 'Movie Title 5', year: '2019', length: '110 mins' },
-    { id: 6, title: 'Movie Title 6', year: '2019', length: '100 mins' },
-    { id: 7, title: 'Movie Title 7', year: '2012', length: '91 mins' },
-    { id: 8, title: 'Movie Title 8', year: '2018', length: ' 92 mins' }
-  ];
+  const [movies, setMovies] = useState([]);
+  const userType = localStorage.getItem('userType'); // Get the user type from local storage
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/movies/getAllMovies');
+        if (!response.ok) {
+          throw new Error('Failed to fetch movies');
+        }
+        const data = await response.json();
+        console.log('Fetched movies:', data); // Log for debugging
+        setMovies(data);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+    fetchMovies();
+  }, []);
+
+  const handleDeleteMovie = async (movie_id) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/movies/deleteMovieDetails/${movie_id}`, { method: 'DELETE' });
+      if (!response.ok) {
+        throw new Error('Failed to delete movie');
+      }
+      setMovies(movies.filter((movie) => movie.movie_id !== movie_id));
+      alert(`Movie with ID ${movie_id} deleted successfully`);
+    } catch (error) {
+      console.error('Error deleting movie:', error);
+      alert('Failed to delete movie.');
+    }
+  };
 
   return (
     <div className="movies-container">
       <h1>Movies</h1>
       <div className="movies-list">
-        {movies.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-item">
-            <div className="movie-placeholder"></div>
-            <p>{movie.title}</p>
-            <p>{movie.year} | {movie.length}</p>
-          </Link>
-        ))}
+        {movies.length === 0 ? (
+          <p>No movies available</p>
+        ) : (
+          movies.map((movie) => (
+            <div key={movie.movie_id} className="movie-item">
+              <Link to={`/movie/${movie.movie_id}`}>
+                <div className="movie-placeholder"></div>
+                <p><strong>Movie ID:</strong> {movie.movie_id}</p>
+                <p><strong>Title:</strong> {movie.title}</p>
+                <p><strong>Genre:</strong> {movie.genre}</p>
+                <p><strong>Description:</strong> {movie.description}</p>
+                <p><strong>Rating:</strong> {movie.rating}</p>
+              </Link>
+              {userType === 'admin' && ( // Check if user is admin
+                <div className="admin-buttons">
+                  <Link to={`/update-movie/${movie.movie_id}`}>
+                    <button className="update-button">Update</button>
+                  </Link>
+                  <button onClick={() => handleDeleteMovie(movie.movie_id)} className="delete-button">Delete</button>
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

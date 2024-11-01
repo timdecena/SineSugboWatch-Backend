@@ -1,67 +1,102 @@
+// src/components/MoviesForm.jsx
 import React, { useState } from 'react';
-import axios from 'axios';
+import '../assets/MoviesForm.css';
 
-function MovieForm({ adminId }) {
+const MoviesForm = () => {
   const [title, setTitle] = useState('');
-  const [genre, setGenre] = useState('');
   const [description, setDescription] = useState('');
+  const [genre, setGenre] = useState('');
   const [rating, setRating] = useState('');
-  const [error, setError] = useState('');
+  const [adminId, setAdminId] = useState('');
 
-  const handleAddMovie = async (e) => {
+  const handleCreateMovie = async (e) => {
     e.preventDefault();
-    setError(''); // Reset error message
-
     try {
-      // Create movie data object
-      const movieData = { 
-        title, 
-        genre, 
-        description, 
-        rating: parseFloat(rating), // Ensure rating is a number
-        admin_id: adminId // Include admin_id in the request body
-      };
+      const response = await fetch('http://localhost:8080/api/movies/postMovieRecord', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          genre,
+          description,
+          rating: parseFloat(rating),
+          admin: { adminId: parseInt(adminId) },
+        }),
+      });
 
-      // POST request to add the movie using the correct endpoint
-      const response = await axios.post('http://localhost:8080/api/movies/postMovieRecord', movieData);
-      console.log('Movie added:', response.data); // Log success
-      alert('Movie added successfully');
-      // Reset form fields
-      setTitle('');
-      setGenre('');
-      setDescription('');
-      setRating('');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error creating movie');
+      }
+
+      const data = await response.json();
+      alert(`Movie created: ${data.title}`);
     } catch (error) {
-      // Log error details to console for debugging
-      console.error('Error adding movie:', error.response ? error.response.data : error.message);
-      // Display a user-friendly error message
-      setError('Failed to add movie. Please check the console for details.');
+      console.error('Error creating movie:', error);
+      alert(`Error creating movie: ${error.message}`);
     }
   };
 
   return (
-    <form onSubmit={handleAddMovie}>
-      <h2>Add a New Movie</h2>
-      <div>
-        <label>Title:</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-      </div>
-      <div>
-        <label>Genre:</label>
-        <input type="text" value={genre} onChange={(e) => setGenre(e.target.value)} required />
-      </div>
-      <div>
-        <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
-      </div>
-      <div>
-        <label>Rating:</label>
-        <input type="number" step="0.1" min="0" max="10" value={rating} onChange={(e) => setRating(e.target.value)} required />
-      </div>
-      <button type="submit">Add Movie</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error message if any */}
-    </form>
+    <div className="movies-form-container">
+      <h2 className="movies-form-title">Create Movie</h2>
+      <form className="movie-form" onSubmit={handleCreateMovie}>
+        <label htmlFor="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          placeholder="Enter movie title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        
+        <label htmlFor="genre">Genre</label>
+        <input
+          id="genre"
+          type="text"
+          placeholder="Enter genre"
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
+          required
+        />
+        
+        <label htmlFor="description">Description</label>
+        <textarea
+          id="description"
+          placeholder="Enter movie description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+        
+        <label htmlFor="rating">Rating (0.0 - 10.0)</label>
+        <input
+          id="rating"
+          type="number"
+          step="0.1"
+          placeholder="Enter rating"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+          required
+        />
+        
+        <label htmlFor="adminId">Admin ID</label>
+        <input
+          id="adminId"
+          type="text"
+          placeholder="Enter Admin ID"
+          value={adminId}
+          onChange={(e) => setAdminId(e.target.value)}
+          required
+        />
+        
+        <button type="submit">Create Movie</button>
+      </form>
+    </div>
   );
-}
+};
 
-export default MovieForm;
+export default MoviesForm;

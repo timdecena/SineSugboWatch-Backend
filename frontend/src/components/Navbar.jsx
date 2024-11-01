@@ -62,11 +62,13 @@ const Navbar = () => {
                   <Link to="/users" className="dropdown-item">View All Users</Link>
                   <Link to="/admins" className="dropdown-item">View All Admins</Link>
                   <Link to="/pref" className="dropdown-item">View Current Preferences</Link>
+                  
                   {/* Additional options for admin */}
                   {userType === 'admin' && (
                     <>
-                      <Link to="/feature1" className="dropdown-item">Add more feature hehe</Link>
-                      <Link to="/feature2" className="dropdown-item">Add more feature hehe</Link>
+                      <Link to="/movies" className="dropdown-item">View All Movies</Link>
+                      <Link to="/create-movie" className="dropdown-item">Add New Movie</Link>
+                      
                     </>
                   )}
                 </div>
