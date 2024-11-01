@@ -1,7 +1,6 @@
-// App.js
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PopularMovies from './components/PopularMovies';
 import Navbar from './components/Navbar';
+import PopularMovies from './components/PopularMovies';
 import Genre from './components/Genre';
 import Watchlist from './components/Watchlist';
 import MovieDetail from './components/MovieDetail';
@@ -11,25 +10,32 @@ import TopIMDB from './components/TopIMDB';
 import Recents from './components/Recents';
 import Login from './components/Login';
 
-// Import User management components
+// User management
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
 import UserUpdateForm from './components/UserUpdateForm';
 
-// Import Admin management components
+// Admin management
 import AdminForm from './components/AdminForm';
 import AdminList from './components/AdminList';
 import AdminUpdateForm from './components/AdminUpdateForm';
+
+// Preferences management
 import PreferencesForm from './components/PreferencesForm';
 import PreferencesList from './components/PreferencesList';
 import PreferencesFormUpdate from './components/PreferencesFormUpdate';
+
+// Movie management
+import MoviesForm from './components/MoviesForm';
+import MoviesList from './components/MoviesList';
+import MoviesUpdateForm from './components/MoviesUpdateForm';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        {/* Existing Routes */}
+        {/* Main Routes */}
         <Route path="/" element={<PopularMovies />} />
         <Route path="/genre" element={<Genre />} />
         <Route path="/watchlist" element={<Watchlist />} />
@@ -40,19 +46,28 @@ function App() {
         <Route path="/recents" element={<Recents />} />
         <Route path="/login" element={<Login />} />
 
-        {/* User Management Routes */}
+        {/* User Management */}
         <Route path="/create-user" element={<UserForm />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/update-user/:id" element={<UserUpdateForm />} />
 
-        {/* Admin Management Routes */}
-        <Route path="/create-admin" element={<AdminForm />} />          {/* For creating an admin */}
-        <Route path="/admins" element={<AdminList />} />                {/* For viewing the list of admins */}
-        <Route path="/update-admin/:id" element={<AdminUpdateForm />} /> {/* For updating an admin by ID */}
+        {/* Admin Management */}
+        <Route path="/create-admin" element={<AdminForm />} />
+        <Route path="/admins" element={<AdminList />} />
+        <Route path="/update-admin/:id" element={<AdminUpdateForm />} />
 
-        <Route path="/create-pref" element={<PreferencesForm />} />          {/* For creating an admin */}
-        <Route path="/pref" element={<PreferencesList />} />                {/* For viewing the list of admins */}
-        <Route path="/update-pref/:id" element={<PreferencesFormUpdate />} />                {/* For viewing the list of admins */}
+        {/* Preferences Management */}
+        <Route path="/create-pref" element={<PreferencesForm />} />
+        <Route path="/pref" element={<PreferencesList />} />
+        <Route path="/update-pref/:id" element={<PreferencesFormUpdate />} />
+
+        {/* Movies Management */}
+        <Route path="/create-movie" element={<MoviesForm />} />
+        <Route path="/movies-list" element={<MoviesList />} />
+        <Route path="/update-movie/:id" element={<MoviesUpdateForm />} />
+
+        {/* Optional 404 Route */}
+        <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </Router>
   );
