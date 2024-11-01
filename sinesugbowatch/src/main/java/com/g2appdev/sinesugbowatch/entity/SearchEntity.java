@@ -1,6 +1,12 @@
 package com.g2appdev.sinesugbowatch.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class SearchEntity {
@@ -11,6 +17,10 @@ public class SearchEntity {
 
     private String searchquery;
     private String searchdate;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
     
 
     public SearchEntity() {
@@ -47,6 +57,14 @@ public class SearchEntity {
 
     public void setSearchdate(String searchdate) {
         this.searchdate = searchdate;
+    }
+    
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
 }

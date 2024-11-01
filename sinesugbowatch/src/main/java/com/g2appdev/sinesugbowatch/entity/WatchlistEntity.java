@@ -1,6 +1,12 @@
 package com.g2appdev.sinesugbowatch.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class WatchlistEntity {
@@ -10,6 +16,10 @@ public class WatchlistEntity {
     private int watchlist_id;
 
     private String listname;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
     public WatchlistEntity() {
         super();
@@ -36,5 +46,13 @@ public class WatchlistEntity {
 
     public void setListname(String listname) {
         this.listname = listname;
+    }
+    
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }
