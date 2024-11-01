@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../assets/PreferencesList.css'; 
 
 const PreferencesList = () => {
-  const [preferences, setPreferences] = useState([]); s
+  const [preferences, setPreferences] = useState([]); 
   const userId = localStorage.getItem('user_id');
   const username = localStorage.getItem('username'); 
   const navigate = useNavigate(); 
