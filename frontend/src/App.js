@@ -18,7 +18,7 @@ import UserUpdateForm from './components/UserUpdateForm';
 
 // Import Admin management components
 import AdminForm from './components/AdminForm';
-import Adminlist from './components/Adminlist';
+import AdminList from './components/AdminList';
 import AdminUpdateForm from './components/AdminUpdateForm';
 import PreferencesForm from './components/PreferencesForm';
 import PreferencesList from './components/PreferencesList';
@@ -47,7 +47,7 @@ function App() {
 
         {/* Admin Management Routes */}
         <Route path="/create-admin" element={<AdminForm />} />          {/* For creating an admin */}
-        <Route path="/admins" element={<Adminlist />} />                {/* For viewing the list of admins */}
+        <Route path="/admins" element={<AdminList />} />                {/* For viewing the list of admins */}
         <Route path="/update-admin/:id" element={<AdminUpdateForm />} /> {/* For updating an admin by ID */}
 
         <Route path="/create-pref" element={<PreferencesForm />} />          {/* For creating an admin */}

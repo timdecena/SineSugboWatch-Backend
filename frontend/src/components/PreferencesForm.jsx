@@ -21,7 +21,7 @@ const PreferencesForm = () => {
       setPreferredGenres('');
     } catch (error) {
       console.error('Error adding preference:', error);
-      alert('Error adding preference.');
+      alert('Error adding preference. That only 1 preference per user');
     }
   };
 

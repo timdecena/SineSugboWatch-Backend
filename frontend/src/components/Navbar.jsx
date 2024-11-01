@@ -1,10 +1,13 @@
-// Navbar.jsx
-import React from 'react';
+// src/components/Navbar.jsx
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../assets/Navbar.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  // State for toggling dropdown visibility
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   // Get username and userType from localStorage
   const username = localStorage.getItem('username');
@@ -15,6 +18,7 @@ const Navbar = () => {
     localStorage.removeItem('username');
     localStorage.removeItem('userType');
     alert('Logged out successfully!');
+    setDropdownVisible(false);  // Hide dropdown on logout
     navigate('/login'); // Redirect to login page
   };
 
@@ -37,15 +41,46 @@ const Navbar = () => {
           <input type="text" placeholder="Search..." />
           <button>🔍</button>
         </div>
-        {/* Display logged-in user information and logout button */}
-        {username && (
+        
+        {username ? (
+          // Display logged-in user info and logout button
           <div className="user-info" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
             <span style={{ marginRight: '10px', color: 'white' }}>
               Logged in as: {username} ({userType})
             </span>
+
+            {/* Conditionally render dropdown for userType 'user' or 'admin' */}
+            <div
+              className="dropdown"
+              onMouseEnter={() => setDropdownVisible(true)}
+              onMouseLeave={() => setDropdownVisible(false)}
+              style={{ position: 'relative' }}
+            >
+              <button className="dropdown-toggle">Options</button>
+              {dropdownVisible && (
+                <div className="dropdown-menu" style={{ position: 'absolute', backgroundColor: '#333', padding: '10px' }}>
+                  <Link to="/users" className="dropdown-item">View All Users</Link>
+                  <Link to="/admins" className="dropdown-item">View All Admins</Link>
+                  <Link to="/pref" className="dropdown-item">View Current Preferences</Link>
+                  {/* Additional options for admin */}
+                  {userType === 'admin' && (
+                    <>
+                      <Link to="/feature1" className="dropdown-item">Add more feature hehe</Link>
+                      <Link to="/feature2" className="dropdown-item">Add more feature hehe</Link>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+
             <button onClick={handleLogout} style={{ backgroundColor: '#555', color: 'white', border: 'none', padding: '0.5rem', cursor: 'pointer' }}>
               Logout
             </button>
+          </div>
+        ) : (
+          // Display "Please Login" message when logged out
+          <div className="please-login" style={{ marginLeft: 'auto', color: 'white' }}>
+            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Please Login</Link>
           </div>
         )}
       </div>

@@ -81,7 +81,7 @@
   position: absolute;
   right: 0; /* Align dropdown to the right */
   background-color: white;
-  color: black; /* Text color for dropdown links */
+  color: rgb(255, 255, 255); /* Text color for dropdown links */
   border: 1px solid #ccc; /* Border around the dropdown */
   border-radius: 5px; /* Rounded corners */
   z-index: 1000; /* Ensure dropdown is above other elements */
@@ -92,7 +92,7 @@
   display: block; /* Display links as block elements */
   padding: 0.5rem 1rem; /* Padding for the dropdown items */
   text-decoration: none; /* Remove underline */
-  color: black; /* Text color */
+  color: rgb(255, 255, 255); /* Text color */
 }
 
 
@@ -100,3 +100,23 @@
   background-color: #f0f0f0; /* Highlight on hover */
 }
 
+
+/* css for dropdown if logged in as users */
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #fffbfb;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.dropdown-item {
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #fffbfb;
+}

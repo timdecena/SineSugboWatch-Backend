@@ -1,11 +1,11 @@
-// src/components/AdminList.jsx
 import React, { useEffect, useState } from 'react';
+import '../assets/AdminManagement.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../assets/AdminManagement.css';
-//admin
+
 const AdminList = () => {
   const [admins, setAdmins] = useState([]);
+  const userType = localStorage.getItem('userType'); // Get user type ('user' or 'admin') from localStorage
 
   useEffect(() => {
     const fetchAdmins = async () => {
@@ -19,11 +19,11 @@ const AdminList = () => {
     fetchAdmins();
   }, []);
 
-  const handleDeleteAdmin = async (admin_id) => {
+  const handleDeleteAdmin = async (adminId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/admin/deleteAdmin/${admin_id}`);
-      setAdmins(admins.filter((admin) => admin.admin_id !== admin_id));
-      alert(`Admin with ID ${admin_id} deleted successfully`);
+      await axios.delete(`http://localhost:8080/api/admin/deleteAdminDetails/${adminId}`);
+      setAdmins(admins.filter((admin) => admin.adminId !== adminId));
+      alert(`Admin with ID ${adminId} deleted successfully`);
     } catch (error) {
       console.error('Error deleting admin:', error);
       alert('Failed to delete admin. Please try again.');
@@ -35,13 +35,20 @@ const AdminList = () => {
       <h2>Admin List</h2>
       <div className="admin-list">
         {admins.map((admin) => (
-          <div key={admin.admin_id} className="admin-list-item">
-            <p>Admin ID: {admin.admin_id}</p>
+          <div key={admin.adminId} className="admin-list-item">
+            <p>Admin ID: {admin.adminId}</p>
             <p>Username: {admin.username}</p>
-            <Link to={`/update-admin/${admin.admin_id}`}>
-              <button className="update-button">Update</button>
-            </Link>
-            <button onClick={() => handleDeleteAdmin(admin.admin_id)}>Delete</button>
+            <p>Email: {admin.email}</p>
+            
+            {/* Conditionally render buttons only if the logged-in user is an admin */}
+            {userType === 'admin' && (
+              <>
+                <Link to={`/update-admin/${admin.adminId}`}>
+                  <button className="update-button">Update</button>
+                </Link>
+                <button onClick={() => handleDeleteAdmin(admin.adminId)}>Delete</button>
+              </>
+            )}
           </div>
         ))}
       </div>

@@ -1,0 +1,68 @@
+/* PreferencesList.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    max-width: 600px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .container h2 {
+    font-size: 1.8rem;
+    color: #e67e22;
+    margin-bottom: 1.2rem;
+  }
+  
+  .preference-card {
+    background-color: #34495e;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .preference-card p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: #bdc3c7;
+  }
+  
+  .preference-card p span {
+    font-weight: bold;
+    color: #ecf0f1;
+  }
+  
+  button {
+    padding: 0.6rem 1.2rem;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  button:hover {
+    background-color: #c0392b;
+  }
+  
+  button:active {
+    background-color: #a93226;
+  }
+  
+  .no-preference-message {
+    color: #bdc3c7;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
