@@ -65,8 +65,8 @@ const Navbar = () => {
                   {/* Additional options for admin */}
                   {userType === 'admin' && (
                     <>
-                      <Link to="/manage-users" className="dropdown-item">Manage Users</Link>
-                      <Link to="/manage-admins" className="dropdown-item">Manage Admins</Link>
+                      <Link to="/feature1" className="dropdown-item">Add more feature hehe</Link>
+                      <Link to="/feature2" className="dropdown-item">Add more feature hehe</Link>
                     </>
                   )}
                 </div>

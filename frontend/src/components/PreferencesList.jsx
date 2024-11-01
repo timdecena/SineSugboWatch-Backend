@@ -54,6 +54,10 @@ const PreferencesList = () => {
     }
   };
 
+  const handleCreatePreference = () => {
+    navigate('/create-pref');
+  };
+
   return (
     <div className="container">
       <h2>{username ? `${username}'s Preference` : 'Your Preference'}</h2>
@@ -68,6 +72,7 @@ const PreferencesList = () => {
       ) : (
         <p className="no-preference-message">No preference found.</p>
       )}
+      <button onClick={handleCreatePreference}>Create Preference</button>
     </div>
   );
 };

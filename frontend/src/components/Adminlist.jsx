@@ -1,4 +1,3 @@
-// src/components/AdminList.jsx
 import React, { useEffect, useState } from 'react';
 import '../assets/AdminManagement.css';
 import axios from 'axios';
@@ -6,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const AdminList = () => {
   const [admins, setAdmins] = useState([]);
+  const userType = localStorage.getItem('userType'); // Get user type ('user' or 'admin') from localStorage
 
   useEffect(() => {
     const fetchAdmins = async () => {
@@ -39,10 +39,16 @@ const AdminList = () => {
             <p>Admin ID: {admin.adminId}</p>
             <p>Username: {admin.username}</p>
             <p>Email: {admin.email}</p>
-            <Link to={`/update-admin/${admin.adminId}`}>
-              <button className="update-button">Update</button>
-            </Link>
-            <button onClick={() => handleDeleteAdmin(admin.adminId)}>Delete</button>
+            
+            {/* Conditionally render buttons only if the logged-in user is an admin */}
+            {userType === 'admin' && (
+              <>
+                <Link to={`/update-admin/${admin.adminId}`}>
+                  <button className="update-button">Update</button>
+                </Link>
+                <button onClick={() => handleDeleteAdmin(admin.adminId)}>Delete</button>
+              </>
+            )}
           </div>
         ))}
       </div>
