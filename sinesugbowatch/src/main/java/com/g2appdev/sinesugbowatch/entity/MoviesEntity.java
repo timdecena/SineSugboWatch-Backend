@@ -3,6 +3,7 @@ package com.g2appdev.sinesugbowatch.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -10,8 +11,11 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
+@JsonPropertyOrder({"movie_id", "title", "genre", "description", "rating", "admin"})
 @Entity
 public class MoviesEntity {
 
@@ -22,6 +26,10 @@ public class MoviesEntity {
     @OneToMany(mappedBy = "movies", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Transaction> transaction;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adminId")
+    private Admin admin;
 
     private String title;
     private String genre;
@@ -81,4 +89,13 @@ public class MoviesEntity {
     public void setRating(double rating) {
         this.rating = rating;
     }
+    
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
 }

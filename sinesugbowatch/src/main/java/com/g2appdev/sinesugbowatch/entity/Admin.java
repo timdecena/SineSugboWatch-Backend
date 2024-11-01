@@ -1,9 +1,16 @@
 package com.g2appdev.sinesugbowatch.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Admin {
@@ -14,6 +21,10 @@ public class Admin {
     private String username;
     private String email;
     private String password;
+    
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<MoviesEntity> movies;
 
     // Constructors
     public Admin() {

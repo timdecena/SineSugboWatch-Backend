@@ -8,7 +8,9 @@ import javax.naming.NameNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.g2appdev.sinesugbowatch.entity.Admin;
 import com.g2appdev.sinesugbowatch.entity.MoviesEntity;
+import com.g2appdev.sinesugbowatch.repository.AdminRepository;
 import com.g2appdev.sinesugbowatch.repository.MoviesRepository;
 
 @Service
@@ -16,11 +18,23 @@ public class MoviesService {
 
     @Autowired
     MoviesRepository moviesRepo;
+    
+    @Autowired
+    AdminRepository adminRepo;
 
     // Create of CRUD
     public MoviesEntity postMovieRecord(MoviesEntity movie) {
+        // Retrieve the Admin entity based on its ID
+        Admin admin = adminRepo.findById(movie.getAdmin().getAdminId())
+                .orElseThrow(() -> new NoSuchElementException("Admin with ID " + movie.getAdmin().getAdminId() + " does not exist."));
+        
+        // Set the retrieved Admin entity in the MoviesEntity object
+        movie.setAdmin(admin);
+        
+        // Save and return the MoviesEntity record
         return moviesRepo.save(movie);
     }
+
 
     // Read of CRUD
     public List<MoviesEntity> getAllMovies() {
