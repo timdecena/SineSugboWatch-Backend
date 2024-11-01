@@ -1,84 +1,60 @@
-/* UserManagement.css */
+/* src/assets/UserManagement.css */
 
 .user-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user-container h2 {
-    color: #333;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  
-  .user-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .user-list-item {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .user-list-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  .user-list-item p {
-    margin: 0;
-    font-size: 1em;
-    color: #555;
-  }
-  
-  .user-list-item span {
-    font-weight: 500;
-  }
-  
-  .update-button,
-  .user-list-item button {
-    padding: 8px 12px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.9em;
-    cursor: pointer;
-    color: #fff;
-    transition: background-color 0.3s ease;
-  }
-  
-  .update-button {
-    background-color: #007bff;
-    margin-right: 10px;
-  }
-  
-  .update-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .user-list-item button {
-    background-color: #dc3545;
-  }
-  
-  .user-list-item button:hover {
-    background-color: #c82333;
-  }
-  
-  .user-list-item a {
-    text-decoration: none;
-  }
-  
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px; /* Increased padding for a more spacious layout */
+  border-radius: 12px; /* Softer corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
+  background-color: #fdfdfd; /* Light background for contrast */
+}
+
+.user-container h2 {
+  text-align: center;
+  color: #2c3e50; /* Darker color for better readability */
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif; /* Updated font family */
+  font-size: 24px; /* Larger font size for the header */
+}
+
+.user-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-container input {
+  margin-bottom: 15px;
+  padding: 12px; /* Increased padding for input fields */
+  border: 1px solid #ddd; /* Lighter border for a softer look */
+  border-radius: 6px; /* Softer corners for input fields */
+  font-size: 16px;
+  font-family: 'Arial', sans-serif; /* Consistent font family */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.user-container input:focus {
+  border-color: #3498db; /* Lively blue for focus state */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Subtle glow effect */
+  outline: none;
+}
+
+.user-container button {
+  padding: 12px; /* Increased padding for button */
+  background-color: #3498db; /* Vibrant button color */
+  color: white;
+  border: none;
+  border-radius: 6px; /* Softer corners */
+  font-size: 18px; /* Larger font size for button */
+  font-family: 'Arial', sans-serif; /* Consistent font family */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Added transition for scale */
+}
+
+.user-container button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover for effect */
+}
+
+.user-container button:active {
+  transform: scale(0.95); /* Slightly shrink when active for effect */
+}

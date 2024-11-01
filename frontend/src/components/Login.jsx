@@ -1,6 +1,6 @@
 // Login.jsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // Import Link
 import '../assets/Login.css';
 
 const Login = () => {
@@ -32,12 +32,10 @@ const Login = () => {
       })
       .then(data => {
         alert('Login successful!');
-        
-       
+
         localStorage.setItem('username', username); 
         localStorage.setItem('userType', userType); 
 
-        
         if (data.user_id) {
           localStorage.setItem('user_id', data.user_id); 
         }
@@ -87,6 +85,13 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      {/* Create Account Link */}
+      <p>
+        Don't have an account? 
+        <Link to="/create-user" style={{ marginLeft: '5px', textDecoration: 'underline', color: '#007BFF' }}>
+          Create Account
+        </Link>
+      </p>
     </div>
   );
 };
