@@ -40,7 +40,7 @@ const AdminList = () => {
             <p>Username: {admin.username}</p>
             <p>Email: {admin.email}</p>
             
-            {/* Conditionally render buttons only if the logged-in user is an admin */}
+            
             {userType === 'admin' && (
               <>
                 <Link to={`/update-admin/${admin.adminId}`}>

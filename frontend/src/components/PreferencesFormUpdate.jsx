@@ -30,7 +30,7 @@ const PreferencesFormUpdate = () => {
     try {
       await axios.put(`http://localhost:8080/api/preferences/updatePreferencesDetails/${id}`, preference);
       alert('Preferences updated successfully');
-      navigate('/pref'); // Redirect to the preferences list after successful update
+      navigate('/pref'); 
     } catch (error) {
       console.error('Error updating preferences:', error);
       alert('Failed to update preferences. Please check the console for details.');

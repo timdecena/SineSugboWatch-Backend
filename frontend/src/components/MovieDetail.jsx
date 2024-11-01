@@ -6,7 +6,7 @@ import '../assets/MovieDetail.css';
 function MovieDetail() {
   const { id } = useParams();
 
-  // Placeholder for actual movie data; replace with an API call or data fetching logic
+ 
   const movieData = {
     title: 'Movie Title',
     year: '2024',

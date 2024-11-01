@@ -1,74 +1,56 @@
 /* MoviesUpdateForm.css */
 
 .movies-update-form-container {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 30px; /* Increased padding for a more spacious layout */
-  background-color: #ffffff; /* Changed to white for a cleaner look */
-  border-radius: 10px; /* Slightly larger border-radius for softer edges */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
-}
-
-.movies-update-form-title {
-  font-size: 2em; /* Slightly larger font size */
-  font-weight: bold;
-  color: #444; /* Darker color for better contrast */
-  margin-bottom: 20px;
-  text-align: center;
-  text-transform: uppercase; /* Added uppercase for emphasis */
-}
-
-.movie-update-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Increased gap for better spacing between elements */
-}
-
-.movie-update-form label {
-  font-weight: bold;
-  color: #333;
-}
-
-.movie-update-form input,
-.movie-update-form select,
-.movie-update-form textarea {
-  padding: 14px; /* Slightly increased padding for a more comfortable feel */
-  border: 1px solid #ccc; /* Subtle border color */
-  border-radius: 6px; /* Softer border radius */
-  font-size: 16px;
-  transition: border-color 0.3s ease; /* Transition effect on focus */
-}
-
-.movie-update-form input:focus,
-.movie-update-form select:focus,
-.movie-update-form textarea:focus {
-  border-color: #007bff; /* Highlight border on focus */
-  outline: none; /* Remove default outline */
-}
-
-.movie-update-form button {
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #007bff; /* Changed button color to a bright blue */
-  color: white;
-  border: none;
-  border-radius: 6px; /* Softer border radius */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s; /* Added transform for hover effect */
-}
-
-.movie-update-form button:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
-  transform: translateY(-2px); /* Slight lift on hover */
-}
-
-.movie-update-form button:active {
-  transform: translateY(0); /* Reset on click */
-}
-
-.movie-update-form textarea {
-  resize: vertical; /* Allow vertical resizing of the textarea */
-  min-height: 100px; /* Minimum height for textarea */
-}
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .movies-update-form-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .movie-update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .movie-update-form label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .movie-update-form input,
+  .movie-update-form select,
+  .movie-update-form textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .movie-update-form button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .movie-update-form button:hover {
+    background-color: #555;
+  }
+  

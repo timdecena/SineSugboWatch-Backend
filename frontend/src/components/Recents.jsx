@@ -5,7 +5,7 @@ import '../assets/Recents.css';
 const Recents = () => {
   const [recentMovies, setRecentMovies] = useState([]);
 
-  // Placeholder for fetching recent movies/shows; replace this with an actual API call
+  
   useEffect(() => {
     const placeholderData = [
       { id: 1, title: "Movie A", image: "https://via.placeholder.com/150" },

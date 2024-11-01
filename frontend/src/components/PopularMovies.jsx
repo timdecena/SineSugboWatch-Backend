@@ -16,7 +16,7 @@ const PopularMovies = () => {
       { id: 1, title: 'Inception', imageUrl: '/path/to/inception.jpg' },
       { id: 2, title: 'Interstellar', imageUrl: '/path/to/interstellar.jpg' },
       { id: 3, title: 'The Dark Knight', imageUrl: '/path/to/darkknight.jpg' },
-      // Add more sample data as needed
+    
     ];
     setMovies(sampleMovies);
   };

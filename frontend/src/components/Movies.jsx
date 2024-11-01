@@ -5,8 +5,7 @@ import '../assets/Movies.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const userType = localStorage.getItem('userType'); // Get the user type from local storage
-
+  const userType = localStorage.getItem('userType');
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -15,7 +14,7 @@ const Movies = () => {
           throw new Error('Failed to fetch movies');
         }
         const data = await response.json();
-        console.log('Fetched movies:', data); // Log for debugging
+        console.log('Fetched movies:', data);
         setMovies(data);
       } catch (error) {
         console.error('Error fetching movies:', error);

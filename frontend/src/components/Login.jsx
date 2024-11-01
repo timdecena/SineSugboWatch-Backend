@@ -33,16 +33,16 @@ const Login = () => {
       .then(data => {
         alert('Login successful!');
         
-        // Store user info in localStorage
-        localStorage.setItem('username', username); // Store username
-        localStorage.setItem('userType', userType); // Store user type
+       
+        localStorage.setItem('username', username); 
+        localStorage.setItem('userType', userType); 
 
-        // Store user_id if returned in the response data
+        
         if (data.user_id) {
-          localStorage.setItem('user_id', data.user_id); // Store user_id
+          localStorage.setItem('user_id', data.user_id); 
         }
 
-        navigate(userType === 'admin' ? '/admins' : '/'); // Redirect based on user type
+        navigate(userType === 'admin' ? '/admins' : '/'); 
       })
       .catch(error => {
         alert(error.message);
