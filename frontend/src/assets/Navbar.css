@@ -100,3 +100,23 @@
   background-color: #f0f0f0; /* Highlight on hover */
 }
 
+
+/* css for dropdown if logged in as users */
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #fffbfb;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.dropdown-item {
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #fffbfb;
+}

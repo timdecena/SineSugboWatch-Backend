@@ -21,7 +21,7 @@ const AdminList = () => {
 
   const handleDeleteAdmin = async (admin_id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/admin/deleteAdmin/${admin_id}`);
+      await axios.delete(`http://localhost:8080/api/admin/deleteAdminDetails/${admin_id}`);
       setAdmins(admins.filter((admin) => admin.admin_id !== admin_id));
       alert(`Admin with ID ${admin_id} deleted successfully`);
     } catch (error) {

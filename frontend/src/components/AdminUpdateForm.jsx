@@ -37,7 +37,7 @@ const AdminUpdateForm = () => {
     setSuccess(false);
 
     try {
-      await axios.put(`http://localhost:8080/api/admin/updateAdmin?id=${id}`, {
+      await axios.put(`http://localhost:8080/api/admin/putAdminDetails/${id}`, {
         username,
         email,
         password,
