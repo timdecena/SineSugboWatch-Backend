@@ -1,9 +1,9 @@
 // src/components/AdminList.jsx
 import React, { useEffect, useState } from 'react';
+import '../assets/AdminManagement.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../assets/AdminManagement.css';
-//admin
+
 const AdminList = () => {
   const [admins, setAdmins] = useState([]);
 
@@ -19,11 +19,11 @@ const AdminList = () => {
     fetchAdmins();
   }, []);
 
-  const handleDeleteAdmin = async (admin_id) => {
+  const handleDeleteAdmin = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/admin/deleteAdminDetails/${admin_id}`);
-      setAdmins(admins.filter((admin) => admin.admin_id !== admin_id));
-      alert(`Admin with ID ${admin_id} deleted successfully`);
+      await axios.delete(`http://localhost:8080/api/admin/deleteAdminDetails/${id}`);
+      setAdmins(admins.filter((admin) => admin.id !== id));
+      alert(`Admin with ID ${id} deleted successfully`);
     } catch (error) {
       console.error('Error deleting admin:', error);
       alert('Failed to delete admin. Please try again.');
@@ -35,13 +35,14 @@ const AdminList = () => {
       <h2>Admin List</h2>
       <div className="admin-list">
         {admins.map((admin) => (
-          <div key={admin.admin_id} className="admin-list-item">
-            <p>Admin ID: {admin.admin_id}</p>
+          <div key={admin.id} className="admin-list-item">
+            <p>Admin ID: {admin.id}</p>
             <p>Username: {admin.username}</p>
-            <Link to={`/update-admin/${admin.admin_id}`}>
+            <p>Email: {admin.email}</p>
+            <Link to={`/update-admin/${admin.id}`}>
               <button className="update-button">Update</button>
             </Link>
-            <button onClick={() => handleDeleteAdmin(admin.admin_id)}>Delete</button>
+            <button onClick={() => handleDeleteAdmin(admin.id)}>Delete</button>
           </div>
         ))}
       </div>

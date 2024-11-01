@@ -1,8 +1,8 @@
 // src/components/AdminUpdateForm.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import '../assets/AdminUpdateForm.css';
+import axios from 'axios';
 
 const AdminUpdateForm = () => {
   const { id } = useParams();
@@ -18,7 +18,7 @@ const AdminUpdateForm = () => {
       setLoading(true);
       setError('');
       try {
-        const response = await axios.get(`http://localhost:8080/api/admin/getAdminById?id=${id}`);
+        const response = await axios.get(`http://localhost:8080/api/admin/getAllAdmins?id=${id}`);
         setUsername(response.data.username || '');
         setEmail(response.data.email || '');
       } catch (err) {
