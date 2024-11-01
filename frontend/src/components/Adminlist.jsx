@@ -19,11 +19,11 @@ const AdminList = () => {
     fetchAdmins();
   }, []);
 
-  const handleDeleteAdmin = async (id) => {
+  const handleDeleteAdmin = async (adminId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/admin/deleteAdminDetails/${id}`);
-      setAdmins(admins.filter((admin) => admin.id !== id));
-      alert(`Admin with ID ${id} deleted successfully`);
+      await axios.delete(`http://localhost:8080/api/admin/deleteAdminDetails/${adminId}`);
+      setAdmins(admins.filter((admin) => admin.adminId !== adminId));
+      alert(`Admin with ID ${adminId} deleted successfully`);
     } catch (error) {
       console.error('Error deleting admin:', error);
       alert('Failed to delete admin. Please try again.');
@@ -35,14 +35,14 @@ const AdminList = () => {
       <h2>Admin List</h2>
       <div className="admin-list">
         {admins.map((admin) => (
-          <div key={admin.id} className="admin-list-item">
-            <p>Admin ID: {admin.id}</p>
+          <div key={admin.adminId} className="admin-list-item">
+            <p>Admin ID: {admin.adminId}</p>
             <p>Username: {admin.username}</p>
             <p>Email: {admin.email}</p>
-            <Link to={`/update-admin/${admin.id}`}>
+            <Link to={`/update-admin/${admin.adminId}`}>
               <button className="update-button">Update</button>
             </Link>
-            <button onClick={() => handleDeleteAdmin(admin.id)}>Delete</button>
+            <button onClick={() => handleDeleteAdmin(admin.adminId)}>Delete</button>
           </div>
         ))}
       </div>
