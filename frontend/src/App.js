@@ -17,7 +17,7 @@ import UserUpdateForm from './components/UserUpdateForm';
 
 // Admin management
 import AdminForm from './components/AdminForm';
-import AdminList from './components/AdminList';
+import AdminList from './components/Adminlist';
 import AdminUpdateForm from './components/AdminUpdateForm';
 
 // Preferences management
@@ -32,6 +32,9 @@ import MoviesUpdateForm from './components/MoviesUpdateForm';
 import WatchlistForm from './components/WatchlistForm';
 import WatchlistList from './components/WatchlistList';
 import WatchlistFormUpdate from './components/WatchlistFormUpdate';
+import TransactionForm from './components/TransactionForm';
+import TransactionList from './components/TransactionList';
+import TransactionFormUpdate from './components/TransactionFormUpdate';
 
 
 
@@ -77,6 +80,13 @@ function App() {
         <Route path="/create-watchlist" element={<WatchlistForm />} />
         <Route path="/watchlists" element={<WatchlistList />} />
         <Route path="/update-watchlist/:id" element={<WatchlistFormUpdate/>} />
+
+        {/*Transaction Management */}
+        <Route path="/create-transaction" element={<TransactionForm />} />
+        <Route path="/transactions" element={<TransactionList />} />
+        <Route path="/update-transaction/:id" element={<TransactionFormUpdate/>} />
+
+
 
         
       </Routes>

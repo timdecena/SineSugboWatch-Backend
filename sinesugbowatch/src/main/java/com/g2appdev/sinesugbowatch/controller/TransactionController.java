@@ -2,7 +2,12 @@ package com.g2appdev.sinesugbowatch.controller;
 
 import java.util.List;
 
+import javax.naming.NameNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.g2appdev.sinesugbowatch.entity.Transaction;
 import com.g2appdev.sinesugbowatch.service.TransactionService;
 
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(method = RequestMethod.GET, path = "/api/transaction")
 public class TransactionController {
@@ -52,4 +59,17 @@ public class TransactionController {
     public String deleteTransaction(@PathVariable int id) {
         return transactionService.deleteTransaction(id);
     }
-}
+
+    @PutMapping("/updateTransactionDetails/{id}")
+    public ResponseEntity<?> updateTransaction(@PathVariable int id, @RequestBody Transaction updatedTransaction) {
+        try {
+        Transaction updated = transactionService.updateTransaction(id, updatedTransaction);
+        return ResponseEntity.ok(updated);
+        } catch (NameNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Transaction with ID " + id + " not found.");
+     } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update transaction.");
+        }
+    }
+
+}   
