@@ -13,6 +13,8 @@ import com.g2appdev.sinesugbowatch.entity.WatchlistEntity;
 import com.g2appdev.sinesugbowatch.repository.UserRepository;
 import com.g2appdev.sinesugbowatch.repository.WatchlistRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class WatchlistService {
 
@@ -50,6 +52,7 @@ public class WatchlistService {
     }
 
     // Delete
+    @Transactional
     public String deleteWatchlist(int id) {
         if (watchlistRepo.existsById(id)) {
             watchlistRepo.deleteById(id);

@@ -23,11 +23,11 @@ public class MoviesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int movie_id;
     
-    @OneToMany(mappedBy = "movies", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "movies", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Transaction> transaction;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "adminId")
     private Admin admin;
 

@@ -15,6 +15,8 @@ import com.g2appdev.sinesugbowatch.repository.MoviesRepository;
 import com.g2appdev.sinesugbowatch.repository.TransactionRepository;
 import com.g2appdev.sinesugbowatch.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class TransactionService {
 
@@ -70,6 +72,7 @@ public class TransactionService {
     }
 
     // Delete of CRUD
+    @Transactional
     public String deleteTransaction(int id) {
         String msg = "";
         if (transactionRepo.existsById(id)) {

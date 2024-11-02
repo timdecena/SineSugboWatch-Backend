@@ -18,7 +18,7 @@ public class SearchEntity {
     private String searchquery;
     private String searchdate;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private UserEntity user;
     

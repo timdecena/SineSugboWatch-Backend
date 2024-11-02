@@ -13,6 +13,8 @@ import com.g2appdev.sinesugbowatch.entity.UserEntity;
 import com.g2appdev.sinesugbowatch.repository.SearchRepository;
 import com.g2appdev.sinesugbowatch.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class SearchService {
 
@@ -63,6 +65,7 @@ public class SearchService {
     }
 
     // Delete of CRUD
+    @Transactional
     public String deleteSearch(int id) {
         String msg = "";
         if (searchRepo.existsById(id)) {
