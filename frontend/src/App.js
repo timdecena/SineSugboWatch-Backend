@@ -17,7 +17,7 @@ import UserUpdateForm from './components/UserUpdateForm';
 
 // Admin management
 import AdminForm from './components/AdminForm';
-import AdminList from './components/Adminlist';
+import AdminList from './components/AdminList';
 import AdminUpdateForm from './components/AdminUpdateForm';
 
 // Preferences management
@@ -29,14 +29,20 @@ import PreferencesFormUpdate from './components/PreferencesFormUpdate';
 import MoviesForm from './components/MoviesForm';
 import MoviesList from './components/MoviesList';
 import MoviesUpdateForm from './components/MoviesUpdateForm';
+
+// Watchlist management
 import WatchlistForm from './components/WatchlistForm';
 import WatchlistList from './components/WatchlistList';
 import WatchlistFormUpdate from './components/WatchlistFormUpdate';
+
+// Transaction management
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import TransactionFormUpdate from './components/TransactionFormUpdate';
 
-
+// Search management
+import SearchForm from './components/SearchForm';
+import SearchList from './components/SearchList';
 
 
 function App() {
@@ -73,22 +79,22 @@ function App() {
         {/* Movie Management */}
         <Route path="/create-movie" element={<MoviesForm />} />
         <Route path="/movielist" element={<MoviesList />} />
-        <Route path="/update-movie/:movie_id" element={<MoviesUpdateForm/>} />
-
+        <Route path="/update-movie/:movie_id" element={<MoviesUpdateForm />} />
 
         {/* Watchlist Management */}
         <Route path="/create-watchlist" element={<WatchlistForm />} />
         <Route path="/watchlists" element={<WatchlistList />} />
-        <Route path="/update-watchlist/:id" element={<WatchlistFormUpdate/>} />
+        <Route path="/update-watchlist/:id" element={<WatchlistFormUpdate />} />
 
-        {/*Transaction Management */}
+        {/* Transaction Management */}
         <Route path="/create-transaction" element={<TransactionForm />} />
         <Route path="/transactions" element={<TransactionList />} />
-        <Route path="/update-transaction/:id" element={<TransactionFormUpdate/>} />
+        <Route path="/update-transaction/:id" element={<TransactionFormUpdate />} />
 
+        {/* Search Management */}
+        <Route path="/create-search" element={<SearchForm />} />
+        <Route path="/search" element={<SearchList />} />
 
-
-        
       </Routes>
     </Router>
   );

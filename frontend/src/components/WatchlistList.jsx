@@ -62,7 +62,7 @@ const WatchlistList = () => {
       )}
       <button onClick={handleCreateWatchlist}>Create Watchlist</button>
     </div>
-  );
+  );  
 };
 
 export default WatchlistList;
