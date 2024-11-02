@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../assets/MoviesUpdateForm.css';
 
 const MoviesUpdateForm = () => {
@@ -11,16 +11,15 @@ const MoviesUpdateForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate for redirection
 
   useEffect(() => {
     const fetchMovieData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8080/api/movies/getAllMovies`);
-        const data = await response.json();
-
-        console.log('Fetched movies:', data); // Debugging log
-        const movie = data.find(movie => movie.movie_id === parseInt(movie_id));
+        const response = await fetch(`http://localhost:8080/api/movies/getMovieById/${movie_id}`);
+        const movie = await response.json();
+    
         if (movie) {
           setTitle(movie.title);
           setGenre(movie.genre);
@@ -38,6 +37,30 @@ const MoviesUpdateForm = () => {
     fetchMovieData();
   }, [movie_id]);
 
+
+
+
+  const fetchMovieData = async () => {
+  setLoading(true);
+  try {
+    const response = await fetch(`http://localhost:8080/api/movies/getMovieById/${movie_id}`);
+    const movie = await response.json();
+
+    if (movie) {
+      setTitle(movie.title);
+      setGenre(movie.genre);
+      setDescription(movie.description);
+      setRating(movie.rating);
+    } else {
+      setError('Movie not found.');
+    }
+  } catch (err) {
+    setError('Failed to fetch movie data.');
+  } finally {
+    setLoading(false);
+  }
+};
+
   const handleUpdateMovie = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -48,14 +71,15 @@ const MoviesUpdateForm = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, genre, description, rating }),
       });
-  
-      // Check if the response is okay
+
       if (!response.ok) {
-        const errorData = await response.json(); // Get error response if available
-        throw new Error(errorData.message || 'Failed to update movie.'); // Use the error message from the backend if available
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to update movie.');
       }
-  
+
       setSuccess(true);
+      alert('Movie updated successfully!'); // Notify success
+      navigate('/movies'); // Redirect after successful update
     } catch (err) {
       setError(err.message || 'Failed to update movie.');
     } finally {
