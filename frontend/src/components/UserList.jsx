@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import '../assets/UserManagement.css';
 import { Link } from 'react-router-dom';
+import '../assets/UserManagement.css';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading indicator state
+  const [error, setError] = useState(null); // Error state
   const userType = localStorage.getItem('userType'); // 'user' or 'admin'
   const loggedInUserId = localStorage.getItem('user_id'); // Currently logged-in user's ID
 
@@ -11,10 +13,16 @@ const UserList = () => {
     const fetchUsers = async () => {
       try {
         const response = await fetch('http://localhost:8080/api/user/getAllUsers');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data = await response.json();
         setUsers(data);
       } catch (error) {
         console.error('Error fetching users:', error);
+        setError('Failed to load user list. Please try again later.');
+      } finally {
+        setLoading(false);
       }
     };
     fetchUsers();
@@ -42,15 +50,18 @@ const UserList = () => {
     }
   };
 
+  if (loading) return <p>Loading users...</p>; // Loading indicator
+  if (error) return <p className="error-message">{error}</p>; // Error message display
+
   return (
     <div className="user-container">
       <h2>User List</h2>
       <div className="user-list">
         {users.map((user) => (
-          <div key={user.user_id} className="user-list-item">
-            <p>User ID: {user.user_id}</p>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
+          <div key={user.user_id} className="user-card">
+            <p><span>User ID:</span> {user.user_id}</p>
+            <p><span>Username:</span> {user.username}</p>
+            <p><span>Email:</span> {user.email}</p>
 
             {/* Conditional rendering for update button and delete button */}
             {userType === 'admin' && (
@@ -58,7 +69,7 @@ const UserList = () => {
                 <Link to={`/update-user/${user.user_id}`}>
                   <button className="update-button">Update</button>
                 </Link>
-                <button onClick={() => handleDeleteUser(user.user_id)}>Delete</button>
+                <button className="delete-button" onClick={() => handleDeleteUser(user.user_id)}>Delete</button>
               </>
             )}
             {userType === 'user' && loggedInUserId === String(user.user_id) && (

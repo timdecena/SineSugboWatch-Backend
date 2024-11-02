@@ -1,13 +1,13 @@
-// src/components/MovieUpdateForm.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../assets/MoviesUpdateForm.css';
 
-const MovieUpdateForm = () => {
+const MoviesUpdateForm = () => {
   const { movie_id } = useParams();
   const [title, setTitle] = useState('');
+  const [genre, setGenre] = useState('');
   const [description, setDescription] = useState('');
-  const [releaseDate, setReleaseDate] = useState('');
+  const [rating, setRating] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -16,11 +16,19 @@ const MovieUpdateForm = () => {
     const fetchMovieData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8080/api/movies/getAllMovies/${movie_id}`);
+        const response = await fetch(`http://localhost:8080/api/movies/getAllMovies`);
         const data = await response.json();
-        setTitle(data.title);
-        setDescription(data.description);
-        setReleaseDate(data.releaseDate);
+
+        console.log('Fetched movies:', data); // Debugging log
+        const movie = data.find(movie => movie.movie_id === parseInt(movie_id));
+        if (movie) {
+          setTitle(movie.title);
+          setGenre(movie.genre);
+          setDescription(movie.description);
+          setRating(movie.rating);
+        } else {
+          setError('Movie not found.');
+        }
       } catch (err) {
         setError('Failed to fetch movie data.');
       } finally {
@@ -33,15 +41,23 @@ const MovieUpdateForm = () => {
   const handleUpdateMovie = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError(''); // Reset error message
     try {
-      await fetch(`http://localhost:8080/api/movies/putMovieDetails/${movie_id}`, {
+      const response = await fetch(`http://localhost:8080/api/movies/putMovieDetails/${movie_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, description, releaseDate }),
+        body: JSON.stringify({ title, genre, description, rating }),
       });
+  
+      // Check if the response is okay
+      if (!response.ok) {
+        const errorData = await response.json(); // Get error response if available
+        throw new Error(errorData.message || 'Failed to update movie.'); // Use the error message from the backend if available
+      }
+  
       setSuccess(true);
     } catch (err) {
-      setError('Failed to update movie.');
+      setError(err.message || 'Failed to update movie.');
     } finally {
       setLoading(false);
     }
@@ -61,6 +77,13 @@ const MovieUpdateForm = () => {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
+        <input
+          type="text"
+          placeholder="New Genre"
+          value={genre}
+          onChange={(e) => setGenre(e.target.value)}
+          required
+        />
         <textarea
           placeholder="New Description"
           value={description}
@@ -68,9 +91,13 @@ const MovieUpdateForm = () => {
           required
         />
         <input
-          type="date"
-          value={releaseDate}
-          onChange={(e) => setReleaseDate(e.target.value)}
+          type="number"
+          placeholder="New Rating (0-10)"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+          min="0"
+          max="10"
+          step="0.1"
           required
         />
         <button type="submit" disabled={loading}>
@@ -81,4 +108,4 @@ const MovieUpdateForm = () => {
   );
 };
 
-export default MovieUpdateForm;
+export default MoviesUpdateForm;

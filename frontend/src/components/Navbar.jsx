@@ -65,6 +65,7 @@ const Navbar = () => {
                       <Link to="/movies" className="dropdown-item">View All Movies</Link>
                       <Link to="/create-movie" className="dropdown-item">Add New Movie</Link>
                       <Link to="/create-admin" className="dropdown-item">Create Admin</Link> {/* New link for admin */}
+                      <Link to="/pref" className="dropdown-item">View All Preferences</Link> {/* New link for viewing preferences */}
                     </>
                   )}
                 </div>

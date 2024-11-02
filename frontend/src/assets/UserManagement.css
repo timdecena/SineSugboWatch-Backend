@@ -1,60 +1,78 @@
-/* src/assets/UserManagement.css */
-
 .user-container {
-  max-width: 400px;
+  max-width: 600px;
   margin: 50px auto;
-  padding: 30px; /* Increased padding for a more spacious layout */
-  border-radius: 12px; /* Softer corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
-  background-color: #fdfdfd; /* Light background for contrast */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff; /* Updated to a clean white background */
 }
 
 .user-container h2 {
   text-align: center;
-  color: #2c3e50; /* Darker color for better readability */
+  color: #003366; /* Match navbar primary color */
   margin-bottom: 20px;
-  font-family: 'Arial', sans-serif; /* Updated font family */
-  font-size: 24px; /* Larger font size for the header */
+  font-size: 24px;
 }
 
-.user-container form {
+.user-list {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
-.user-container input {
-  margin-bottom: 15px;
-  padding: 12px; /* Increased padding for input fields */
-  border: 1px solid #ddd; /* Lighter border for a softer look */
-  border-radius: 6px; /* Softer corners for input fields */
+.user-card {
+  background-color: #f8f9fa; /* Light gray background to distinguish cards */
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.user-card:hover {
+  transform: translateY(-3px);
+}
+
+.user-card p {
+  margin: 0 0 8px;
+  color: #003366; /* Match navbar text color */
   font-size: 16px;
-  font-family: 'Arial', sans-serif; /* Consistent font family */
-  transition: border-color 0.3s; /* Smooth transition for border color */
 }
 
-.user-container input:focus {
-  border-color: #3498db; /* Lively blue for focus state */
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Subtle glow effect */
-  outline: none;
+.user-card p span {
+  font-weight: bold;
+  color: #006699; /* Secondary color for emphasis */
 }
 
-.user-container button {
-  padding: 12px; /* Increased padding for button */
-  background-color: #3498db; /* Vibrant button color */
-  color: white;
+.update-button,
+.delete-button {
+  padding: 10px 15px;
   border: none;
-  border-radius: 6px; /* Softer corners */
-  font-size: 18px; /* Larger font size for button */
-  font-family: 'Arial', sans-serif; /* Consistent font family */
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s; /* Added transition for scale */
+  margin-right: 10px;
 }
 
-.user-container button:hover {
-  background-color: #2980b9; /* Darker blue on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover for effect */
+.update-button {
+  background-color: #003366; /* Primary color for consistency */
+  color: white;
 }
 
-.user-container button:active {
-  transform: scale(0.95); /* Slightly shrink when active for effect */
+.update-button:hover {
+  background-color: #002244; /* Darker shade for hover effect */
+}
+
+.delete-button {
+  background-color: #cc3333; /* Red for delete actions */
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #b32424; /* Darker red on hover */
+}
+
+.error-message {
+  color: #cc3333; /* Red color to match error styling */
+  text-align: center;
 }

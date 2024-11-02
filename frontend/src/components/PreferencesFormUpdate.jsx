@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import '../assets/PreferencesFormUpdate.css';
 const PreferencesFormUpdate = () => {
   const { id } = useParams();
   const [preference, setPreference] = useState({ recommendations: '', preferredgenres: '' });

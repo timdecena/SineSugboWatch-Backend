@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +18,8 @@ import com.g2appdev.sinesugbowatch.entity.MoviesEntity;
 import com.g2appdev.sinesugbowatch.service.MoviesService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000") // Allow CORS for this controller
-@RequestMapping(method = RequestMethod.GET, path = "/api/movies")
+@RequestMapping("/api/movies")
+@CrossOrigin(origins = "http://localhost:3000") // allow specific origin
 public class MoviesController {
 
     @Autowired

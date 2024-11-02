@@ -66,7 +66,7 @@ function App() {
         {/* Movie Management */}
         <Route path="/create-movie" element={<MoviesForm />} />
         <Route path="/movielist" element={<MoviesList />} />
-        <Route path="/update-movie/:id" element={<MoviesUpdateForm />} />
+        <Route path="/update-movie/:movie_id" element={<MoviesUpdateForm/>} />
 
         
       </Routes>
