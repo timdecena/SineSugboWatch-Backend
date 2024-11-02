@@ -53,7 +53,7 @@ function App() {
         {/* Main Routes */}
         <Route path="/" element={<PopularMovies />} />
         <Route path="/genre" element={<Genre />} />
-        <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/watchlists" element={<Watchlist />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/tv-shows" element={<TVShows />} />
