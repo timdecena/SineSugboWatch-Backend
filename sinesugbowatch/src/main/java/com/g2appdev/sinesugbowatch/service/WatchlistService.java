@@ -58,4 +58,17 @@ public class WatchlistService {
             return "Watchlist with ID " + id + " not found!";
         }
     }
+
+        // WatchlistService.java
+
+    public WatchlistEntity updateWatchlist(int id, WatchlistEntity updatedWatchlist) throws NameNotFoundException {
+        WatchlistEntity watchlist = watchlistRepo.findById(id)
+            .orElseThrow(() -> new NameNotFoundException("Watchlist with ID " + id + " not found."));
+    
+        watchlist.setListname(updatedWatchlist.getListname());
+    // You can add any other fields that need updating here
+
+        return watchlistRepo.save(watchlist);
+}
+
 }
