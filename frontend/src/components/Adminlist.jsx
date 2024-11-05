@@ -40,14 +40,18 @@ const AdminList = () => {
             <p>Username: {admin.username}</p>
             <p>Email: {admin.email}</p>
             
-            
             {userType === 'admin' && (
-              <>
+              <div className="action-buttons">
                 <Link to={`/update-admin/${admin.adminId}`}>
                   <button className="update-button">Update</button>
                 </Link>
-                <button onClick={() => handleDeleteAdmin(admin.adminId)}>Delete</button>
-              </>
+                <button 
+                  className="delete-button" 
+                  onClick={() => handleDeleteAdmin(admin.adminId)}
+                >
+                  Delete
+                </button>
+              </div>
             )}
           </div>
         ))}
