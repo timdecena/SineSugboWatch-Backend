@@ -69,13 +69,13 @@ const PreferencesList = () => {
           <p><span>ID:</span> {preference.Preference_id || preference.preference_id}</p>
           <p><span>Your recommendations:</span> {preference.recommendations}</p> 
           <p><span>Favorite Genre:</span> {preference.preferredgenres}</p>
-          <button onClick={handleDeletePreference}>Delete</button>
-          <button onClick={handleEditPreference}>Edit your Preference</button>
+          <button className="delete" onClick={handleDeletePreference}>Delete</button>
+          <button className="edit" onClick={handleEditPreference}>Edit your Preference</button>
         </div>
       ) : (
         <p className="no-preference-message">No preference found.</p>
       )}
-      <button onClick={handleCreatePreference}>Create Preference</button>
+      <button className="create" onClick={handleCreatePreference}>Create Preference</button>
     </div>
   );
 };

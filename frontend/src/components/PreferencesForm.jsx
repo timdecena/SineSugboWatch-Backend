@@ -22,12 +22,12 @@ const PreferencesForm = () => {
       setPreferredGenres('');
     } catch (error) {
       console.error('Error adding preference:', error);
-      alert('Error adding preference. That only 1 preference per user');
+      alert('Error adding preference. Only 1 preference per user is allowed.');
     }
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Add Preferences</h2>
       <form onSubmit={handleCreatePreference}>
         <input
@@ -35,14 +35,16 @@ const PreferencesForm = () => {
           placeholder="Recommendations"
           value={recommendations}
           onChange={(e) => setRecommendations(e.target.value)}
+          required
         />
         <input
           type="text"
           placeholder="Preferred Genres"
           value={preferredGenres}
           onChange={(e) => setPreferredGenres(e.target.value)}
+          required
         />
-        <button type="submit">Add Preferences</button>
+        <button type="submit" className="add-preference-btn">Add Preferences</button>
       </form>
     </div>
   );
