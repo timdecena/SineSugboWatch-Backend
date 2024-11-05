@@ -27,6 +27,11 @@ const SearchList = () => {
   }, [userId]);
 
   const handleDeleteSearch = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this search query?");
+    if (!confirmDelete) {
+      return; // Abort deletion if the user clicked "Cancel"
+    }
+
     try {
       await axios.delete(`http://localhost:8080/api/search/deleteSearchDetails/${id}`);
       setSearches(searches.filter((item) => item.search_id !== id));
