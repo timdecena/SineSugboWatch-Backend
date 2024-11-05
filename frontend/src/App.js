@@ -17,7 +17,7 @@ import UserUpdateForm from './components/UserUpdateForm';
 
 // Admin management
 import AdminForm from './components/AdminForm';
-import AdminList from './components/Adminlist';
+import AdminList from './components/AdminList';
 import AdminUpdateForm from './components/AdminUpdateForm';
 
 // Preferences management

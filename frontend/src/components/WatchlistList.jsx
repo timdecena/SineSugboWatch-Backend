@@ -1,12 +1,12 @@
-// src/components/WatchlistList.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Box, Paper, Button, Typography, Grid } from '@mui/material';
 
 const WatchlistList = () => {
   const [watchlist, setWatchlist] = useState([]);
   const userId = localStorage.getItem('user_id');
-  const username = localStorage.getItem('username'); // Retrieve username from localStorage
+  const username = localStorage.getItem('username');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +16,6 @@ const WatchlistList = () => {
         const userWatchlist = response.data.filter(
           (item) => item.user && String(item.user.user_id) === String(userId)
         );
-
         setWatchlist(userWatchlist);
       } catch (error) {
         console.error('Error fetching watchlist:', error);
@@ -46,23 +45,67 @@ const WatchlistList = () => {
   };
 
   return (
-    <div className="container">
-      <h2>{username ? `${username}'s Watchlist` : 'Your Watchlist'}</h2>
+    <Box className="container" sx={{ padding: 3 }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        {username ? `${username}'s Watchlist` : 'Your Watchlist'}
+      </Typography>
+
       {watchlist.length > 0 ? (
-        watchlist.map((item) => (
-          <div key={item.watchlist_id} className="watchlist-card">
-            <p><span>ID:</span> {item.watchlist_id}</p>
-            <p><span>Watchlist Name:</span> {item.listname}</p>
-            <button onClick={() => handleDeleteWatchlist(item.watchlist_id)}>Delete</button>
-            <button onClick={() => handleEditWatchlist(item.watchlist_id)}>Edit Watchlist</button>
-          </div>
-        ))
+        <Grid container spacing={3}>
+          {watchlist.map((item) => (
+            <Grid item xs={12} sm={6} md={4} key={item.watchlist_id}>
+              <Paper
+                className="watchlist-card"
+                sx={{
+                  position: 'relative',
+                  backgroundSize: 'cover',
+                  backgroundImage: `url(https://via.placeholder.com/400x200)`, // Add dynamic background if you have image links
+                  height: 200,
+                  color: 'white',
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                }}
+              >
+                <Box sx={{ padding: 2, backgroundColor: 'rgba(0,0,0,0.6)' }}>
+                  <Typography variant="body1" noWrap>
+                    {item.listname}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => handleDeleteWatchlist(item.watchlist_id)}
+                    sx={{ marginRight: 1 }}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleEditWatchlist(item.watchlist_id)}
+                  >
+                    Edit
+                  </Button>
+                </Box>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
       ) : (
-        <p className="no-watchlist-message">No watchlist found.</p>
+        <Typography align="center" color="textSecondary">
+          No watchlist found.
+        </Typography>
       )}
-      <button onClick={handleCreateWatchlist}>Create Watchlist</button>
-    </div>
-  );  
+
+      <Box textAlign="center" mt={2}>
+        <Button variant="contained" color="success" onClick={handleCreateWatchlist}>
+          Create Watchlist
+        </Button>
+      </Box>
+    </Box>
+  );
 };
 
 export default WatchlistList;

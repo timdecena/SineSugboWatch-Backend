@@ -27,7 +27,7 @@ const Navbar = () => {
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/genre">Genre</Link></li>
-          <li><Link to="/watchlist">Watchlist</Link></li>
+          <li><Link to="/watchlists">Watchlist</Link></li>
           <li><Link to="/movies">Movies</Link></li>
           <li><Link to="/tv-shows">TV Shows</Link></li>
           <li><Link to="/top-imdb">Top IMDB</Link></li>
