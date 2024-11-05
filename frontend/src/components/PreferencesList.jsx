@@ -32,6 +32,9 @@ const PreferencesList = () => {
   const handleDeletePreference = async () => {
     if (!preference) return;
 
+    const confirmDelete = window.confirm('Are you sure you want to delete this preference?');
+    if (!confirmDelete) return;
+
     try {
       console.log('Attempting to delete preference with ID:', preference.Preference_id || preference.preference_id);
       const preferenceId = preference.Preference_id || preference.preference_id;
