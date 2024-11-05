@@ -43,6 +43,7 @@ const AdminUpdateForm = () => {
         password,
       });
       setSuccess(true);
+      setPassword(''); // Clear password field after successful update
     } catch (err) {
       setError('Failed to update admin.');
     } finally {
@@ -79,7 +80,7 @@ const AdminUpdateForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading}>
+        <button type="submit" className="update-button" disabled={loading}>
           {loading ? 'Updating...' : 'Update Admin'}
         </button>
       </form>
