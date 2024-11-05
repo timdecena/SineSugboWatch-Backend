@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
+
     // Set the API endpoint based on user type
     const loginEndpoint = userType === 'admin' 
       ? 'http://localhost:8080/api/admin/login' 
@@ -57,22 +57,26 @@ const Login = () => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
-        <div className="password-input-container">
+        
+        <div className="password-container">
           <input
             type={showPassword ? 'text' : 'password'} // Toggle input type based on showPassword state
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <button
             type="button"
-            className="show-password-btn"
+            className="toggle-password"
             onClick={() => setShowPassword(!showPassword)} // Toggle showPassword state
           >
-            {showPassword ? 'Hide' : 'Show'}
+            {showPassword ? '🛇' : '👁️'}
           </button>
         </div>
+        
         <div className="user-type-selection">
           <label>
             <input
@@ -93,9 +97,10 @@ const Login = () => {
             Admin 
           </label>
         </div>
+
         <button type="submit">Login</button>
       </form>
-      {/* Create Account Link */}
+      
       <p>
         Don't have an account? 
         <Link to="/create-user" style={{ marginLeft: '5px', textDecoration: 'underline', color: '#007BFF' }}>
