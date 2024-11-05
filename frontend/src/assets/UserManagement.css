@@ -4,12 +4,12 @@
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  background-color: #ffffff; /* Updated to a clean white background */
+  background-color: #ffffff;
 }
 
 .user-container h2 {
   text-align: center;
-  color: #003366; /* Match navbar primary color */
+  color: #003366;
   margin-bottom: 20px;
   font-size: 24px;
 }
@@ -21,7 +21,7 @@
 }
 
 .user-card {
-  background-color: #f8f9fa; /* Light gray background to distinguish cards */
+  background-color: #f8f9fa;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
   padding: 20px;
@@ -35,44 +35,62 @@
 
 .user-card p {
   margin: 0 0 8px;
-  color: #003366; /* Match navbar text color */
+  color: #003366;
   font-size: 16px;
 }
 
 .user-card p span {
   font-weight: bold;
-  color: #006699; /* Secondary color for emphasis */
+  color: #006699;
 }
 
-.update-button,
-.delete-button {
+.create-button {
+  padding: 10px 15px;
+  background-color: #28a745; /* Green color for Create button */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.update-button {
+  background-color: #003366;
+  color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
   margin-right: 10px;
-}
-
-.update-button {
-  background-color: #003366; /* Primary color for consistency */
-  color: white;
+  transition: background-color 0.2s;
 }
 
 .update-button:hover {
-  background-color: #002244; /* Darker shade for hover effect */
+  background-color: #002244;
 }
 
 .delete-button {
-  background-color: #cc3333; /* Red for delete actions */
+  background-color: #cc3333;
   color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .delete-button:hover {
-  background-color: #b32424; /* Darker red on hover */
+  background-color: #b32424;
 }
 
 .error-message {
-  color: #cc3333; /* Red color to match error styling */
+  color: #cc3333;
   text-align: center;
 }
