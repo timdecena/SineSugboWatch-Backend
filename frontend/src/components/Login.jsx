@@ -1,12 +1,13 @@
 // Login.jsx
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import Link
+import { useNavigate, Link } from 'react-router-dom';
 import '../assets/Login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('user'); // Default to user
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -57,12 +58,21 @@ const Login = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="password-input-container">
+          <input
+            type={showPassword ? 'text' : 'password'} // Toggle input type based on showPassword state
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            type="button"
+            className="show-password-btn"
+            onClick={() => setShowPassword(!showPassword)} // Toggle showPassword state
+          >
+            {showPassword ? 'Hide' : 'Show'}
+          </button>
+        </div>
         <div className="user-type-selection">
           <label>
             <input

@@ -29,6 +29,9 @@ const UserList = () => {
   }, []);
 
   const handleDeleteUser = async (user_id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+    if (!confirmDelete) return; // If user clicks 'Cancel', exit the function
+
     try {
       const response = await fetch(`http://localhost:8080/api/user/deleteUserDetails/${user_id}`, {
         method: 'DELETE',
