@@ -31,7 +31,7 @@ const WatchlistFormUpdate = () => {
     try {
       await axios.put(`http://localhost:8080/api/watchlist/updateWatchlistDetails/${id}`, watchlist);
       alert('Watchlist updated successfully');
-      navigate('/watchlist');
+      navigate('/watchlists');
     } catch (error) {
       console.error('Error updating watchlist:', error);
       alert('Failed to update watchlist. Please check the console for details.');
