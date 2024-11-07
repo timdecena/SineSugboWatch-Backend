@@ -1,56 +1,72 @@
 // MovieDetail.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../assets/MovieDetail.css';
 
 function MovieDetail() {
-  const { id } = useParams();
+  const { id } = useParams(); // Get the movie ID from the URL parameters
+  const [movieData, setMovieData] = useState(null); // State to hold the movie data
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
- 
-  const movieData = {
-    title: 'Movie Title',
-    year: '2024',
-    length: '85',
-    imdbRating: '8.3',
-    releaseDate: '2024-05-02',
-    genre: 'Mystery, Drama',
-    country: 'Philippines',
-    production: 'Lifetime',
-    cast: 'Christian Barry Alico',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  };
+  useEffect(() => {
+    const fetchMovieData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/movies/getMovieById/${id}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch movie data');
+        }
+        const data = await response.json();
+        setMovieData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching movie data:', error);
+        setError('Failed to load movie details');
+        setLoading(false);
+      }
+    };
+
+    fetchMovieData();
+  }, [id]);
+
+  if (loading) {
+    return <p>Loading movie details...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
-    <div className="movie-detail">
-      <div className="movie-poster">
-        <div className="poster-placeholder"></div>
-        <p className="movie-title-year">
-          {movieData.title} <br />
-          [{movieData.year}] [{movieData.length} mins]
-        </p>
+    movieData && (
+      <div className="movie-detail">
+        <div className="movie-poster">
+          <div className="poster-placeholder"></div>
+          <p className="movie-title-year">
+            {movieData.title} <br />
+            [HD MOVIE] [125 mins]
+          </p>
+        </div>
+        <div className="movie-info">
+          <h1>{movieData.title}</h1>
+          <div className="movie-stats">
+            <span className="hd-label">HD</span>
+            <span className="imdb-rating">IMDB: Rating {movieData.rating}</span>
+            <span className="movie-length">Length: 125 mins</span>
+          </div>
+          <div className="movie-buttons">
+            <button className="upload-button">UPCLOUD</button>
+            <button className="vidcloud-button">VIDCLOUD</button>
+          </div>
+          <p className="movie-overview">{movieData.description}</p>
+          <div className="movie-details">
+            <p><strong>ID:</strong> {movieData.movie_id}</p>
+            <p><strong>Genre:</strong> {movieData.genre}</p>
+            <p><strong>Rating:</strong> {movieData.rating}</p>
+          </div>
+        </div>
       </div>
-      <div className="movie-info">
-        <h1>{movieData.title}</h1>
-        <div className="movie-stats">
-          <span className="hd-label">HD</span>
-          <span className="imdb-rating">IMDB: {movieData.imdbRating}</span>
-          <span className="movie-length">{movieData.length} mins</span>
-        </div>
-        <div className="movie-buttons">
-          <button className="upload-button">UPCLOUD</button>
-          <button className="vidcloud-button">VIDCLOUD</button>
-        </div>
-        <p className="movie-overview">{movieData.description}</p>
-        <div className="movie-details">
-          <p><strong>Released:</strong> {movieData.releaseDate}</p>
-          <p><strong>Genre:</strong> {movieData.genre}</p>
-          <p><strong>Country:</strong> {movieData.country}</p>
-          <p><strong>Duration:</strong> {movieData.length} mins</p>
-          <p><strong>Cast:</strong> {movieData.cast}</p>
-          <p><strong>Production:</strong> {movieData.production}</p>
-        </div>
-      </div>
-    </div>
+    )
   );
 }
 
