@@ -1,0 +1,90 @@
+/* AdminForm.css */
+
+/* Form Container Styling */
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full height of the viewport */
+    padding: 20px; /* Adjusted padding */
+}
+
+/* Heading Style */
+.admin-container h2 {
+    font-size: 2.4rem;
+    color: #2d3748; /* Dark gray for a formal tone */
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Form Layout */
+.admin-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px; /* Max width for the form */
+    background-color: #ffffff; /* White background for form */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.admin-container form:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Input Fields */
+.admin-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-container input:focus {
+    border-color: #38a169; /* Soft green for focus */
+    box-shadow: 0 0 5px rgba(56, 161, 105, 0.5);
+    outline: none;
+}
+
+/* Button Styling */
+.admin-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #38a169; /* Green for professionalism */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-container button:hover {
+    background-color: #2f855a; /* Slightly darker green */
+    box-shadow: 0 4px 8px rgba(47, 133, 90, 0.3);
+}
+
+/* Success and Error Messages */
+.success-message {
+    color: #38a169; /* Green */
+    font-size: 1rem;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.error-message {
+    color: #e53e3e; /* Red */
+    font-size: 1rem;
+    margin-top: 15px;
+    text-align: center;
+}

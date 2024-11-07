@@ -1,6 +1,6 @@
 // src/components/AdminForm.jsx
 import React, { useState } from 'react';
-import '../assets/AdminManagement.css';
+import '../assets/AdminForm.css';
 import axios from 'axios';
 
 const AdminForm = () => {
