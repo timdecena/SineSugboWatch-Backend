@@ -17,6 +17,9 @@ const PopularMovies = () => {
       { id: 1, title: 'Inception', imageUrl: '/path/to/inception.jpg' },
       { id: 2, title: 'Interstellar', imageUrl: '/path/to/interstellar.jpg' },
       { id: 3, title: 'The Dark Knight', imageUrl: '/path/to/darkknight.jpg' },
+      { id: 4, title: 'Despicable Me 4', imageUrl: '/path/to/despicable Me 4.jpg' },
+      { id: 5, title: 'Deadpool & Wolverine', imageUrl: '/path/to/deadpool & wolverine.jpg' },
+      { id: 5, title: 'Venom: The Last Dance', imageUrl: '/path/to/venom: the last dance.jpg' },
     
     ];
     setMovies(sampleMovies);
