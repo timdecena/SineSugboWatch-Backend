@@ -1,6 +1,7 @@
 // PopularMovies.jsx
 import React, { useEffect, useState } from 'react';
 import '../assets/PopularMovies.css';
+import { Link } from 'react-router-dom';
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -28,7 +29,7 @@ const PopularMovies = () => {
         <div className="hero-content">
           <h1>Welcome to MovieApp</h1>
           <p>Discover the most popular movies, TV shows, and more!</p>
-          <button className="explore-btn">Explore Now</button>
+          <Link to="/watchlist" className="explore-btn">Explore Now</Link>
         </div>
       </div>
 
