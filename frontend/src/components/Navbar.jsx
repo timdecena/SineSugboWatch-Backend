@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../assets/Navbar.css';
@@ -22,10 +21,12 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="logo">
-          <h1>SineSugboWatch HD</h1>
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <h1>SineSugboWatch HD</h1>
+          </Link>
         </div>
         <ul className="nav-links">
-          <li><Link to="/">Home</Link></li>
+          {/* Remove the Home link */}
           <li><Link to="/genre">Genre</Link></li>
           <li><Link to="/watchlist">Watchlist</Link></li>
           <li><Link to="/movies">Movies</Link></li>
@@ -64,8 +65,8 @@ const Navbar = () => {
                     <>
                       <Link to="/movies" className="dropdown-item">View All Movies</Link>
                       <Link to="/create-movie" className="dropdown-item">Add New Movie</Link>
-                      <Link to="/create-admin" className="dropdown-item">Create Admin</Link> {/* New link for admin */}
-                      <Link to="/pref" className="dropdown-item">View All Preferences</Link> {/* New link for viewing preferences */}
+                      <Link to="/create-admin" className="dropdown-item">Create Admin</Link>
+                      <Link to="/pref" className="dropdown-item">View All Preferences</Link>
                     </>
                   )}
                 </div>
