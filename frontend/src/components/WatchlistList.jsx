@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../assets/WatchlistList.css'; // Adjust the path as needed
 
 const WatchlistList = () => {
   const [watchlist, setWatchlist] = useState([]);
