@@ -58,6 +58,7 @@ const Navbar = () => {
 
                   {userType === 'user' && (
                     <>
+                    <Link to="/users" className="dropdown-item">User Details</Link>
                     <Link to="/search" className="dropdown-item">Search History</Link>
                     <Link to="/pref" className="dropdown-item">View Current Preferences</Link>
                     <Link to="/transactions" className="dropdown-item">View Current Transactions</Link>
