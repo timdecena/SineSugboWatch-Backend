@@ -3,17 +3,23 @@
   margin: 50px auto;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  background-color: #ffffff; /* Clean white background */
+  font-family: 'Arial', sans-serif; /* Professional and clean font */
 }
 
 .user-container h2 {
   text-align: center;
-  color: #003366;
+  color: #b19000; /* Yellow accent for header */
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 1.8rem;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f7f5e8; /* Light yellow background for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* User list and card styles */
 .user-list {
   display: flex;
   flex-direction: column;
@@ -21,76 +27,82 @@
 }
 
 .user-card {
-  background-color: #f8f9fa;
-  border: 1px solid #d1d1d1;
+  background-color: #f8f9fa; /* Light gray for subtle distinction */
+  border: 1px solid #dcdcdc; /* Neutral border color */
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow style */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
 }
 
 .user-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 .user-card p {
   margin: 0 0 8px;
-  color: #003366;
-  font-size: 16px;
+  color: #333; /* Neutral dark gray for text */
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .user-card p span {
   font-weight: bold;
-  color: #006699;
+  color: #b19000; /* Yellow accent for emphasis */
 }
 
-.create-button {
-  padding: 10px 15px;
-  background-color: #28a745; /* Green color for Create button */
-  color: white;
+/* Button styles */
+button {
+  font-size: 1rem;
   border: none;
   border-radius: 6px;
-  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth animations */
+}
+
+/* Create button */
+.create-button {
+  padding: 12px 20px;
+  background-color: #b19000; /* Yellow theme */
+  color: white;
 }
 
 .create-button:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #8a7300;
+  transform: scale(1.02); /* Subtle scaling on hover */
 }
 
+/* Update button */
 .update-button {
-  background-color: #003366;
+  background-color: #003366; /* Deep blue */
   color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
+  padding: 12px 20px;
   margin-right: 10px;
-  transition: background-color 0.2s;
 }
 
 .update-button:hover {
   background-color: #002244;
+  transform: scale(1.02);
 }
 
+/* Delete button */
 .delete-button {
-  background-color: #cc3333;
+  background-color: #d9534f; /* Light red for delete */
   color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  padding: 12px 20px;
 }
 
 .delete-button:hover {
-  background-color: #b32424;
+  background-color: #c9302c;
+  transform: scale(1.02);
 }
 
+/* Error message styling */
 .error-message {
-  color: #cc3333;
+  color: #d9534f; /* Matching the delete button red */
   text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
 }
