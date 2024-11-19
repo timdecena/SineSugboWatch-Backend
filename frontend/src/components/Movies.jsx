@@ -1,4 +1,3 @@
-// src/components/Movies.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/Movies.css';
@@ -6,6 +5,7 @@ import '../assets/Movies.css';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const userType = localStorage.getItem('userType');
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -24,8 +24,14 @@ const Movies = () => {
   }, []);
 
   const handleDeleteMovie = async (movie_id) => {
+    // Show confirmation prompt
+    const confirmDelete = window.confirm(`Are you sure you want to delete the movie with ID ${movie_id}?`);
+    if (!confirmDelete) return; // Exit if the user cancels
+
     try {
-      const response = await fetch(`http://localhost:8080/api/movies/deleteMovieDetails/${movie_id}`, { method: 'DELETE' });
+      const response = await fetch(`http://localhost:8080/api/movies/deleteMovieDetails/${movie_id}`, {
+        method: 'DELETE',
+      });
       if (!response.ok) {
         throw new Error('Failed to delete movie');
       }
@@ -54,12 +60,17 @@ const Movies = () => {
                 <p><strong>Description:</strong> {movie.description}</p>
                 <p><strong>Rating:</strong> {movie.rating}</p>
               </Link>
-              {userType === 'admin' && ( // Check if user is admin
+              {userType === 'admin' && (
                 <div className="admin-buttons">
                   <Link to={`/update-movie/${movie.movie_id}`}>
                     <button className="update-button">Update</button>
                   </Link>
-                  <button onClick={() => handleDeleteMovie(movie.movie_id)} className="delete-button">Delete</button>
+                  <button
+                    onClick={() => handleDeleteMovie(movie.movie_id)}
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>
                 </div>
               )}
             </div>

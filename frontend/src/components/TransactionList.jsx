@@ -1,4 +1,3 @@
-// src/components/TransactionList.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -27,6 +26,10 @@ const TransactionList = () => {
   }, [userId]);
 
   const handleDeleteTransaction = async (id) => {
+    // Show confirmation prompt
+    const confirmDelete = window.confirm(`Are you sure you want to delete the transaction with ID ${id}?`);
+    if (!confirmDelete) return; // Exit if the user cancels
+
     try {
       await axios.delete(`http://localhost:8080/api/transaction/deleteTransactionDetails/${id}`);
       setTransactions(transactions.filter((transaction) => transaction.transaction_id !== id));
@@ -66,4 +69,3 @@ const TransactionList = () => {
 };
 
 export default TransactionList;
-

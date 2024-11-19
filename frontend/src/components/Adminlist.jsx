@@ -20,6 +20,10 @@ const AdminList = () => {
   }, []);
 
   const handleDeleteAdmin = async (adminId) => {
+    // Show confirmation prompt
+    const confirmDelete = window.confirm(`Are you sure you want to delete the admin with ID ${adminId}?`);
+    if (!confirmDelete) return; // Exit if the user cancels
+
     try {
       await axios.delete(`http://localhost:8080/api/admin/deleteAdminDetails/${adminId}`);
       setAdmins(admins.filter((admin) => admin.adminId !== adminId));
