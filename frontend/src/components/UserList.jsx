@@ -17,7 +17,13 @@ const UserList = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        setUsers(data);
+
+        // Filter users if userType is 'user'
+        const filteredUsers = userType === 'user'
+          ? data.filter((user) => String(user.user_id) === String(loggedInUserId))
+          : data;
+
+        setUsers(filteredUsers);
       } catch (error) {
         console.error('Error fetching users:', error);
         setError('Failed to load user list. Please try again later.');
@@ -25,12 +31,13 @@ const UserList = () => {
         setLoading(false);
       }
     };
+
     fetchUsers();
-  }, []);
+  }, [userType, loggedInUserId]);
 
   const handleDeleteUser = async (user_id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this user?");
-    if (!confirmDelete) return; // If user clicks 'Cancel', exit the function
+    if (!confirmDelete) return;
 
     try {
       const response = await fetch(`http://localhost:8080/api/user/deleteUserDetails/${user_id}`, {
@@ -44,7 +51,6 @@ const UserList = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // If successful, update the state
       setUsers(users.filter((user) => user.user_id !== user_id));
       alert(`User with ID ${user_id} deleted successfully`);
     } catch (error) {
@@ -53,12 +59,12 @@ const UserList = () => {
     }
   };
 
-  if (loading) return <p>Loading users...</p>; // Loading indicator
-  if (error) return <p className="error-message">{error}</p>; // Error message display
+  if (loading) return <p>Loading users...</p>;
+  if (error) return <p className="error-message">{error}</p>;
 
   return (
     <div className="user-container">
-      <h2>User List</h2>
+      <h2>User Details</h2>
       <div className="user-list">
         {users.map((user) => (
           <div key={user.user_id} className="user-card">
@@ -66,7 +72,6 @@ const UserList = () => {
             <p><span>Username:</span> {user.username}</p>
             <p><span>Email:</span> {user.email}</p>
 
-            {/* Conditional rendering for update button and delete button */}
             {userType === 'admin' && (
               <>
                 <Link to={`/update-user/${user.user_id}`}>

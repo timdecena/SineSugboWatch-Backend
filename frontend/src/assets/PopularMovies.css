@@ -41,6 +41,7 @@
     }
   
     .explore-btn {
+      text-decoration: none;
       padding: 10px 20px; /* Padding for the button */
       font-size: 1.2rem; /* Increased font size */
       background-color: #f4c10f; /* Button color */

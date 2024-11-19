@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from React Router
 import '../assets/PopularMovies.css';
+import { Link } from 'react-router-dom';
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState([]);

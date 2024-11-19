@@ -10,34 +10,37 @@
     color: #ecf0f1;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .container h2 {
+}
+
+.container h2 {
     font-size: 1.8rem;
     color: #e67e22;
     margin-bottom: 1.2rem;
-  }
-  
-  .watchlist-card {
+}
+
+.transaction-card {
     background-color: #34495e;
     padding: 1.5rem;
     border-radius: 8px;
     margin-top: 1rem;
     width: 100%;
-  }
-  
-  .watchlist-card p {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.transaction-card p {
     font-size: 1.1rem;
     margin: 0.5rem 0;
     color: #bdc3c7;
-  }
-  
-  .watchlist-card p span {
+}
+
+.transaction-card p span {
     font-weight: bold;
     color: #ecf0f1;
-  }
-  
-  button {
+}
+
+button {
     padding: 0.6rem 1.2rem;
     border: none;
     border-radius: 4px;
@@ -45,46 +48,45 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 1rem;
-  }
-  
-  /* Delete Button */
-  button.delete {
+    margin-top: 0.5rem;
+}
+
+/* Delete Button */
+button.delete {
     background-color: #e74c3c;
-  }
-  button.delete:hover {
+}
+button.delete:hover {
     background-color: #c0392b;
-  }
-  button.delete:active {
+}
+button.delete:active {
     background-color: #a93226;
-  }
-  
-  /* Edit Button */
-  button.edit {
+}
+
+/* Edit Button */
+button.edit {
     background-color: #3498db;
-  }
-  button.edit:hover {
+}
+button.edit:hover {
     background-color: #2980b9;
-  }
-  button.edit:active {
+}
+button.edit:active {
     background-color: #1f6395;
-  }
-  
-  /* Create Button */
-  button.create {
+}
+
+/* Create Button */
+button.create {
     background-color: #2ecc71;
-  }
-  button.create:hover {
+}
+button.create:hover {
     background-color: #27ae60;
-  }
-  button.create:active {
-    background-color: #1e8449;
-  }
-  
-  .no-watchlist-message {
+}
+button.create:active {
+    background-color: #1f8f4d;
+}
+
+.no-transaction-message {
+    font-size: 1.2rem;
     color: #bdc3c7;
-    font-size: 1.1rem;
-    text-align: center;
     margin-top: 1rem;
-  }
-  
+    text-align: center;
+}
