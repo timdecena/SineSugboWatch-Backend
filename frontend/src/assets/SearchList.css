@@ -3,81 +3,94 @@
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Header styling */
-  .container h2 {
-    color: #ffffff; /* White text color for the header */
-    background-color: #b19000; /* Same yellow color as navbar */
+    background-color: #ffffff; /* Pure white background for a cleaner look */
+    border-radius: 12px; /* Slightly more rounded for a modern look */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow for a more defined elevation */
+    font-family: 'Arial', sans-serif; /* Professional and clean font */
+}
+
+/* Header styling */
+.container h2 {
+    color: #fff; /* White text for strong contrast */
+    background-color: #b19000; /* Signature yellow color */
     text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  /* Search card styling */
-  .search-card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    font-size: 2rem; /* Slightly larger font for better readability */
+    margin-bottom: 25px;
     padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .search-card p {
+    border-radius: 8px; /* Larger radius to match the modern theme */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+/* Search card styling */
+.search-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* Softer border color */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Consistent shadow with container */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add hover animations */
+}
+
+.search-card:hover {
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-card p {
     font-size: 1rem;
-    color: #333;
+    color: #444; /* Darker gray for better readability */
     margin: 5px 0;
-  }
-  
-  .search-card p span {
-    font-weight: bold;
-  }
-  
-  /* Button styling */
-  button {
-    padding: 10px 15px;
+    line-height: 1.6; /* Improve text spacing */
+}
+
+.search-card p span {
+    font-weight: 600; /* Slightly lighter bold for elegance */
+    color: #b19000; /* Accent color for emphasis */
+}
+
+/* Button styling */
+button {
+    padding: 12px 20px;
     font-size: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Delete button styling */
-  .delete-btn {
-    background-color: #d9534f; /* Red color for delete button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold; /* Professional, solid text */
+}
+
+/* Delete button styling */
+.delete-btn {
+    background-color: #d9534f;
     color: #fff;
     margin-top: 10px;
     width: 100%;
-  }
-  
-  .delete-btn:hover {
+}
+
+.delete-btn:hover {
     background-color: #c9302c;
-  }
-  
-  /* Create search button styling */
-  .create-btn {
-    background-color: #b19000; /* Same yellow color as navbar */
+    transform: scale(1.02); /* Subtle scaling on hover */
+}
+
+/* Create search button styling */
+.create-btn {
+    background-color: #b19000;
     color: #fff;
     width: 100%;
     margin-top: 20px;
-  }
-  
-  .create-btn:hover {
+}
+
+.create-btn:hover {
     background-color: #8a7300;
-  }
-  
-  /* No search message styling */
-  .no-search-message {
+    transform: scale(1.02);
+}
+
+/* No search message styling */
+.no-search-message {
     text-align: center;
-    font-size: 1.1rem;
-    color: #777;
-    margin-top: 20px;
-  }
-  
+    font-size: 1.2rem; /* Slightly larger for emphasis */
+    color: #555; /* Neutral gray for balance */
+    margin-top: 25px;
+    font-style: italic; /* Add a subtle emphasis */
+}
