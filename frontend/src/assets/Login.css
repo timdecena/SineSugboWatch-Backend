@@ -32,12 +32,14 @@
 .password-container {
   position: relative;
   width: 100%;
-  height: 42px; /* Fixed height for the password container */
+  height: 40px; /* Fixed height for the password container */
+  display: flex;
+  align-items: center; /* Align contents vertically */
 }
 
 .password-container input[type="password"],
 .password-container input[type="text"] {
-  padding-right: 2.5rem; /* Space for the toggle button */
+  padding-right: 40px; /* Space for the toggle button */
   height: 100%; /* Match container height */
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -45,24 +47,24 @@
   box-sizing: border-box;
 }
 
+/* Fixed position and dimensions for the toggle icon */
 .password-container .toggle-password {
   position: absolute;
   right: 10px;
   top: 30%; /* Center icon vertically */
-  transform: translateY(-50%);
+  transform: translateY(-50%); /* Adjust for its own height */
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
   color: #333;
-  padding: 0;
-  line-height: 1; /* Fix icon size alignment */
-  width: 30px; /* Fixed size for the button */
-  height: 30px; /* Fixed size for the button */
+  width: 20px; /* Fixed size for the button */
+  height: 20px; /* Fixed size for the button */
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 /* Aligning User and Admin radio buttons horizontally */
 .user-type-selection {
