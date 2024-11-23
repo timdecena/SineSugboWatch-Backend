@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/MoviesForm.css';
 
 const MoviesForm = () => {
@@ -6,10 +6,38 @@ const MoviesForm = () => {
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('');
   const [rating, setRating] = useState('');
+  const [image, setImage] = useState('');
+  const [imagePreview, setImagePreview] = useState('');
+  const [imageOptions, setImageOptions] = useState([]);
+  const adminId = localStorage.getItem('admin_id');
 
-  // Retrieve the admin ID from localStorage
-  const adminId = localStorage.getItem('admin_id'); // Use admin_id for admins
+  useEffect(() => {
+    // Fetch image options from JSON file
+    const loadImages = async () => {
+      try {
+        const response = await fetch('/movieimages/images.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch images.json: ${response.statusText}`);
+        }
+        const data = await response.json();
+        if (Array.isArray(data.images)) {
+          setImageOptions(data.images);
+        } else {
+          console.error('images.json does not contain a valid "images" array.');
+        }
+      } catch (error) {
+        console.error('Error loading images.json:', error);
+      }
+    };
 
+    loadImages();
+  }, []);
+
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.value;
+    setImage(selectedImage);
+    setImagePreview(`/movieimages/${selectedImage}`);
+  };
 
   const handleCreateMovie = async (e) => {
     e.preventDefault();
@@ -20,6 +48,7 @@ const MoviesForm = () => {
     }
 
     try {
+      // Send movie metadata to the API
       const response = await fetch('http://localhost:8080/api/movies/postMovieRecord', {
         method: 'POST',
         headers: {
@@ -30,7 +59,7 @@ const MoviesForm = () => {
           genre,
           description,
           rating: parseFloat(rating),
-          admin: { adminId: parseInt(adminId) }, // Automatically use adminId from localStorage
+          admin: { adminId: parseInt(adminId) },
         }),
       });
 
@@ -39,13 +68,20 @@ const MoviesForm = () => {
         throw new Error(errorData.message || 'Error creating movie');
       }
 
-      const data = await response.json();
-      alert(`Movie created successfully: ${data.title}`);
-      // Clear form fields after successful submission
+      const savedMovie = await response.json();
+
+      // Save the image locally in localStorage using the movie ID
+      const storedImages = JSON.parse(localStorage.getItem('movieImages')) || {};
+      storedImages[savedMovie.movie_id] = image;
+      localStorage.setItem('movieImages', JSON.stringify(storedImages));
+
+      alert('Movie created successfully!');
       setTitle('');
       setDescription('');
       setGenre('');
       setRating('');
+      setImage('');
+      setImagePreview('');
     } catch (error) {
       console.error('Error creating movie:', error);
       alert(`Error creating movie: ${error.message}`);
@@ -60,42 +96,53 @@ const MoviesForm = () => {
         <input
           id="title"
           type="text"
-          placeholder="Enter movie title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter movie title"
           required
         />
-        
+
         <label htmlFor="genre">Genre</label>
         <input
           id="genre"
           type="text"
-          placeholder="Enter genre"
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
+          placeholder="Enter genre"
           required
         />
-        
+
         <label htmlFor="description">Description</label>
         <textarea
           id="description"
-          placeholder="Enter movie description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          placeholder="Enter description"
           required
         />
-        
+
         <label htmlFor="rating">Rating (0.0 - 10.0)</label>
         <input
           id="rating"
           type="number"
           step="0.1"
-          placeholder="Enter rating"
           value={rating}
           onChange={(e) => setRating(e.target.value)}
+          placeholder="Enter rating"
           required
         />
-        
+
+        <label htmlFor="image">Image</label>
+        <select id="image" value={image} onChange={handleImageChange} required>
+          <option value="">Select an image</option>
+          {imageOptions.map((img) => (
+            <option key={img} value={img}>
+              {img}
+            </option>
+          ))}
+        </select>
+        {imagePreview && <img src={imagePreview} alt="Selected preview" className="image-preview" />}
+
         <button type="submit">Create Movie</button>
       </form>
     </div>

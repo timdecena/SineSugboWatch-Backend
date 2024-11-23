@@ -14,19 +14,26 @@ const Movies = () => {
           throw new Error('Failed to fetch movies');
         }
         const data = await response.json();
-        console.log('Fetched movies:', data);
-        setMovies(data);
+
+        // Retrieve images from localStorage and associate with movies
+        const storedImages = JSON.parse(localStorage.getItem('movieImages')) || {};
+        const moviesWithImages = data.map((movie) => ({
+          ...movie,
+          image: storedImages[movie.movie_id] || 'placeholder.png',
+        }));
+
+        setMovies(moviesWithImages);
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
     };
+
     fetchMovies();
   }, []);
 
   const handleDeleteMovie = async (movie_id) => {
-    // Show confirmation prompt
     const confirmDelete = window.confirm(`Are you sure you want to delete the movie with ID ${movie_id}?`);
-    if (!confirmDelete) return; // Exit if the user cancels
+    if (!confirmDelete) return;
 
     try {
       const response = await fetch(`http://localhost:8080/api/movies/deleteMovieDetails/${movie_id}`, {
@@ -35,7 +42,15 @@ const Movies = () => {
       if (!response.ok) {
         throw new Error('Failed to delete movie');
       }
+
+      // Remove the movie from the state
       setMovies(movies.filter((movie) => movie.movie_id !== movie_id));
+
+      // Remove the image from localStorage
+      const storedImages = JSON.parse(localStorage.getItem('movieImages')) || {};
+      delete storedImages[movie_id];
+      localStorage.setItem('movieImages', JSON.stringify(storedImages));
+
       alert(`Movie with ID ${movie_id} deleted successfully`);
     } catch (error) {
       console.error('Error deleting movie:', error);
@@ -53,12 +68,12 @@ const Movies = () => {
           movies.map((movie) => (
             <div key={movie.movie_id} className="movie-item">
               <Link to={`/movie/${movie.movie_id}`}>
-                <div className="movie-placeholder"></div>
-                <p><strong>Movie ID:</strong> {movie.movie_id}</p>
+                <img
+                  src={`/movieimages/${movie.image}`}
+                  alt={movie.title}
+                  className="movie-image"
+                />
                 <p><strong>Title:</strong> {movie.title}</p>
-                <p><strong>Genre:</strong> {movie.genre}</p>
-                <p><strong>Description:</strong> {movie.description}</p>
-                <p><strong>Rating:</strong> {movie.rating}</p>
               </Link>
               {userType === 'admin' && (
                 <div className="admin-buttons">
