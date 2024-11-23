@@ -1,4 +1,3 @@
-// src/components/MoviesForm.jsx
 import React, { useState } from 'react';
 import '../assets/MoviesForm.css';
 
@@ -7,10 +6,19 @@ const MoviesForm = () => {
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('');
   const [rating, setRating] = useState('');
-  const [adminId, setAdminId] = useState('');
+
+  // Retrieve the admin ID from localStorage
+  const adminId = localStorage.getItem('admin_id'); // Use admin_id for admins
+
 
   const handleCreateMovie = async (e) => {
     e.preventDefault();
+
+    if (!adminId) {
+      alert('Admin ID not found. Please log in.');
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:8080/api/movies/postMovieRecord', {
         method: 'POST',
@@ -22,7 +30,7 @@ const MoviesForm = () => {
           genre,
           description,
           rating: parseFloat(rating),
-          admin: { adminId: parseInt(adminId) },
+          admin: { adminId: parseInt(adminId) }, // Automatically use adminId from localStorage
         }),
       });
 
@@ -32,7 +40,12 @@ const MoviesForm = () => {
       }
 
       const data = await response.json();
-      alert(`Movie created: ${data.title}`);
+      alert(`Movie created successfully: ${data.title}`);
+      // Clear form fields after successful submission
+      setTitle('');
+      setDescription('');
+      setGenre('');
+      setRating('');
     } catch (error) {
       console.error('Error creating movie:', error);
       alert(`Error creating movie: ${error.message}`);
@@ -80,16 +93,6 @@ const MoviesForm = () => {
           placeholder="Enter rating"
           value={rating}
           onChange={(e) => setRating(e.target.value)}
-          required
-        />
-        
-        <label htmlFor="adminId">Admin ID</label>
-        <input
-          id="adminId"
-          type="text"
-          placeholder="Enter Admin ID"
-          value={adminId}
-          onChange={(e) => setAdminId(e.target.value)}
           required
         />
         

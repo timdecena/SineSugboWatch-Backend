@@ -1,4 +1,3 @@
-// Login.jsx
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../assets/Login.css';
@@ -14,9 +13,10 @@ const Login = () => {
     e.preventDefault();
 
     // Set the API endpoint based on user type
-    const loginEndpoint = userType === 'admin' 
-      ? 'http://localhost:8080/api/admin/login' 
-      : 'http://localhost:8080/api/user/login';
+    const loginEndpoint =
+      userType === 'admin'
+        ? 'http://localhost:8080/api/admin/login'
+        : 'http://localhost:8080/api/user/login';
 
     fetch(loginEndpoint, {
       method: 'POST',
@@ -25,25 +25,30 @@ const Login = () => {
       },
       body: JSON.stringify({ username, password }),
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw new Error('Invalid username or password');
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         alert('Login successful!');
 
-        localStorage.setItem('username', username); 
-        localStorage.setItem('userType', userType); 
+        // Store common data in local storage
+        localStorage.setItem('username', username);
+        localStorage.setItem('userType', userType);
 
-        if (data.user_id) {
-          localStorage.setItem('user_id', data.user_id); 
+        // Save the appropriate ID based on user type
+        if (userType === 'admin' && data.adminId) {
+          localStorage.setItem('admin_id', data.adminId); // Save admin ID
+        } else if (userType === 'user' && data.user_id) {
+          localStorage.setItem('user_id', data.user_id); // Save user ID
         }
 
-        navigate(userType === 'admin' ? '/admins' : '/'); 
+        // Navigate to the appropriate dashboard
+        navigate(userType === 'admin' ? '/admins' : '/');
       })
-      .catch(error => {
+      .catch((error) => {
         alert(error.message);
       });
   };
@@ -59,10 +64,10 @@ const Login = () => {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-        
+
         <div className="password-container">
           <input
-            type={showPassword ? 'text' : 'password'} // Toggle input type based on showPassword state
+            type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -71,12 +76,12 @@ const Login = () => {
           <button
             type="button"
             className="toggle-password"
-            onClick={() => setShowPassword(!showPassword)} // Toggle showPassword state
+            onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? '🛇' : '👁️'}
           </button>
         </div>
-        
+
         <div className="user-type-selection">
           <label>
             <input
@@ -94,16 +99,19 @@ const Login = () => {
               checked={userType === 'admin'}
               onChange={(e) => setUserType(e.target.value)}
             />
-            Admin 
+            Admin
           </label>
         </div>
 
         <button type="submit">Login</button>
       </form>
-      
+
       <p>
-        Don't have an account? 
-        <Link to="/create-user" style={{ marginLeft: '5px', textDecoration: 'underline', color: '#007BFF' }}>
+        Don't have an account?
+        <Link
+          to="/create-user"
+          style={{ marginLeft: '5px', textDecoration: 'underline', color: '#007BFF' }}
+        >
           Create Account
         </Link>
       </p>
