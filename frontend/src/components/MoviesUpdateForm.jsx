@@ -8,6 +8,7 @@ const MoviesUpdateForm = () => {
   const [genre, setGenre] = useState('');
   const [description, setDescription] = useState('');
   const [rating, setRating] = useState('');
+  const [price, setPrice] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -24,6 +25,7 @@ const MoviesUpdateForm = () => {
           setTitle(movie.title);
           setGenre(movie.genre);
           setDescription(movie.description);
+          setPrice(movie.price);
           setRating(movie.rating);
         } else {
           setError('Movie not found.');
@@ -50,6 +52,7 @@ const MoviesUpdateForm = () => {
       setTitle(movie.title);
       setGenre(movie.genre);
       setDescription(movie.description);
+      setPrice(movie.price);
       setRating(movie.rating);
     } else {
       setError('Movie not found.');
@@ -69,7 +72,7 @@ const MoviesUpdateForm = () => {
       const response = await fetch(`http://localhost:8080/api/movies/putMovieDetails/${movie_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, genre, description, rating }),
+        body: JSON.stringify({ title, genre, description, price, rating }),
       });
 
       if (!response.ok) {
@@ -114,6 +117,16 @@ const MoviesUpdateForm = () => {
           onChange={(e) => setDescription(e.target.value)}
           required
         />
+
+        <input
+          type="number"
+          placeholder="Price "
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          step="1"
+          required
+        />
+
         <input
           type="number"
           placeholder="New Rating (0-10)"

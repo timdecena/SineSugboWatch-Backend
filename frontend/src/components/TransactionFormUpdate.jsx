@@ -1,11 +1,10 @@
-// src/components/TransactionFormUpdate.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const TransactionFormUpdate = () => {
   const { id } = useParams();
-  const [transaction, setTransaction] = useState({ paymentmethod: '' });
+  const [transaction, setTransaction] = useState({ paymentmethod: '', paymentprice: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,11 +12,11 @@ const TransactionFormUpdate = () => {
       try {
         const response = await axios.get(`http://localhost:8080/api/transaction/getTransactionDetails/${id}`);
         setTransaction(response.data);
+        console.log(response.data); // Debug: log the API response
       } catch (error) {
         console.error('Error fetching transaction:', error);
       }
     };
-
     fetchTransaction();
   }, [id]);
 
@@ -29,7 +28,10 @@ const TransactionFormUpdate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/transaction/updateTransactionDetails/${id}`, transaction);
+      // Only send paymentmethod in the update payload
+      const updatedTransaction = { paymentmethod: transaction.paymentmethod };
+
+      await axios.put(`http://localhost:8080/api/transaction/updateTransactionDetails/${id}`, updatedTransaction);
       alert('Transaction updated successfully');
       navigate('/transactions');
     } catch (error) {

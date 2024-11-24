@@ -44,6 +44,7 @@ public class MoviesService {
         movie.setTitle(newMovieDetails.getTitle());
         movie.setGenre(newMovieDetails.getGenre());
         movie.setDescription(newMovieDetails.getDescription());
+        movie.setPrice(newMovieDetails.getPrice());
         movie.setRating(newMovieDetails.getRating());
         
         return moviesRepo.save(movie);

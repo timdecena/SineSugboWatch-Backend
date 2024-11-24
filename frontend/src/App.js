@@ -87,7 +87,7 @@ function App() {
         <Route path="/update-watchlist/:id" element={<WatchlistFormUpdate />} />
 
         {/* Transaction Management */}
-        <Route path="/create-transaction" element={<TransactionForm />} />
+        <Route path="/transactionform" element={<TransactionForm />} />
         <Route path="/transactions" element={<TransactionList />} />
         <Route path="/update-transaction/:id" element={<TransactionFormUpdate />} />
 

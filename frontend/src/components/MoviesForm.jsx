@@ -6,6 +6,7 @@ const MoviesForm = () => {
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('');
   const [rating, setRating] = useState('');
+  const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const [imagePreview, setImagePreview] = useState('');
   const [imageOptions, setImageOptions] = useState([]);
@@ -58,6 +59,7 @@ const MoviesForm = () => {
           title,
           genre,
           description,
+          price: parseFloat(price),
           rating: parseFloat(rating),
           admin: { adminId: parseInt(adminId) },
         }),
@@ -79,6 +81,7 @@ const MoviesForm = () => {
       setTitle('');
       setDescription('');
       setGenre('');
+      setPrice('');
       setRating('');
       setImage('');
       setImagePreview('');
@@ -118,6 +121,17 @@ const MoviesForm = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Enter description"
+          required
+        />
+
+        <label htmlFor="price">Price</label>
+        <input
+          id="price"
+          type="number"
+          step="1"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          placeholder="Enter Price"
           required
         />
 

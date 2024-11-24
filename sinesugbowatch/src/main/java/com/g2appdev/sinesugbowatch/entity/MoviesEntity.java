@@ -34,13 +34,15 @@ public class MoviesEntity {
     private String title;
     private String genre;
     private String description;
+    private double price;
     private double rating;
+    
 
     public MoviesEntity() {
         super();
     }
 
-    public MoviesEntity(int movie_id, String title, String genre, String description, double rating) {
+    public MoviesEntity(int movie_id, String title, String genre, String description, double price, double rating) {
         super();
         this.movie_id = movie_id;
         this.title = title;
@@ -80,6 +82,14 @@ public class MoviesEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getRating() {

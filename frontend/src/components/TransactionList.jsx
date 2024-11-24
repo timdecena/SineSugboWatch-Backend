@@ -56,6 +56,7 @@ const TransactionList = () => {
           <div key={transaction.transaction_id} className="transaction-card">
             <p><span>ID:</span> {transaction.transaction_id}</p>
             <p><span>Payment Method:</span> {transaction.paymentmethod}</p>
+            <p><span>Payment Price:</span> {transaction.paymentprice}</p>
             <button onClick={() => handleDeleteTransaction(transaction.transaction_id)}>Delete</button>
             <button onClick={() => handleEditTransaction(transaction.transaction_id)}>Edit</button>
           </div>

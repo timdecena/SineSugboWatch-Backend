@@ -16,6 +16,7 @@ public class Transaction {
     private int transaction_id;
 
     private String paymentmethod;
+    private double paymentprice;
     
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
@@ -29,10 +30,11 @@ public class Transaction {
         super();
     }
 
-    public Transaction(int transaction_id, String paymentmethod) {
+    public Transaction(int transaction_id, String paymentmethod, double paymentprice) {
         super();
         this.transaction_id = transaction_id;
         this.paymentmethod = paymentmethod;
+        this.paymentprice = paymentprice;
         
     }
 
@@ -51,6 +53,14 @@ public class Transaction {
 
     public void setPaymentmethod(String paymentmethod) {
         this.paymentmethod = paymentmethod;
+    }
+
+    public double getPaymentprice() {
+        return paymentprice;
+    }
+
+    public void setPaymentprice(double paymentprice) {
+        this.paymentprice = paymentprice;
     }
     
     public UserEntity getUser() {

@@ -63,6 +63,7 @@ public class TransactionService {
 
             // Update the fields with new values
             transaction.setPaymentmethod(newTransactionDetails.getPaymentmethod());
+            transaction.setPaymentprice(newTransactionDetails.getPaymentprice());
 
         } catch (NoSuchElementException nex) {
             throw new NameNotFoundException("Transaction " + id + " not found");
@@ -85,15 +86,22 @@ public class TransactionService {
     }
 
     public Transaction updateTransaction(int id, Transaction updatedTransaction) throws NameNotFoundException {
+        // Find the existing transaction
         Transaction transaction = transactionRepo.findById(id)
             .orElseThrow(() -> new NameNotFoundException("Transaction with ID " + id + " not found."));
     
-        // Set fields of the existing transaction based on the updatedTransaction
+        // Update fields selectively
         transaction.setPaymentmethod(updatedTransaction.getPaymentmethod());
-        // Add any other fields to update here, for example:
-        // transaction.setTransactionDate(updatedTransaction.getTransactionDate());
+    
+        // Only update paymentprice if it is a valid (non-zero) value
+        if (updatedTransaction.getPaymentprice() != 0) {
+            transaction.setPaymentprice(updatedTransaction.getPaymentprice());
+        }
     
         return transactionRepo.save(transaction);
     }
+    
+
+    
     
 }
