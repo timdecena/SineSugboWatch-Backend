@@ -8,8 +8,10 @@ import javax.naming.NameNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.g2appdev.sinesugbowatch.entity.MoviesEntity;
 import com.g2appdev.sinesugbowatch.entity.UserEntity;
 import com.g2appdev.sinesugbowatch.entity.WatchlistEntity;
+import com.g2appdev.sinesugbowatch.repository.MoviesRepository;
 import com.g2appdev.sinesugbowatch.repository.UserRepository;
 import com.g2appdev.sinesugbowatch.repository.WatchlistRepository;
 
@@ -23,6 +25,9 @@ public class WatchlistService {
     
     @Autowired
     UserRepository userRepo;
+
+    @Autowired
+    private MoviesRepository moviesRepo;
 
     // Create
     public WatchlistEntity postWatchlistRecord(WatchlistEntity watchlist) {
@@ -73,5 +78,33 @@ public class WatchlistService {
 
         return watchlistRepo.save(watchlist);
 }
+
+     public WatchlistEntity addMovieToWatchlist(int watchlistId, int movieId) {
+        WatchlistEntity watchlist = watchlistRepo.findById(watchlistId)
+                .orElseThrow(() -> new NoSuchElementException("Watchlist with ID " + watchlistId + " not found."));
+        MoviesEntity movie = moviesRepo.findById(movieId)
+                .orElseThrow(() -> new NoSuchElementException("Movie with ID " + movieId + " not found."));
+
+        watchlist.getMovies().add(movie);
+        return watchlistRepo.save(watchlist);
+    }
+
+    // Remove a movie from a watchlist
+    public WatchlistEntity removeMovieFromWatchlist(int watchlistId, int movieId) {
+        WatchlistEntity watchlist = watchlistRepo.findById(watchlistId)
+                .orElseThrow(() -> new NoSuchElementException("Watchlist with ID " + watchlistId + " not found."));
+        MoviesEntity movie = moviesRepo.findById(movieId)
+                .orElseThrow(() -> new NoSuchElementException("Movie with ID " + movieId + " not found."));
+
+        watchlist.getMovies().remove(movie);
+        return watchlistRepo.save(watchlist);
+    }
+
+    // Fetch movies in a watchlist
+    public List<MoviesEntity> getMoviesInWatchlist(int watchlistId) {
+        WatchlistEntity watchlist = watchlistRepo.findById(watchlistId)
+                .orElseThrow(() -> new NoSuchElementException("Watchlist with ID " + watchlistId + " not found."));
+        return watchlist.getMovies();
+    }
 
 }

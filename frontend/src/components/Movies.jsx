@@ -73,7 +73,7 @@ const Movies = () => {
                   alt={movie.title}
                   className="movie-image"
                 />
-                <p><strong>Title:</strong> {movie.title}</p>
+                <p>{movie.title}</p>
               </Link>
               {userType === 'admin' && (
                 <div className="admin-buttons">

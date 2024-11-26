@@ -8,6 +8,9 @@ const WatchlistList = () => {
   const userId = localStorage.getItem('user_id');
   const username = localStorage.getItem('username'); // Retrieve username from localStorage
   const navigate = useNavigate();
+  const handleViewWatchlist = (id) => {
+    navigate(`/watchlist/${id}`);
+  };
 
   useEffect(() => {
     const fetchWatchlist = async () => {
@@ -62,6 +65,7 @@ const WatchlistList = () => {
               Delete
             </button>
             <button onClick={() => handleEditWatchlist(item.watchlist_id)}>Edit Watchlist</button>
+            <button onClick={() => handleViewWatchlist(item.watchlist_id)}>View Watchlist</button>
           </div>
         ))
       ) : (

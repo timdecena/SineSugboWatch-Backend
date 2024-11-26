@@ -34,6 +34,7 @@ import MoviesUpdateForm from './components/MoviesUpdateForm';
 import WatchlistForm from './components/WatchlistForm';
 import WatchlistList from './components/WatchlistList';
 import WatchlistFormUpdate from './components/WatchlistFormUpdate';
+import WatchlistMovies from './components/WatchlistMovies';
 
 // Transaction management
 import TransactionForm from './components/TransactionForm';
@@ -85,6 +86,8 @@ function App() {
         <Route path="/create-watchlist" element={<WatchlistForm />} />
         <Route path="/watchlists" element={<WatchlistList />} />
         <Route path="/update-watchlist/:id" element={<WatchlistFormUpdate />} />
+        <Route path="/watchlist/:id" element={<WatchlistMovies />} />
+
 
         {/* Transaction Management */}
         <Route path="/transactionform" element={<TransactionForm />} />

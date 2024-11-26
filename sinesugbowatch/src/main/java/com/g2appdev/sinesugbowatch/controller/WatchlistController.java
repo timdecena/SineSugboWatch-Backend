@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.g2appdev.sinesugbowatch.entity.MoviesEntity;
 import com.g2appdev.sinesugbowatch.entity.WatchlistEntity;
 import com.g2appdev.sinesugbowatch.service.WatchlistService;
 
@@ -68,5 +69,28 @@ public class WatchlistController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update watchlist.");
      }
 }
+
+    // Add a movie to a watchlist
+    @PostMapping("/{watchlistId}/addMovie/{movieId}")
+    public ResponseEntity<WatchlistEntity> addMovieToWatchlist(
+            @PathVariable int watchlistId,
+            @PathVariable int movieId) {
+        return ResponseEntity.ok(watchlistService.addMovieToWatchlist(watchlistId, movieId));
+    }
+
+
+    // Remove a movie from a watchlist
+    @DeleteMapping("/{watchlistId}/removeMovie/{movieId}")
+    public ResponseEntity<WatchlistEntity> removeMovieFromWatchlist(
+            @PathVariable int watchlistId,
+            @PathVariable int movieId) {
+        return ResponseEntity.ok(watchlistService.removeMovieFromWatchlist(watchlistId, movieId));
+    }
+
+    // Get all movies in a watchlist
+    @GetMapping("/{watchlistId}/movies")
+    public ResponseEntity<List<MoviesEntity>> getMoviesInWatchlist(@PathVariable int watchlistId) {
+        return ResponseEntity.ok(watchlistService.getMoviesInWatchlist(watchlistId));
+    }
 
 }
