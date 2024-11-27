@@ -29,6 +29,7 @@ import PreferencesFormUpdate from './components/PreferencesFormUpdate';
 import MoviesForm from './components/MoviesForm';
 import MoviesList from './components/MoviesList';
 import MoviesUpdateForm from './components/MoviesUpdateForm';
+import SearchedMovies from './components/SearchedMovies';
 
 // Watchlist management
 import WatchlistForm from './components/WatchlistForm';
@@ -81,6 +82,7 @@ function App() {
         <Route path="/create-movie" element={<MoviesForm />} />
         <Route path="/movielist" element={<MoviesList />} />
         <Route path="/update-movie/:movie_id" element={<MoviesUpdateForm />} />
+        <Route path="/searched-movies" element={<SearchedMovies />} />
 
         {/* Watchlist Management */}
         <Route path="/create-watchlist" element={<WatchlistForm />} />

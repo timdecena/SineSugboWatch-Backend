@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.g2appdev.sinesugbowatch.entity.MoviesEntity;
@@ -71,4 +72,17 @@ public class MoviesController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @GetMapping("/searchMovies")
+    public ResponseEntity<List<MoviesEntity>> searchMovies(
+    @RequestParam(required = false) String title,
+    @RequestParam(required = false) String genre,
+    @RequestParam(required = false) Double priceMin,
+    @RequestParam(required = false) Double priceMax,
+    @RequestParam(required = false) Double ratingMin,
+    @RequestParam(required = false) Double ratingMax
+) {
+    return ResponseEntity.ok(moviesService.searchMovies(title, genre, priceMin, priceMax, ratingMin, ratingMax));
+}
+
 }

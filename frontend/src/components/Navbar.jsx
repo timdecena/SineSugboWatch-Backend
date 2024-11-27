@@ -5,6 +5,13 @@ import '../assets/Navbar.css';
 const Navbar = () => {
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [searchModalVisible, setSearchModalVisible] = useState(false);
+  const [filters, setFilters] = useState({
+    title: '',
+    genre: '',
+    priceRange: { min: '', max: '' },
+    ratingRange: { min: '', max: '' },
+  });
 
   const username = localStorage.getItem('username');
   const userType = localStorage.getItem('userType');
@@ -17,6 +24,27 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const handleSearch = () => {
+    setSearchModalVisible(false);
+    navigate('/searched-movies', { state: filters });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name.includes('price') || name.includes('rating')) {
+      const [key, range] = name.split('-');
+      setFilters((prev) => ({
+        ...prev,
+        [`${key}Range`]: { ...prev[`${key}Range`], [range]: value },
+      }));
+    } else {
+      setFilters((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -26,7 +54,6 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className="nav-links">
-          {/* Remove the Home link */}
           <li><Link to="/genre">Genre</Link></li>
           <li><Link to="/watchlists">Watchlist</Link></li>
           <li><Link to="/movies">Movies</Link></li>
@@ -35,8 +62,7 @@ const Navbar = () => {
           <li><Link to="/recents">Recents</Link></li>
         </ul>
         <div className="search-bar">
-          <input type="text" placeholder="Search..." />
-          <button>🔍</button>
+          <button onClick={() => setSearchModalVisible(true)}>🔍</button>
         </div>
         
         {username ? (
@@ -54,16 +80,13 @@ const Navbar = () => {
               <button className="dropdown-toggle">Options</button>
               {dropdownVisible && (
                 <div className="dropdown-menu" style={{ position: 'absolute', backgroundColor: '#333', padding: '10px' }}>
-                  
-
                   {userType === 'user' && (
                     <>
-                    <Link to="/users" className="dropdown-item">User Details</Link>
-                    <Link to="/search" className="dropdown-item">Search History</Link>
-                    <Link to="/pref" className="dropdown-item">View Current Preferences</Link>
-                    <Link to="/transactions" className="dropdown-item">View Current Transactions</Link>
-                    <Link to="/watchlists" className="dropdown-item">View Current Watchlists</Link>
-                    <Link to="/movies" className="dropdown-item">View All Movies</Link>
+                      <Link to="/users" className="dropdown-item">User Details</Link>
+                      <Link to="/pref" className="dropdown-item">View Current Preferences</Link>
+                      <Link to="/transactions" className="dropdown-item">View Current Transactions</Link>
+                      <Link to="/watchlists" className="dropdown-item">View Current Watchlists</Link>
+                      <Link to="/movies" className="dropdown-item">View All Movies</Link>
                     </>
                   )}
 
@@ -90,6 +113,73 @@ const Navbar = () => {
           </div>
         )}
       </div>
+
+      {/* Search Modal */}
+      {searchModalVisible && (
+        <div className="search-modal">
+          <div className="search-modal-content">
+            <h2>Search Movies</h2>
+            <div className="search-field">
+              <label>Title</label>
+              <input
+                type="text"
+                name="title"
+                value={filters.title}
+                onChange={handleChange}
+                placeholder="Enter movie title"
+              />
+            </div>
+            <div className="search-field">
+              <label>Genre</label>
+              <input
+                type="text"
+                name="genre"
+                value={filters.genre}
+                onChange={handleChange}
+                placeholder="Enter genre"
+              />
+            </div>
+            <div className="search-field">
+              <label>Price Range</label>
+              <input
+                type="number"
+                name="price-min"
+                value={filters.priceRange.min}
+                onChange={handleChange}
+                placeholder="Min"
+              />
+              <input
+                type="number"
+                name="price-max"
+                value={filters.priceRange.max}
+                onChange={handleChange}
+                placeholder="Max"
+              />
+            </div>
+            <div className="search-field">
+              <label>Rating Range</label>
+              <input
+                type="number"
+                name="rating-min"
+                value={filters.ratingRange.min}
+                onChange={handleChange}
+                placeholder="Min"
+              />
+              <input
+                type="number"
+                name="rating-max"
+                value={filters.ratingRange.max}
+                onChange={handleChange}
+                placeholder="Max"
+              />
+            </div>
+            <div className="search-buttons">
+              <button onClick={handleSearch}>Search</button>
+              <button onClick={() => setSearchModalVisible(false)}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

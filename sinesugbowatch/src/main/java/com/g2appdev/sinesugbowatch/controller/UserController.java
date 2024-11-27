@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.g2appdev.sinesugbowatch.entity.UserEntity;
@@ -69,4 +70,28 @@ public UserEntity putUserDetails(@PathVariable int id, @RequestBody UserEntity n
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
+
+   // Check if username exists
+    // Check if username exists
+@GetMapping("/checkUsername")
+public ResponseEntity<String> checkUsername(@RequestParam String username) {
+    boolean exists = userService.isUsernameTaken(username);
+    if (exists) {
+        // Send a plain text response
+        return ResponseEntity.badRequest().body("Username already exists.");
+    }
+    return ResponseEntity.ok("Username is available.");
+}
+
+// Check if email exists
+@GetMapping("/checkEmail")
+public ResponseEntity<String> checkEmail(@RequestParam String email) {
+    boolean exists = userService.isEmailTaken(email);
+    if (exists) {
+        // Send a plain text response
+        return ResponseEntity.badRequest().body("Email already in use.");
+    }
+    return ResponseEntity.ok("Email is available.");
+}
+
 }

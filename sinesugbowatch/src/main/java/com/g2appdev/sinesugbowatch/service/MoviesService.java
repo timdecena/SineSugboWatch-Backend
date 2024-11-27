@@ -2,6 +2,7 @@ package com.g2appdev.sinesugbowatch.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,4 +66,16 @@ public class MoviesService {
         return moviesRepo.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Movie with ID " + id + " not found."));
     }
+
+    public List<MoviesEntity> searchMovies(String title, String genre, Double priceMin, Double priceMax, Double ratingMin, Double ratingMax) {
+    return moviesRepo.findAll().stream().filter(movie -> {
+        return (title == null || movie.getTitle().toLowerCase().contains(title.toLowerCase())) &&
+               (genre == null || movie.getGenre().toLowerCase().contains(genre.toLowerCase())) &&
+               (priceMin == null || movie.getPrice() >= priceMin) &&
+               (priceMax == null || movie.getPrice() <= priceMax) &&
+               (ratingMin == null || movie.getRating() >= ratingMin) &&
+               (ratingMax == null || movie.getRating() <= ratingMax);
+    }).collect(Collectors.toList());
+}
+
 }

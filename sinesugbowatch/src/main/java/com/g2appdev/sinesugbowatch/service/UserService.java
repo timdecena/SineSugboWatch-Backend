@@ -66,4 +66,12 @@ public class UserService {
             throw new IllegalArgumentException("Invalid password");
         }
     }
+
+    public boolean isUsernameTaken(String username) {
+        return userRepo.findByUsername(username) != null;
+    }
+
+    public boolean isEmailTaken(String email) {
+        return userRepo.findByEmail(email) != null;
+    }
 }
