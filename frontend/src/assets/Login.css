@@ -100,11 +100,6 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.login-container button:hover {
-  background-color: #457b9d; /* Soft teal for button hover */
-  transform: scale(1.05); /* Subtle zoom effect */
-}
-
 .login-container p {
   margin-top: 15px;
   color: #000; /* Black color for better visibility */
