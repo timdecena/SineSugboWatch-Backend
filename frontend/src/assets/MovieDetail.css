@@ -66,28 +66,22 @@
 
 /* Buttons Container */
 .movie-buttons {
-  margin: 20px 0;
   display: flex;
-  justify-content: center; /* Center the buttons horizontally */
-  gap: 20px; /* Ensure space between buttons */
-  flex-wrap: wrap; /* Allow buttons to wrap if needed */
+  flex-direction: column;
+  gap: 10px; /* Add spacing between the buttons */
+  align-items: flex-start; /* Align buttons to the left */
 }
 
-/* Button Styling */
-.add-to-watchlist-button,
 .add-transaction-button {
-  background-color: #457b9d; /* Teal background for both buttons */
+  background-color: #007bff; /* Teal background for both buttons */
   color: #f1faee; /* Light text for readability */
   border: none;
-  padding: 12px 25px;
   border-radius: 8px; /* Rounded corners for both buttons */
   cursor: pointer;
   font-size: 1rem;
   transition: all 0.3s ease;
   width: 100%; /* Make the buttons take up full available width */
-  max-width: 250px; /* Limit the width for larger screens */
-  text-align: center;
-  box-sizing: border-box; /* Ensures the padding is considered in width */
+  max-width: 170px; /* Limit the width for larger screens */
 }
 
 /* Ensure Buttons are aligned in a row */
@@ -96,34 +90,7 @@
   width: 100%; /* Full width within their container */
 }
 
-/* Hover Effect for Buttons */
-.add-to-watchlist-button:hover,
-.add-transaction-button:hover {
-  background-color: #1d3557; /* Darker teal on hover */
-  transform: scale(1.05); /* Slight scale effect for interactivity */
-}
 
-/* Aligning Vidcloud button specifically */
-.vidcloud-button {
-  background-color: #f1faee; /* Light background for Vidcloud button */
-  color: #333; /* Dark text for readability */
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px; /* Rounded corners */
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  width: 100%; /* Full width within the container */
-  max-width: 250px; /* Limit width */
-  text-align: center;
-}
-
-.vidcloud-button:hover {
-  background-color: #f0f0f0; /* Lighter background on hover */
-}
-
-/* Dropdown container */
-/* Ensure the dropdown menu is positioned below the button */
 .dropdown-menu {
   position: absolute;
   top: 100%; /* Position below the button */

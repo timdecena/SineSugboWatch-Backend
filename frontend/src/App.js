@@ -1,13 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import PopularMovies from './components/PopularMovies';
-import Genre from './components/Genre';
-import Watchlist from './components/Watchlist';
 import MovieDetail from './components/MovieDetail';
 import Movies from './components/Movies';
-import TVShows from './components/TVShows';
-import TopIMDB from './components/TopIMDB';
-import Recents from './components/Recents';
 import Login from './components/Login';
 
 // User management
@@ -44,9 +39,6 @@ import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import TransactionFormUpdate from './components/TransactionFormUpdate';
 
-// Search management
-import SearchForm from './components/SearchForm';
-import SearchList from './components/SearchList';
 
 
 function App() {
@@ -56,13 +48,8 @@ function App() {
       <Routes>
         {/* Main Routes */}
         <Route path="/" element={<PopularMovies />} />
-        <Route path="/genre" element={<Genre />} />
-        <Route path="/watchlist" element={<Watchlist />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/tv-shows" element={<TVShows />} />
-        <Route path="/top-imdb" element={<TopIMDB />} />
-        <Route path="/recents" element={<Recents />} />
         <Route path="/login" element={<Login />} />
 
         {/* User Management */}
@@ -99,11 +86,7 @@ function App() {
         <Route path="/transactionform" element={<TransactionForm />} />
         <Route path="/transactions" element={<TransactionList />} />
         <Route path="/update-transaction/:id" element={<TransactionFormUpdate />} />
-
-        {/* Search Management */}
-        <Route path="/create-search" element={<SearchForm />} />
-        <Route path="/search" element={<SearchList />} />
-
+        
       </Routes>
     </Router>
   );
