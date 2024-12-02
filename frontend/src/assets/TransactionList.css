@@ -28,7 +28,6 @@
 
 /* Transaction Card Styling */
 .transaction-card {
-    background-color: #f5f7fa; /* Light background for a clean look */
     padding: 1.8rem;
     border-radius: 10px;
     margin-top: 1.2rem;
@@ -36,7 +35,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Light shadow for subtle depth */
+    background-color: transparent; /* Remove white background for cleaner look */
+    box-shadow: none; /* Remove box shadow */
     transition: transform 0.2s ease;
 }
 
