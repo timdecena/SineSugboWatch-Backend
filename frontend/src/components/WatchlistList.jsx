@@ -57,7 +57,6 @@ const WatchlistList = () => {
       {watchlist.length > 0 ? (
         watchlist.map((item) => (
           <div key={item.watchlist_id} className="watchlist-card">
-            <p><span>ID:</span> {item.watchlist_id}</p>
             <p><span>Watchlist Name:</span> {item.listname}</p>
             <div className="watchlist-actions">
               <button className="delete" onClick={() => handleDeleteWatchlist(item.watchlist_id, item.listname)}>
@@ -76,7 +75,7 @@ const WatchlistList = () => {
         <p className="no-watchlist-message">No watchlist found.</p>
       )}
       <button className="create" onClick={handleCreateWatchlist}>Create Watchlist</button>
-    </div>
+    </div> 
   );
 };
 

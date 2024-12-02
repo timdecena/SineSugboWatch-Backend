@@ -1,0 +1,131 @@
+/* Global container for the admin list */
+.admin-container {
+    max-width: 900px; /* Larger container for better alignment */
+    width: 90%; /* Responsive width */
+    margin: 40px auto; /* Centered layout */
+    padding: 30px;
+    border-radius: 15px; /* Softer corners for a modern look */
+    background-color: #18202b; /* Dark blue background */
+    color: #fff; /* White text for contrast */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
+    font-family: 'Helvetica Neue', sans-serif; /* Clean, professional font */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Heading for the admin list */
+  .admin-container h2 {
+    text-align: center;
+    color: #00b8d4; /* Soft cyan accent */
+    margin-bottom: 25px;
+    font-size: 2.5rem; /* Larger font size */
+    font-weight: 600; /* Semi-bold font */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Soft, subtle shadow */
+  }
+  
+  /* Admin list styling */
+  .admin-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Spacing between admin cards */
+  }
+  
+  /* Admin list item card */
+  .admin-list-item {
+    background-color: #2c3e50; /* Darker card background */
+    padding: 20px;
+    width: 100%;
+    max-width: 600px; /* Limit card width */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Left-align text */
+  }
+  
+  .admin-list-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Elevated shadow for hover effect */
+  }
+  
+  /* Admin info text styling */
+  .admin-list-item p {
+    font-size: 1rem;
+    color: #ecf0f1; /* Light grey for readability */
+    margin: 8px 0;
+    line-height: 1.6;
+  }
+  
+  .admin-list-item span {
+    font-weight: bold;
+    color: #00b8d4; /* Soft cyan for labels */
+  }
+  
+  /* Action buttons container */
+  .action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  /* Button styling */
+  button {
+    width: 100%;
+    padding: 14px 0;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase; /* Uppercase for modern style */
+  }
+  
+  /* Update button styling */
+  .update-button {
+    background-color: #00b8d4; /* Fresh cyan */
+    color: #18202b; /* Dark text for contrast */
+  }
+  
+  .update-button:hover {
+    background-color: #00a2b1; /* Slightly darker cyan on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  /* Delete button styling */
+  .delete-button {
+    background-color: #e74c3c; /* Red for delete */
+    color: #fff;
+    width: auto;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05);
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .admin-container {
+      max-width: 100%; /* Full width on smaller screens */
+      padding: 20px; /* Reduce padding */
+    }
+  
+    .admin-container h2 {
+      font-size: 1.8rem; /* Smaller heading */
+    }
+  
+    .admin-list-item {
+      width: 100%; /* Full width on smaller screens */
+    }
+  
+    button {
+      font-size: 1rem; /* Smaller button text on mobile */
+    }
+  }
+  

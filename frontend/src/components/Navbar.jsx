@@ -30,7 +30,7 @@ const Navbar = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; 
     if (name.includes('price') || name.includes('rating')) {
       const [key, range] = name.split('-');
       setFilters((prev) => ({
@@ -80,7 +80,7 @@ const Navbar = () => {
               onMouseLeave={() => setDropdownVisible(false)}
               style={{ position: 'relative' }}
             >
-              <button className="dropdown-toggle">Options</button>
+              <button className="dropdown-toggled">Options</button>
               {dropdownVisible && (
                 <div className="dropdown-menu" style={{ position: 'absolute', backgroundColor: '#333', padding: '10px' }}>
                   {userType === 'user' && (
@@ -103,7 +103,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <button onClick={handleLogout} style={{ backgroundColor: '#555', color: 'white', border: 'none', padding: '0.5rem', cursor: 'pointer' }}>
+            <button onClick={handleLogout} style={{ backgroundColor: '#e63946', color: 'white', border: 'none', padding: '0.5rem', cursor: 'pointer' }}>
               Logout
             </button>
           </div>

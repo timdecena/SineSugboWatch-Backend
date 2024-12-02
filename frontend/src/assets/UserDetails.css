@@ -1,108 +1,150 @@
+/* Global container for user details */
 .user-details-container {
-    max-width: 600px; /* Slightly wider for more content */
-    width: 90%; /* Responsive design */
-    margin: 40px auto; /* Centered layout */
-    padding: 30px; /* Comfortable padding */
-    border-radius: 12px; /* Rounded edges */
-    background-color: rgba(26, 39, 53, 0.95); /* Deep blue background */
-    color: #fff; /* Light text for contrast */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-    font-family: 'Arial', sans-serif; /* Clean font */
-    overflow: hidden; /* Ensure child elements are contained */
+  max-width: 700px; /* Slightly larger container */
+  width: 90%; /* Responsive width */
+  margin: 40px auto; /* Centered layout */
+  padding: 30px;
+  border-radius: 15px; /* Softer corners */
+  background-color: #18202b; /* Dark blue for a more polished look */
+  color: #fff; /* White text for better contrast */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
+  font-family: 'Helvetica Neue', sans-serif; /* Modern, clean font */
+  overflow: hidden; /* Ensure child elements stay contained */
+  border: 1px solid #283c4e; /* Subtle border for definition */
+  display: flex;
+  flex-direction: column; /* Stack cards vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+/* Heading styling for user details */
+.user-details-container h2,
+.user-details-container h3 {
+  text-align: center;
+  color: #00b8d4; /* Soft cyan for fresh, professional accent */
+  margin-bottom: 25px;
+  font-size: 2.2rem; /* Slightly larger font size for impact */
+  font-weight: 600; /* Semi-bold to make headings stand out */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Soft, subtle shadow */
+}
+
+/* Style for user and preference cards */
+.user-card,
+.preference-card {
+  background-color: #2c3e50; /* Slightly darker for a more refined look */
+  padding: 25px;
+  margin-bottom: 25px;
+  margin-right: 20px;
+  border-radius: 12px; /* Softer rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle depth with larger shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animations */
+  width: 100%; /* Ensure cards use full width of container */
+  max-width: 600px; /* Limit maximum width */
+}
+
+.user-card:hover,
+.preference-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Elevated shadow for hover effect */
+}
+
+/* Text styling inside cards */
+.user-card p,
+.preference-card p {
+  font-size: 1rem;
+  color: #ecf0f1; /* Light grey text for better readability */
+  margin: 8px 0; /* Slightly larger space between lines */
+  line-height: 1.6; /* Improved line height for readability */
+}
+
+/* Labels for each piece of data */
+.user-card span,
+.preference-card span {
+  font-weight: bold;
+  color: #00b8d4; /* Teal accent for labels */
+}
+
+/* Button base styling */
+button {
+  width: 100%;
+  padding: 14px 0; /* More padding for a button with better ergonomics */
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px; /* Softer, more refined corners */
+  font-size: 1.1rem; /* Slightly larger font for better clickability */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase; /* All caps for modern look */
+}
+
+/* Update button styling */
+button.update-button {
+  background-color: #00b8d4; /* Fresh cyan */
+  color: #18202b; /* Dark text for contrast */
+}
+
+button.update-button:hover {
+  background-color: #00a2b1; /* Slightly darker cyan */
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Delete button styling */
+button.delete-button {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+button.delete-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+  transform: scale(1.05);
+}
+
+/* Create button for creating new entries */
+button.create {
+  background-color: #00b8d4;
+  color: #18202b;
+  margin-top: 25px;
+}
+
+button.create:hover {
+  background-color: #00a2b1;
+  transform: scale(1.05);
+}
+
+/* Error message styling */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Message for no preferences */
+.no-preference-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #7FDBFF;
+  margin: 25px 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .user-details-container {
+    max-width: 100%; /* Full width on smaller screens */
+    padding: 20px; /* Reduce padding for better spacing */
   }
-  
-  
-  .user-details-container h2,
-  .user-details-container h3 {
-    text-align: center; /* Center the headings */
-    color: #7FDBFF; /* Soft teal accent */
-    margin-bottom: 20px; /* Space below the heading */
-    font-size: 2rem; /* Larger font size for titles */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Strong shadow */
+
+  button {
+    font-size: 1rem; /* Slightly smaller buttons on mobile */
   }
-  
+
   .user-card,
   .preference-card {
-    background-color: #1E2A34; /* Deep blue card background */
-    padding: 20px; /* Padding inside the card */
-    margin-bottom: 20px; /* Space between cards */
-    margin-right: 20px;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+    margin-right: 0; /* No right margin on mobile */
   }
-  
-  
-  .user-card:hover,
-  .preference-card:hover {
-    transform: scale(1.02); /* Slightly larger on hover */
+
+  .user-details-container h2,
+  .user-details-container h3 {
+    font-size: 1.8rem; /* Slightly smaller headings */
   }
-  
-  .user-card p,
-  .preference-card p {
-    font-size: 1rem; /* Consistent font size */
-    color: #fff; /* Light text */
-    margin: 5px 0; /* Minimal space between lines */
-  }
-  
-  .user-card span,
-  .preference-card span {
-    font-weight: bold; /* Emphasized labels */
-    color: #7FDBFF; /* Soft teal for labels */
-  }
-  
-  button {
-    width: 100%; /* Full-width buttons */
-    padding: 10px 0; /* Comfortable padding */
-    margin-top: 10px; /* Space above buttons */
-    border: none; /* Clean button design */
-    border-radius: 8px; /* Rounded corners */
-    font-size: 1rem; /* Standard font size */
-    font-weight: bold; /* Emphasized text */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
-  }
-  
-  button.update-button {
-    background-color: #7FDBFF; /* Soft teal theme */
-    color: #1E2A34; /* Dark text for contrast */
-  }
-  
-  button.update-button:hover {
-    background-color: #66c2b3; /* Slightly darker teal */
-    transform: scale(1.05); /* Slight enlargement */
-  }
-  
-  button.delete-button {
-    background-color: #e74c3c; /* Vibrant red for delete */
-    color: #fff; /* Light text */
-  }
-  
-  button.delete-button:hover {
-    background-color: #c0392b; /* Slightly darker red */
-    transform: scale(1.05); /* Slight enlargement */
-  }
-  
-  button.create {
-    background-color: #7FDBFF; /* Soft teal */
-    color: #1E2A34; /* Deep blue text */
-    margin-top: 20px;
-  }
-  
-  button.create:hover {
-    background-color: #66c2b3; /* Slightly darker teal */
-    transform: scale(1.05); /* Slight enlargement */
-  }
-  
-  .error-message {
-    color: #e74c3c; /* Vibrant red for errors */
-    font-size: 0.9rem; /* Smaller size for error messages */
-    text-align: center; /* Centered text */
-  }
-  
-  .no-preference-message {
-    text-align: center; /* Centered text */
-    font-size: 1rem; /* Consistent font size */
-    color: #7FDBFF; /* Soft teal */
-    margin: 20px 0; /* Space around the message */
-  }
-  
+}

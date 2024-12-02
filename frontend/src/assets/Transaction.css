@@ -1,0 +1,107 @@
+/* Transaction List Page Container */
+.containertransac {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 3rem auto;
+    padding: 2rem;
+    max-width: 700px;
+    background-color: #1d3557; /* Deep blue background */
+    color: #ff0000; /* Soft white text */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  .containertransac h2 {
+    text-align: center; /* Center the headings */
+    color: #7FDBFF; /* Soft teal accent */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 2rem; /* Larger font size for titles */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Strong shadow */
+  }
+  
+  .transaction-card {
+    background-color: #34495e; /* Slightly lighter dark blue */
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .transaction-card p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: #bdc3c7; /* Lighter text for readability */
+  }
+  
+  .transaction-card p span {
+    font-weight: bold;
+    color: #f1faee; /* White text for span */
+  }
+  
+  button {
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    transform: translateY(-2px); /* Subtle lift effect */
+  }
+  
+  /* Delete Button */
+  button.delete {
+    background-color: #c0392b;
+  }
+  
+  button.delete:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Edit Button */
+  button.edit {
+    background-color: #457b9d;
+  }
+  
+  button.edit:hover {
+    background-color: #1d3557;
+  }
+  
+  /* Create Button */
+  button.create {
+    background-color: #e67e22;
+    margin-top: 2rem;
+  }
+  
+  button.create:hover {
+    background-color: #d35400;
+  }
+  
+  /* No Transactions Found Message */
+  .no-transaction-message {
+    color: #bdc3c7;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1.5rem;
+      max-width: 90%;
+    }
+    .transaction-card {
+      padding: 1rem;
+    }
+    button {
+      padding: 0.6rem 1rem;
+    }
+  }
+  
