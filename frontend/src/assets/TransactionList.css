@@ -1,92 +1,135 @@
+/* General Container Styles */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    max-width: 600px;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-content: flex-start;
+    margin: 3rem auto;
+    padding: 2rem;
+    max-width: 700px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Elegant shadow for depth */
+    font-family: 'Roboto', sans-serif; /* Clean and professional font */
 }
 
+/* Header Styling */
 .container h2 {
-    font-size: 1.8rem;
-    color: #e67e22;
-    margin-bottom: 1.2rem;
+    font-size: 2rem;
+    color: #2c3e50; /* Ensure the text is dark */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: transparent; /* Ensure no background color */
+    padding: 0; /* Remove any internal padding */
 }
 
+/* Transaction Card Styling */
 .transaction-card {
-    background-color: #34495e;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 1rem;
+    background-color: #f5f7fa; /* Light background for a clean look */
+    padding: 1.8rem;
+    border-radius: 10px;
+    margin-top: 1.2rem;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Light shadow for subtle depth */
+    transition: transform 0.2s ease;
 }
 
+/* Hover effect for card */
+.transaction-card:hover {
+    transform: translateY(-5px); /* Card lift effect */
+}
+
+/* Transaction Details (No Yellow or Rectangle Border) */
 .transaction-card p {
-    font-size: 1.1rem;
-    margin: 0.5rem 0;
-    color: #bdc3c7;
+    font-size: 1.15rem;
+    color: #34495e; /* Darker text for readability */
+    margin: 0.6rem 0;
+    font-weight: 400;
 }
 
 .transaction-card p span {
-    font-weight: bold;
-    color: #ecf0f1;
+    font-weight: 600;
+    color: #2c3e50; /* Subtle accent color for labels */
 }
 
+/* Button Styling */
 button {
-    padding: 0.6rem 1.2rem;
+    padding: 0.8rem 1.4rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 25px; /* Rounded buttons for a smooth feel */
     font-size: 1rem;
-    color: white;
+    font-weight: 500;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    width: 100%; /* Full-width buttons for modern apps */
 }
 
 /* Delete Button */
 button.delete {
-    background-color: #e74c3c;
+    background-color: #e74c3c; /* Red color for delete */
 }
 button.delete:hover {
-    background-color: #c0392b;
+    background-color: #c0392b; /* Darker red on hover */
 }
 button.delete:active {
-    background-color: #a93226;
+    background-color: #a93226; /* Even darker red on click */
 }
 
 /* Edit Button */
 button.edit {
-    background-color: #3498db;
+    background-color: #3498db; /* Blue color for edit */
 }
 button.edit:hover {
-    background-color: #2980b9;
+    background-color: #2980b9; /* Darker blue on hover */
 }
 button.edit:active {
-    background-color: #1f6395;
+    background-color: #1f6395; /* Even darker blue on click */
 }
 
 /* Create Button */
 button.create {
-    background-color: #2ecc71;
+    background-color: #2ecc71; /* Green color for create */
 }
 button.create:hover {
-    background-color: #27ae60;
+    background-color: #27ae60; /* Darker green on hover */
 }
 button.create:active {
-    background-color: #1f8f4d;
+    background-color: #1f8f4d; /* Even darker green on click */
 }
 
+/* No Transaction Message */
 .no-transaction-message {
     font-size: 1.2rem;
     color: #bdc3c7;
-    margin-top: 1rem;
+    margin-top: 2rem;
     text-align: center;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    .transaction-card {
+        padding: 1.5rem;
+    }
+
+    .transaction-card p {
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
 }
