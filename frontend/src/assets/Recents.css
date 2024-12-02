@@ -1,0 +1,46 @@
+/* Recents.css */
+
+.recents-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .recents-container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .recents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .recents-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .recents-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .recents-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .recents-title {
+    font-size: 1.1rem;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+  }
+  
