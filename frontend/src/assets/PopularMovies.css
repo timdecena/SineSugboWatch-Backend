@@ -9,7 +9,7 @@
     color: #fff;
     text-align: center;
     position: relative;
-    background-image: url('../assets/images/the_creator_poster.jpg'); /* Adjust the path if needed */
+    background-image: url('../assets/images/back.gif'); /* Adjust the path if needed */
     background-size: cover;
     background-position: center;
   }
