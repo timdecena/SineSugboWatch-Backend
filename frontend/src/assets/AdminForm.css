@@ -1,91 +1,101 @@
-/* AdminForm.css */
-
-/* Form Container Styling */
+/* Admin Form Container */
 .admin-container {
+    max-width: 500px; /* Limit width to keep the form compact */
+    width: 90%; /* Responsive width */
+    margin: 40px auto; /* Center the form */
+    padding: 30px;
+    background-color: #2c3e50; /* Dark blue background */
+    border-radius: 15px; /* Rounded corners for a soft, professional look */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    color: #fff; /* White text for contrast */
+    font-family: 'Helvetica Neue', sans-serif; /* Clean font */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Full height of the viewport */
-    padding: 20px; /* Adjusted padding */
-    background-color: #7FDBFF; /* Soft teal background for the container */
-}
-
-/* Heading Style */
-.admin-container h2 {
-    font-size: 2.4rem;
-    color: #1d3557; /* Deep blue for the heading */
-    font-weight: 700;
-    margin-bottom: 30px;
+  }
+  
+  /* Title of the form */
+  .admin-container h2 {
+    color: #00b8d4; /* Soft cyan accent color */
+    font-size: 2rem; /* Larger title font */
+    margin-bottom: 25px;
+    font-weight: 600; /* Semi-bold font for title */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Soft text shadow */
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Form Layout */
-.admin-container form {
+  }
+  
+  /* Form styling */
+  form {
+    width: 100%; /* Full width form */
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 450px; /* Max width for the form */
-    background-color: #f1faee; /* Light background for the form */
-    padding: 25px;
+    gap: 20px; /* Space between inputs */
+  }
+  
+  input {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 2px solid #34495e; /* Dark border color */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-}
-
-.admin-container form:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* Input Fields */
-.admin-container input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    border: 1px solid #457b9d; /* Soft teal border */
-    border-radius: 8px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.admin-container input:focus {
-    border-color: #1d3557; /* Deep blue for focus */
-    box-shadow: 0 0 5px rgba(29, 53, 87, 0.5); /* Subtle glow effect */
+    background-color: #34495e; /* Slightly lighter background for inputs */
+    color: #ecf0f1; /* Light gray text */
     outline: none;
-}
-
-/* Button Styling */
-.admin-container button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #ffffff;
-    background-color: #1d3557; /* Deep blue for professionalism */
+    transition: border 0.3s ease, background-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #00b8d4; /* Highlight border with cyan on focus */
+    background-color: #2c3e50; /* Darken background on focus */
+  }
+  
+  /* Submit button styling */
+  button {
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
     border: none;
-    border-radius: 8px;
+    background-color: #00b8d4; /* Cyan for the button */
+    color: #18202b; /* Dark text for contrast */
+    border-radius: 10px; /* Rounded corners for buttons */
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.admin-container button:hover {
-    background-color: #457b9d; /* Soft teal for hover effect */
-    box-shadow: 0 4px 8px rgba(69, 123, 157, 0.3); /* Subtle shadow */
-}
-
-/* Success and Error Messages */
-.success-message {
-    color: #38a169; /* Soft green for success */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase; /* Uppercase text for buttons */
+  }
+  
+  button:hover {
+    background-color: #00a2b1; /* Slightly darker cyan on hover */
+    transform: scale(1.05); /* Button zoom effect on hover */
+  }
+  
+  button:active {
+    transform: scale(1); /* Normal scale on button click */
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #e74c3c; /* Red color for error messages */
     font-size: 1rem;
-    margin-top: 15px;
     text-align: center;
-}
-
-.error-message {
-    color: #e53e3e; /* Red for error */
-    font-size: 1rem;
-    margin-top: 15px;
-    text-align: center;
-}
+    margin-top: 20px;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .admin-container {
+      max-width: 100%; /* Full width on smaller screens */
+      padding: 20px; /* Reduced padding */
+    }
+  
+    .admin-container h2 {
+      font-size: 1.8rem; /* Smaller title font size */
+    }
+  
+    input {
+      font-size: 0.95rem; /* Slightly smaller input text */
+    }
+  
+    button {
+      font-size: 1rem; /* Slightly smaller button text */
+    }
+  }
+  
