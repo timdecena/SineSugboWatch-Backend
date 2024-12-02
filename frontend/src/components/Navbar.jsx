@@ -62,7 +62,7 @@ const Navbar = () => {
           <li><Link to="/movies">Movies</Link></li>
           <li><Link to="/watchlists">Watchlist</Link></li>
           <li><Link to="/recommendations">Recommendations</Link></li>
-          <li><Link to="/tv-shows">About Us</Link></li>
+          <li><Link to="/about-us">About Us</Link></li>
         </ul>
         <div className="search-bar">
           <button onClick={() => setSearchModalVisible(true)}>🔍</button>

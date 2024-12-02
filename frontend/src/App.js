@@ -5,7 +5,7 @@ import Genre from './components/Genre';
 import Watchlist from './components/Watchlist';
 import MovieDetail from './components/MovieDetail';
 import Movies from './components/Movies';
-import TVShows from './components/TVShows';
+import AboutUs from './components/AboutUs';
 import TopIMDB from './components/TopIMDB';
 import Recents from './components/Recents';
 import Login from './components/Login';
@@ -60,7 +60,7 @@ function App() {
         <Route path="/watchlist" element={<Watchlist />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/tv-shows" element={<TVShows />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/top-imdb" element={<TopIMDB />} />
         <Route path="/recents" element={<Recents />} />
         <Route path="/login" element={<Login />} />

@@ -1,31 +1,178 @@
-.tvshows-container {
-    padding: 20px;
-    color: #ffffff;
+.about-us-container {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.about-us-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 10px;
+  background-color: #222;
+  color: white;
+  border-radius: 5px;
+}
+
+.about-us-header h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.about-us-content {
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-content p {
+  font-size: 18px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.about-us-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.about-us-footer h3 {
+  font-size: 24px;
+  color: #333;
+}
+
+.about-us-footer ul {
+  list-style-type: none;
+  padding: 0;
+  display: inline-block;
+}
+
+.about-us-footer ul li {
+  font-size: 18px;
+  color: #555;
+  margin: 10px 0;
+  position: relative;
+  padding-left: 30px;
+}
+
+.about-us-footer ul li:before {
+  content: '✔'; /* Using a check mark as a simple icon */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 20px;
+  color: #007bff; /* Blue color */
+}
+
+.about-us-footer ul li:last-child {
+  margin-bottom: 0;
+}
+
+.contact-us {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.contact-us h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.contact-us ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 18px;
+  color: #555;
+}
+
+.contact-us ul li {
+  margin: 10px 0;
+}
+
+.contact-us a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-us a:hover {
+  text-decoration: underline;
+}
+
+.developer-credits {
+  margin-top: 40px;
+  text-align: center;
+  padding: 20px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+}
+
+.developer-credits h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.developer-credits p {
+  font-size: 18px;
+  color: #555;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 10px;
+  background-color: #222;
+  color: white;
+  border-radius: 5px;
+}
+
+.footer p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-us-header h1 {
+      font-size: 28px;
   }
-  
-  .tvshows-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+
+  .about-us-content p {
+      font-size: 16px;
   }
-  
-  .tvshow-item {
-    background-color: #333;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    text-decoration: none;
+
+  .about-us-footer h3 {
+      font-size: 20px;
   }
-  
-  .tvshow-placeholder {
-    width: 100%;
-    height: 200px;
-    background-color: #555;
-    margin-bottom: 10px;
+
+  .about-us-footer ul li {
+      font-size: 16px;
   }
-  
-  .tvshow-item:hover {
-    background-color: #444;
+
+  .contact-us h3 {
+      font-size: 20px;
   }
-  
+
+  .contact-us ul li {
+      font-size: 16px;
+  }
+
+  .developer-credits h3 {
+      font-size: 20px;
+  }
+
+  .developer-credits p {
+      font-size: 16px;
+  }
+
+  .footer p {
+      font-size: 12px;
+  }
+}
