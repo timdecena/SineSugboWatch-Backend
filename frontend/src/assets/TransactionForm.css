@@ -1,0 +1,91 @@
+.transaction-form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    color: #1d3557;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #1d3557;
+  }
+  
+  .form-value {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #1d3557;
+  }
+  
+  /* Custom dropdown styles */
+  .custom-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #1d3557;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: white;
+  }
+  
+  .dropdown-item img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .dropdown-item.selected {
+    background-color: #457b9d;
+    color: white;
+  }
+  
+  /* Button styling */
+  .submit-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1d3557;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #457b9d;
+  }
+  
