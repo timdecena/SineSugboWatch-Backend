@@ -118,7 +118,7 @@ function MovieDetail() {
               <div className="dropdown-menu">
                 {watchlists.map((watchlist) => (
                   <button
-                    key={watchlist.watchlist_id}
+                    key={watchlist.watchlist_id} 
                     className="dropdown-items"
                     onClick={() => {
                       handleAddToWatchlist(watchlist.watchlist_id);
