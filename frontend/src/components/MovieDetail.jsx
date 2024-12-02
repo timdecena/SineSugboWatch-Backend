@@ -94,30 +94,24 @@ function MovieDetail() {
           <img src={posterImage} alt={`${movieData.title} Poster`} className="poster-image" />
           <p className="movie-title-year">
             {movieData.title} <br />
-            [HD MOVIE] [125 mins]
           </p>
         </div>
         <div className="movie-info">
           <h1>{movieData.title}</h1>
           <div className="movie-stats">
             <span className="hd-label">HD</span>
-            <span className="imdb-rating">IMDB: Rating {movieData.rating}</span>
-            <span className="movie-length">Length: 125 mins</span>
-          </div>
-          <div className="movie-buttons">
-            <button className="upload-button">UPCLOUD</button>
-            <button className="vidcloud-button">VIDCLOUD</button>
+            <span className="imdb-rating">Rating {movieData.rating}</span>
           </div>
           <p className="movie-overview">{movieData.description}</p>
           <div className="movie-details">
-            <p><strong>ID:</strong> {movieData.movie_id}</p>
             <p><strong>Genre:</strong> {movieData.genre}</p>
             <p><strong>Price:</strong> {movieData.price}</p>
             <p><strong>Rating:</strong> {movieData.rating}</p>
           </div>
 
+          <div className="movie-buttons">
           <div className="dropdown-container">
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-toggle">
+            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-toggles">
               {dropdownOpen ? 'Select Watchlist' : 'Add to Watchlist'}
             </button>
             {dropdownOpen && (
@@ -125,7 +119,7 @@ function MovieDetail() {
                 {watchlists.map((watchlist) => (
                   <button
                     key={watchlist.watchlist_id}
-                    className="dropdown-item"
+                    className="dropdown-items"
                     onClick={() => {
                       handleAddToWatchlist(watchlist.watchlist_id);
                       setDropdownOpen(false);
@@ -138,10 +132,11 @@ function MovieDetail() {
             )}
           </div>
 
-          <button onClick={handleAddTransaction} className="transaction-button">
-            Add Transaction
+          <button onClick={handleAddTransaction} className="add-transaction-button">
+           Add Transaction
           </button>
         </div>
+      </div>
       </div>
     )
   );
