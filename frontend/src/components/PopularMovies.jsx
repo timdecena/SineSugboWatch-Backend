@@ -54,7 +54,7 @@ const PopularMovies = () => {
       </div>
 
       {/* Movie Grid Section */}
-      <h2 className="section-title">Top Movies</h2>
+      <h2 className="section-title">Popular Movies</h2>
       <div className="movie-grid">
         {movies.length > 0 ? (
           movies.map((movie) => (
