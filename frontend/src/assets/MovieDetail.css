@@ -82,7 +82,7 @@
   font-size: 1rem;
   transition: all 0.3s ease;
   width: 100%; /* Make the buttons take up full available width */
-  max-width: 170px; /* Limit the width for larger screens */
+  max-width: 200px; /* Limit the width for larger screens */
   text-align: center;
   box-sizing: border-box; /* Ensures the padding is considered in width */
 }

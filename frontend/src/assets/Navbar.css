@@ -93,7 +93,7 @@
 }
 
 .user-dropdown-button {
-  background: none;
+  background: #a8dadc;
   border: none;
   color: #a8dadc;
   cursor: pointer;
@@ -119,6 +119,15 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   min-width: 160px;
   overflow: hidden; /* Ensures rounded corners */
+}
+
+.dropdown-toggled {
+  background-color: #007bff;
+  color: white;
+  border: none; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .dropdown-menu a {
@@ -189,7 +198,7 @@
 
 .search-buttons button:last-child {
   background-color: #e63946;
-}
+} 
 
 /* Logout Button Styles */
 .logout-button {

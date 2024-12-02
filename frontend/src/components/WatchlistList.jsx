@@ -76,7 +76,7 @@ const WatchlistList = () => {
         <p className="no-watchlist-message">No watchlist found.</p>
       )}
       <button className="create" onClick={handleCreateWatchlist}>Create Watchlist</button>
-    </div>
+    </div> 
   );
 };
 
