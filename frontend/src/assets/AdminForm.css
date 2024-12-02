@@ -8,12 +8,13 @@
     justify-content: center;
     min-height: 100vh; /* Full height of the viewport */
     padding: 20px; /* Adjusted padding */
+    background-color: #7FDBFF; /* Soft teal background for the container */
 }
 
 /* Heading Style */
 .admin-container h2 {
     font-size: 2.4rem;
-    color: #2d3748; /* Dark gray for a formal tone */
+    color: #1d3557; /* Deep blue for the heading */
     font-weight: 700;
     margin-bottom: 30px;
     text-align: center;
@@ -27,7 +28,7 @@
     flex-direction: column;
     width: 100%;
     max-width: 450px; /* Max width for the form */
-    background-color: #ffffff; /* White background for form */
+    background-color: #f1faee; /* Light background for the form */
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -44,14 +45,14 @@
     padding: 12px;
     margin-bottom: 15px;
     font-size: 1rem;
-    border: 1px solid #cbd5e0;
+    border: 1px solid #457b9d; /* Soft teal border */
     border-radius: 8px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .admin-container input:focus {
-    border-color: #38a169; /* Soft green for focus */
-    box-shadow: 0 0 5px rgba(56, 161, 105, 0.5);
+    border-color: #1d3557; /* Deep blue for focus */
+    box-shadow: 0 0 5px rgba(29, 53, 87, 0.5); /* Subtle glow effect */
     outline: none;
 }
 
@@ -62,7 +63,7 @@
     font-size: 1rem;
     font-weight: 600;
     color: #ffffff;
-    background-color: #38a169; /* Green for professionalism */
+    background-color: #1d3557; /* Deep blue for professionalism */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -70,20 +71,20 @@
 }
 
 .admin-container button:hover {
-    background-color: #2f855a; /* Slightly darker green */
-    box-shadow: 0 4px 8px rgba(47, 133, 90, 0.3);
+    background-color: #457b9d; /* Soft teal for hover effect */
+    box-shadow: 0 4px 8px rgba(69, 123, 157, 0.3); /* Subtle shadow */
 }
 
 /* Success and Error Messages */
 .success-message {
-    color: #38a169; /* Green */
+    color: #38a169; /* Soft green for success */
     font-size: 1rem;
     margin-top: 15px;
     text-align: center;
 }
 
 .error-message {
-    color: #e53e3e; /* Red */
+    color: #e53e3e; /* Red for error */
     font-size: 1rem;
     margin-top: 15px;
     text-align: center;

@@ -38,8 +38,8 @@ const PopularMovies = () => {
       {/* Hero Section */}
       <div className="hero-section">
         <div className="hero-content">
-          <h1>Welcome to MovieApp</h1>
-          <p>Discover the most popular movies, TV shows, and more!</p>
+          <h1>Welcome to SineSugboWatch HD</h1>
+          <p>"Dive into the Future of Entertainment with SineSugboWatch HD – Where Every Frame is a Masterpiece!"</p>
           <button className="explore-btn" onClick={handleExploreClick}>Explore Now</button>
         </div>
       </div>

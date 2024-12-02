@@ -8,17 +8,20 @@
     justify-content: center;
     height: 80vh;
     padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #a8dadc; /* Soft teal background */
+    border-radius: 12px; /* Smoother rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* Heading Style */
 .update-form-container h2 {
-    font-size: 2.2rem;
+    font-size: 2.4rem; /* Larger heading */
     margin-bottom: 25px;
-    color: #333;
+    color: #1d3557; /* Deep blue color for the heading */
     font-weight: 700;
     text-align: center;
+    text-transform: uppercase; /* All caps for emphasis */
+    letter-spacing: 2px; /* Space between letters for better readability */
 }
 
 /* Form Layout */
@@ -26,57 +29,62 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 400px;
-    gap: 15px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 450px; /* Increased max width for better spacing */
+    gap: 20px; /* Larger gap between inputs */
+    padding: 30px; /* More padding for a spacious layout */
+    background-color: #ffffff; /* White background for form */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Input Fields */
 .update-form-container input {
-    padding: 12px;
-    font-size: 1rem;
+    padding: 14px;
+    font-size: 1.1rem; /* Slightly larger text for inputs */
     border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: border-color 0.3s ease;
+    border-radius: 8px; /* Smoother corners */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f1faee; /* Light background for inputs */
+    color: #1d3557; /* Deep blue text color */
 }
 
 .update-form-container input:focus {
-    border-color: #28a745; /* Green for focus */
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+    border-color: #457b9d; /* Soft teal for focus */
+    box-shadow: 0 0 5px rgba(69, 123, 157, 0.3); /* Teal glow */
     outline: none;
 }
 
 /* Submit Button */
 .update-form-container .update-button {
-    padding: 12px;
-    font-size: 1rem;
+    padding: 14px;
+    font-size: 1.1rem;
     font-weight: 600;
-    background-color: #28a745; /* Green color for update button */
+    background-color: #1d3557; /* Deep blue for button */
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Rounded corners for the button */
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .update-form-container .update-button:hover {
-    background-color: #218838;
+    background-color: #457b9d; /* Lighter teal on hover */
+    transform: scale(1.05); /* Slight scaling effect on hover */
 }
 
 /* Success and Error Messages */
 .success-message {
-    color: #28a745; /* Green */
+    color: #28a745; /* Green for success */
     font-size: 1rem;
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
+    font-weight: 600;
 }
 
 .error-message {
-    color: #dc3545; /* Red */
+    color: #dc3545; /* Red for error */
     font-size: 1rem;
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
+    font-weight: 600;
 }

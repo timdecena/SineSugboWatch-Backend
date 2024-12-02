@@ -1,3 +1,4 @@
+/* Movie Detail Section */
 .movie-detail {
   display: flex;
   background-color: #1a1a1a;
@@ -54,21 +55,6 @@
   font-size: 18px;
 }
 
-.movie-buttons {
-  margin: 15px 0;
-}
-
-.upload-button,
-.vidcloud-button {
-  background-color: #fff;
-  color: #333;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
 .movie-overview {
   margin: 20px 0;
   line-height: 1.6;
@@ -76,6 +62,64 @@
 
 .movie-details p {
   margin: 5px 0;
+}
+
+/* Buttons Container */
+.movie-buttons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 20px; /* Ensure space between buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap if needed */
+}
+
+/* Button Styling */
+.add-to-watchlist-button,
+.add-transaction-button {
+  background-color: #457b9d; /* Teal background for both buttons */
+  color: #f1faee; /* Light text for readability */
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px; /* Rounded corners for both buttons */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%; /* Make the buttons take up full available width */
+  max-width: 250px; /* Limit the width for larger screens */
+  text-align: center;
+  box-sizing: border-box; /* Ensures the padding is considered in width */
+}
+
+/* Ensure Buttons are aligned in a row */
+.movie-buttons .add-to-watchlist-button,
+.movie-buttons .add-transaction-button {
+  width: 100%; /* Full width within their container */
+}
+
+/* Hover Effect for Buttons */
+.add-to-watchlist-button:hover,
+.add-transaction-button:hover {
+  background-color: #1d3557; /* Darker teal on hover */
+  transform: scale(1.05); /* Slight scale effect for interactivity */
+}
+
+/* Aligning Vidcloud button specifically */
+.vidcloud-button {
+  background-color: #f1faee; /* Light background for Vidcloud button */
+  color: #333; /* Dark text for readability */
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%; /* Full width within the container */
+  max-width: 250px; /* Limit width */
+  text-align: center;
+}
+
+.vidcloud-button:hover {
+  background-color: #f0f0f0; /* Lighter background on hover */
 }
 
 /* Dropdown container */
@@ -98,7 +142,6 @@
   position: relative; /* Ensures the dropdown aligns to this container */
   display: inline-block;
 }
-
 
 /* Hover effect for dropdown items */
 .dropdown-item:hover {

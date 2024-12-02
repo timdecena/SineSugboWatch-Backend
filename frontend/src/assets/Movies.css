@@ -1,28 +1,80 @@
+/* Movie Item Styling */
 .movie-item {
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #a8dadc; /* Lighter border to match the theme */
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f1faee; /* Light background for clean look */
+  border-radius: 10px; /* Rounded corners for a softer feel */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+.movie-item:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Movie Image Styling */
 .movie-image {
   width: 100px;
   height: 150px;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px; /* Rounded corners for the image */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
 
+/* Movie Link Styling */
 .movie-link {
   text-decoration: none;
-  color: black;
+  color: #1d3557; /* Dark blue for the link text */
+  font-size: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
+.movie-link:hover {
+  color: #e63946; /* Red color on hover for accent */
+}
+
+/* Admin Buttons Styling */
 .admin-buttons {
-  margin-top: 10px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center; /* Align buttons centrally */
+  gap: 10px; /* Space between buttons */
 }
 
 .update-button, .delete-button {
-  margin: 5px;
+  padding: 8px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.update-button {
+  background-color: #457b9d; /* Muted blue for update */
+  color: #f1faee; /* Light text for readability */
+  border: none;
+}
+
+.update-button:hover {
+  background-color: #1d3557; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+.delete-button {
+  background-color: #e63946; /* Red for delete button */
+  color: #f1faee; /* Light text for readability */
+  border: none;
+}
+
+.delete-button:hover {
+  background-color: #d72b3b; /* Darker red on hover */
+  transform: scale(1.05); /* Slight scale effect */
 }

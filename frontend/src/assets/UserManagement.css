@@ -1,108 +1,88 @@
 .user-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
-  background-color: #ffffff; /* Clean white background */
-  font-family: 'Arial', sans-serif; /* Professional and clean font */
+  max-width: 500px; /* Clean form width */
+  width: 90%; /* Responsive design for smaller screens */
+  margin: 40px auto; /* Centered layout */
+  padding: 30px; /* Comfortable padding */
+  border-radius: 12px; /* Rounded edges */
+  background-color: rgba(26, 39, 53, 0.9); /* Deep blue background */
+  color: #fff; /* Light text for contrast */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  font-family: 'Arial', sans-serif; /* Clean and professional font */
 }
 
 .user-container h2 {
-  text-align: center;
-  color: #b19000; /* Yellow accent for header */
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #f7f5e8; /* Light yellow background for contrast */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center the heading */
+  color: #7FDBFF; /* Soft teal accent color */
+  margin-bottom: 25px; /* Space below the heading */
+  font-size: 2.5rem; /* Larger font size */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow for visibility */
 }
 
-/* User list and card styles */
-.user-list {
+.user-container form {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-direction: column; /* Stack form elements */
+  gap: 20px; /* Space between inputs */
 }
 
-.user-card {
-  background-color: #f8f9fa; /* Light gray for subtle distinction */
-  border: 1px solid #dcdcdc; /* Neutral border color */
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow style */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+.user-container input[type="text"],
+.user-container input[type="email"],
+.user-container input[type="password"] {
+  width: 100%; /* Full-width inputs */
+  padding: 15px; /* Ample padding for ease of use */
+  font-size: 1rem; /* Standard font size */
+  border: 1px solid #4A6572; /* Soft teal-ish border */
+  border-radius: 8px; /* Rounded edges */
+  background-color: #1E2A34; /* Deep blue input background */
+  color: #fff; /* Light text */
+  box-sizing: border-box; /* Include padding in the width */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effects */
 }
 
-.user-card:hover {
-  transform: translateY(-3px); /* Lift effect */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+.user-container input[type="text"]:focus,
+.user-container input[type="email"]:focus,
+.user-container input[type="password"]:focus {
+  border-color: #7FDBFF; /* Soft teal border on focus */
+  box-shadow: 0 0 8px rgba(126, 212, 195, 0.8); /* Soft teal glow effect */
+  outline: none; /* Remove default focus outline */
 }
 
-.user-card p {
-  margin: 0 0 8px;
-  color: #333; /* Neutral dark gray for text */
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.user-card p span {
-  font-weight: bold;
-  color: #b19000; /* Yellow accent for emphasis */
-}
-
-/* Button styles */
-button {
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth animations */
-}
-
-/* Create button */
-.create-button {
-  padding: 12px 20px;
-  background-color: #b19000; /* Yellow theme */
-  color: white;
-}
-
-.create-button:hover {
-  background-color: #8a7300;
-  transform: scale(1.02); /* Subtle scaling on hover */
-}
-
-/* Update button */
-.update-button {
-  background-color: #003366; /* Deep blue */
-  color: white;
-  padding: 12px 20px;
-  margin-right: 10px;
-}
-
-.update-button:hover {
-  background-color: #002244;
-  transform: scale(1.02);
-}
-
-/* Delete button */
-.delete-button {
-  background-color: #d9534f; /* Light red for delete */
-  color: white;
-  padding: 12px 20px;
-}
-
-.delete-button:hover {
-  background-color: #c9302c;
-  transform: scale(1.02);
-}
-
-/* Error message styling */
 .error-message {
-  color: #d9534f; /* Matching the delete button red */
-  text-align: center;
-  font-weight: bold;
-  margin-top: 20px;
+  color: #e74c3c; /* Vibrant red for error messages */
+  font-size: 0.9rem; /* Slightly smaller text */
+  margin-top: -10px; /* Keep error messages close to the input */
+}
+
+button.create-button {
+  width: 100%; /* Full-width button */
+  padding: 15px 0; /* Comfortable padding */
+  background-color: #7FDBFF; /* Soft teal theme */
+  color: #1E2A34; /* Deep blue text for contrast */
+  border: none; /* Clean design */
+  border-radius: 8px; /* Rounded button corners */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  font-size: 1.2rem; /* Slightly larger text */
+  font-weight: bold; /* Emphasized text */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+button.create-button:hover {
+  background-color: #66c2b3; /* Slightly darker soft teal */
+  transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.user-container p {
+  text-align: center; /* Centered text */
+  margin-top: 20px; /* Space above */
+  font-size: 1rem; /* Consistent font size */
+  color: #fff; /* Light text */
+}
+
+.user-container p a {
+  color: #7FDBFF; /* Soft teal for link emphasis */
+  text-decoration: none; /* Clean link style */
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.user-container p a:hover {
+  color: #66c2b3; /* Slightly darker teal */
 }

@@ -3,13 +3,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  color: #f1faee; /* Light text for better contrast */
 }
 
 .login-container h2 {
-  font-size: 2rem;
+  font-size: 3rem; /* Increased size for emphasis */
   margin-bottom: 20px;
-  color: #333;
+  color: #1d3557; /* Deep blue color */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 .login-container form {
@@ -17,56 +21,60 @@
   flex-direction: column;
   width: 300px;
   gap: 10px;
+  background-color: #7FDBFF; /* Soft teal for form background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Depth effect */
 }
 
 .login-container input {
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #1d3557; /* Deep blue border for contrast */
   border-radius: 5px;
+  background-color: #f1faee; /* Light background for inputs */
+  color: #1d3557; /* Dark text for readability */
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Password container with show/hide icon inside the field */
 .password-container {
   position: relative;
   width: 100%;
-  height: 40px; /* Fixed height for the password container */
+  height: 40px;
   display: flex;
-  align-items: center; /* Align contents vertically */
+  align-items: center;
 }
 
 .password-container input[type="password"],
 .password-container input[type="text"] {
-  padding-right: 40px; /* Space for the toggle button */
-  height: 100%; /* Match container height */
+  padding-right: 40px;
+  height: 90%;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #1d3557;
   border-radius: 5px;
+  background-color: #f1faee;
+  color: #1d3557;
   box-sizing: border-box;
 }
 
-/* Fixed position and dimensions for the toggle icon */
 .password-container .toggle-password {
   position: absolute;
   right: 10px;
-  top: 30%; /* Center icon vertically */
-  transform: translateY(-50%); /* Adjust for its own height */
+  top: 30%;
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
-  color: #333;
-  width: 20px; /* Fixed size for the button */
-  height: 20px; /* Fixed size for the button */
+  color: #e63946; /* Red for contrast */
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 20px;
+  height: 20px;
 }
 
-
-/* Aligning User and Admin radio buttons horizontally */
 .user-type-selection {
   display: flex;
   justify-content: space-around;
@@ -75,7 +83,7 @@
 
 .user-type-selection label {
   font-size: 1rem;
-  color: #333;
+  color: #1d3557; /* Deep blue for labels */
   display: flex;
   align-items: center;
   gap: 5px;
@@ -84,18 +92,22 @@
 .login-container button {
   padding: 10px;
   font-size: 1rem;
-  background-color: #333;
-  color: #fff;
+  background-color: #1d3557; /* Deep blue for buttons */
+  color: #f1faee; /* Light text for contrast */
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .login-container button:hover {
-  background-color: #555;
+  background-color: #457b9d; /* Soft teal for button hover */
+  transform: scale(1.05); /* Subtle zoom effect */
 }
 
 .login-container p {
   margin-top: 15px;
+  color: #000; /* Black color for better visibility */
+  text-shadow: none; /* Removed shadow for a cleaner look */
+  font-size: 1rem; /* Optional: Adjust font size if needed */
 }

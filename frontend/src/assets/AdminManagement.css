@@ -8,7 +8,7 @@
     max-width: 600px;
     margin: 40px auto;
     padding: 25px;
-    background-color: #ffffff;
+    background-color: #7FDBFF; /* Soft teal background for the container */
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -16,7 +16,7 @@
 .admin-container h2 {
     font-size: 2rem;
     margin-bottom: 25px;
-    color: #333333;
+    color: #ffffff; /* Deep blue for the heading */
     font-weight: 700;
 }
 
@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
-    background-color: #f8f9fa;
+    background-color: #f1faee; /* Light background for list items */
     border-radius: 8px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
@@ -44,7 +44,7 @@
 .admin-container .admin-list-item p {
     margin: 5px 0;
     font-size: 1rem;
-    color: #555555;
+    color: #1d3557; /* Deep blue text for better contrast */
 }
 
 .admin-container .action-buttons {
@@ -64,6 +64,7 @@
     transition: background-color 0.3s ease;
 }
 
+/* Buttons Styling Remains the Same */
 .admin-container .action-buttons .update-button {
     background-color: #28a745; /* Green color for Update button */
 }
