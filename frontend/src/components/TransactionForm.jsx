@@ -10,6 +10,16 @@ const TransactionForm = () => {
   const userId = localStorage.getItem('user_id');
   const [searchParams] = useSearchParams();
 
+  // Payment options dropdown
+  const paymentOptions = [
+    { value: '', label: 'Select Payment Method' },
+    { value: 'Credit Card', label: 'Credit Card' },
+    { value: 'PayPal', label: 'PayPal' },
+    { value: 'Bank Transfer', label: 'Bank Transfer' },
+    { value: 'Cash', label: 'Cash' },
+    { value: 'Google Pay', label: 'Google Pay' },
+  ];
+
   useEffect(() => {
     const price = searchParams.get('price');
     const id = searchParams.get('movieId');
@@ -60,13 +70,20 @@ const TransactionForm = () => {
         <p>
           <strong>Payment Price:</strong> ${paymentPrice}
         </p>
-        <input
-          type="text"
-          placeholder="Payment Method"
+
+        {/* Payment Method Dropdown */}
+        <select
           value={paymentMethod}
           onChange={(e) => setPaymentMethod(e.target.value)}
           required
-        />
+        >
+          {paymentOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+
         <button type="submit">Add Transaction</button>
       </form>
     </div>
