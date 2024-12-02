@@ -14,10 +14,11 @@
 }
 
 .watchlist-container h2 {
-  font-size: 2rem;
-  color: #e63946; /* Accent color (red) for the title */
-  margin-bottom: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+    text-align: center; /* Center the headings */
+    color: #7FDBFF; /* Soft teal accent */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 2rem; /* Larger font size for titles */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Strong shadow */
 }
 
 .watchlist-card {

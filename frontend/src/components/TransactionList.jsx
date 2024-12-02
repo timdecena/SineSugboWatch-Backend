@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../assets/TransactionList.css'; // Adjust the path as needed
+import '../assets/Transaction.css';
 
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
@@ -49,7 +49,7 @@ const TransactionList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="containertransac">
       <h2>{username ? `${username}'s Transactions` : 'Your Transactions'}</h2>
       {transactions.length > 0 ? (
         transactions.map((transaction) => (
@@ -57,8 +57,8 @@ const TransactionList = () => {
             <p><span>ID:</span> {transaction.transaction_id}</p>
             <p><span>Payment Method:</span> {transaction.paymentmethod}</p>
             <p><span>Payment Price:</span> {transaction.paymentprice}</p>
-            <button onClick={() => handleDeleteTransaction(transaction.transaction_id)}>Delete</button>
-            <button onClick={() => handleEditTransaction(transaction.transaction_id)}>Edit</button>
+            <button className="delete" onClick={() => handleDeleteTransaction(transaction.transaction_id)}>Delete</button>
+            <button className="edit" onClick={() => handleEditTransaction(transaction.transaction_id)}>Edit</button>
           </div>
         ))
       ) : (
