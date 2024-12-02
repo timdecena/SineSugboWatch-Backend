@@ -42,7 +42,7 @@ const PreferencesFormUpdate = () => {
     <form className="form-container" onSubmit={handleSubmit}>
       <h2>Update Preferences</h2>
       <label>
-        Recommendations:
+        Favorite Movie
         <input
           type="text"
           name="recommendations"
@@ -53,7 +53,7 @@ const PreferencesFormUpdate = () => {
       </label>
       <br />
       <label>
-        Preferred Genres:
+        Favorite Genre: 
         <input
           type="text"
           name="preferredgenres"
