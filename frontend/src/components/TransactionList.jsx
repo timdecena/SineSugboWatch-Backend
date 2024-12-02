@@ -64,7 +64,6 @@ const TransactionList = () => {
       ) : (
         <p className="no-transaction-message">No transactions found.</p>
       )}
-      <button onClick={handleCreateTransaction}>Create Transaction</button>
     </div>
   );
 };

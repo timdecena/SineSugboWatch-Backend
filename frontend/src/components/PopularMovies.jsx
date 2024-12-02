@@ -1,4 +1,3 @@
-// PopularMovies.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from React Router
 import '../assets/PopularMovies.css';
@@ -19,7 +18,17 @@ const PopularMovies = () => {
         throw new Error('Failed to fetch movies');
       }
       const data = await response.json();
-      setMovies(data);
+
+      // Retrieve images from localStorage and associate with movies
+      const storedImages = JSON.parse(localStorage.getItem('movieImages')) || {};
+      const filteredMovies = data
+        .filter((movie) => movie.rating >= 8 && movie.rating <= 10) // Filter movies with rating 8-10
+        .map((movie) => ({
+          ...movie,
+          image: storedImages[movie.movie_id] || 'placeholder.png', // Use localStorage images or fallback
+        }));
+
+      setMovies(filteredMovies);
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
@@ -55,7 +64,7 @@ const PopularMovies = () => {
               onClick={() => handleMovieClick(movie.movie_id)} // Handle movie click
             >
               <img
-                src={movie.imageUrl || '/path/to/default.jpg'}
+                src={`/movieimages/${movie.image}`} // Access local storage image or fallback
                 alt={movie.title}
                 className="movie-image"
               />

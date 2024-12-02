@@ -45,6 +45,11 @@ const Navbar = () => {
     }
   };
 
+  // Only show the navbar if the user is logged in
+  if (!username || !userType) {
+    return null; // Do not render anything if the user is not logged in
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -54,18 +59,16 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className="nav-links">
-          <li><Link to="/genre">Genre</Link></li>
-          <li><Link to="/watchlists">Watchlist</Link></li>
           <li><Link to="/movies">Movies</Link></li>
-          <li><Link to="/tv-shows">TV Shows</Link></li>
-          <li><Link to="/top-imdb">Top IMDB</Link></li>
-          <li><Link to="/recents">Recents</Link></li>
+          <li><Link to="/watchlists">Watchlist</Link></li>
+          <li><Link to="/recommendations">Recommendations</Link></li>
+          <li><Link to="/tv-shows">About Us</Link></li>
         </ul>
         <div className="search-bar">
           <button onClick={() => setSearchModalVisible(true)}>🔍</button>
         </div>
         
-        {username ? (
+        {username && (
           <div className="user-info" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
             <span style={{ marginRight: '10px', color: 'white' }}>
               Logged in as: {username} ({userType})
@@ -82,11 +85,8 @@ const Navbar = () => {
                 <div className="dropdown-menu" style={{ position: 'absolute', backgroundColor: '#333', padding: '10px' }}>
                   {userType === 'user' && (
                     <>
-                      <Link to="/users" className="dropdown-item">User Details</Link>
-                      <Link to="/pref" className="dropdown-item">View Current Preferences</Link>
+                      <Link to="/user" className="dropdown-item">User Details</Link>
                       <Link to="/transactions" className="dropdown-item">View Current Transactions</Link>
-                      <Link to="/watchlists" className="dropdown-item">View Current Watchlists</Link>
-                      <Link to="/movies" className="dropdown-item">View All Movies</Link>
                     </>
                   )}
 
@@ -106,10 +106,6 @@ const Navbar = () => {
             <button onClick={handleLogout} style={{ backgroundColor: '#555', color: 'white', border: 'none', padding: '0.5rem', cursor: 'pointer' }}>
               Logout
             </button>
-          </div>
-        ) : (
-          <div className="please-login" style={{ marginLeft: 'auto', color: 'white' }}>
-            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Please Login</Link>
           </div>
         )}
       </div>

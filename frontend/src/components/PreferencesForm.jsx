@@ -32,14 +32,14 @@ const PreferencesForm = () => {
       <form onSubmit={handleCreatePreference}>
         <input
           type="text"
-          placeholder="Recommendations"
+          placeholder="Favorite Movie"
           value={recommendations}
           onChange={(e) => setRecommendations(e.target.value)}
           required
         />
         <input
           type="text"
-          placeholder="Preferred Genres"
+          placeholder="Favorite Genre"
           value={preferredGenres}
           onChange={(e) => setPreferredGenres(e.target.value)}
           required

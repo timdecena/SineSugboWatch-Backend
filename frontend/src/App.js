@@ -14,6 +14,7 @@ import Login from './components/Login';
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
 import UserUpdateForm from './components/UserUpdateForm';
+import UserDetails from './components/UserDetails';
 
 // Admin management
 import AdminForm from './components/AdminForm';
@@ -24,6 +25,7 @@ import AdminUpdateForm from './components/AdminUpdateForm';
 import PreferencesForm from './components/PreferencesForm';
 import PreferencesList from './components/PreferencesList';
 import PreferencesFormUpdate from './components/PreferencesFormUpdate';
+import Recommendations from './components/Recommendations';
 
 // Movie management
 import MoviesForm from './components/MoviesForm';
@@ -67,6 +69,7 @@ function App() {
         <Route path="/create-user" element={<UserForm />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/update-user/:id" element={<UserUpdateForm />} />
+        <Route path="/user" element={<UserDetails />} />
 
         {/* Admin Management */}
         <Route path="/create-admin" element={<AdminForm />} />
@@ -77,6 +80,7 @@ function App() {
         <Route path="/create-pref" element={<PreferencesForm />} />
         <Route path="/pref" element={<PreferencesList />} />
         <Route path="/update-pref/:id" element={<PreferencesFormUpdate />} />
+        <Route path="/recommendations" element={<Recommendations />} />
 
         {/* Movie Management */}
         <Route path="/create-movie" element={<MoviesForm />} />

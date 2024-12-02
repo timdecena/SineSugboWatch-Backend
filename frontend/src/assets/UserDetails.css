@@ -1,0 +1,108 @@
+.user-details-container {
+    max-width: 600px; /* Slightly wider for more content */
+    width: 90%; /* Responsive design */
+    margin: 40px auto; /* Centered layout */
+    padding: 30px; /* Comfortable padding */
+    border-radius: 12px; /* Rounded edges */
+    background-color: rgba(26, 39, 53, 0.95); /* Deep blue background */
+    color: #fff; /* Light text for contrast */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    overflow: hidden; /* Ensure child elements are contained */
+  }
+  
+  
+  .user-details-container h2,
+  .user-details-container h3 {
+    text-align: center; /* Center the headings */
+    color: #7FDBFF; /* Soft teal accent */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 2rem; /* Larger font size for titles */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Strong shadow */
+  }
+  
+  .user-card,
+  .preference-card {
+    background-color: #1E2A34; /* Deep blue card background */
+    padding: 20px; /* Padding inside the card */
+    margin-bottom: 20px; /* Space between cards */
+    margin-right: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+  }
+  
+  
+  .user-card:hover,
+  .preference-card:hover {
+    transform: scale(1.02); /* Slightly larger on hover */
+  }
+  
+  .user-card p,
+  .preference-card p {
+    font-size: 1rem; /* Consistent font size */
+    color: #fff; /* Light text */
+    margin: 5px 0; /* Minimal space between lines */
+  }
+  
+  .user-card span,
+  .preference-card span {
+    font-weight: bold; /* Emphasized labels */
+    color: #7FDBFF; /* Soft teal for labels */
+  }
+  
+  button {
+    width: 100%; /* Full-width buttons */
+    padding: 10px 0; /* Comfortable padding */
+    margin-top: 10px; /* Space above buttons */
+    border: none; /* Clean button design */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1rem; /* Standard font size */
+    font-weight: bold; /* Emphasized text */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
+  }
+  
+  button.update-button {
+    background-color: #7FDBFF; /* Soft teal theme */
+    color: #1E2A34; /* Dark text for contrast */
+  }
+  
+  button.update-button:hover {
+    background-color: #66c2b3; /* Slightly darker teal */
+    transform: scale(1.05); /* Slight enlargement */
+  }
+  
+  button.delete-button {
+    background-color: #e74c3c; /* Vibrant red for delete */
+    color: #fff; /* Light text */
+  }
+  
+  button.delete-button:hover {
+    background-color: #c0392b; /* Slightly darker red */
+    transform: scale(1.05); /* Slight enlargement */
+  }
+  
+  button.create {
+    background-color: #7FDBFF; /* Soft teal */
+    color: #1E2A34; /* Deep blue text */
+    margin-top: 20px;
+  }
+  
+  button.create:hover {
+    background-color: #66c2b3; /* Slightly darker teal */
+    transform: scale(1.05); /* Slight enlargement */
+  }
+  
+  .error-message {
+    color: #e74c3c; /* Vibrant red for errors */
+    font-size: 0.9rem; /* Smaller size for error messages */
+    text-align: center; /* Centered text */
+  }
+  
+  .no-preference-message {
+    text-align: center; /* Centered text */
+    font-size: 1rem; /* Consistent font size */
+    color: #7FDBFF; /* Soft teal */
+    margin: 20px 0; /* Space around the message */
+  }
+  
